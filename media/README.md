@@ -38,6 +38,14 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 
 ## Paper figures (Lecture 2)
 
+### `firefly-stereo-camera-geometry.png`
+
+- **What it shows:** Panels 1a–b compare the overlapping fields of view of two planar cameras with two 360° cameras and show the two-view ray geometry used to triangulate one world point.
+- **Teaching use:** The planar-camera drawing in panel (a), left, is the relevant geometry for the 2021 ridge recordings. Panel (b) was drawn for the authors' earlier 360° setup but illustrates the same stereo principle: one detection in each calibrated camera defines two viewing rays whose intersection estimates a 3D position. This is a conceptual schematic, not a literal map or photograph of the 2021 Sony-camera placement.
+- **Source:** Sarfati, Hayes, Sarfati, and Peleg, “Spatio-temporal reconstruction of emergent flash synchronization in firefly swarms via stereoscopic 360-degree cameras,” *Journal of the Royal Society Interface* 17 (2020), 20200179, Fig. 1a–b. [doi:10.1098/rsif.2020.0179](https://doi.org/10.1098/rsif.2020.0179).
+- **License:** Creative Commons Attribution 4.0 (CC BY 4.0).
+- **Processing:** Rendered from page 2 of the official Europe PMC PDF at 600 dpi, cropped to panels a–b, and arranged side by side for a notebook-friendly landscape layout without changing the panel content. Output dimensions are 3387 × 1000 pixels.
+
 ### `firefly-paper-figure-1-methods.png` and `firefly-paper-figure-1-results.png`
 
 - **What they show:** The first image contains habitat and stereo reconstruction panels A–D. The second contains nightly activity, representative count signals, and fluctuation scaling panels E–H.
