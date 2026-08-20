@@ -10,7 +10,21 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 
 ## Lectures
 
-Links to each lecture's main Jupyter notebook will be added here as the course is developed.
+- [Lecture 2 — Temporal synchrony: from movies to numbers](lectures/lecture-02-firefly-synchronization.ipynb)
+
+## Local environment
+
+Create and register the shared course kernel:
+
+```bash
+conda env create -f environment.yml
+conda activate swarming-course
+python -m ipykernel install --user --name swarming-course --display-name "Python (swarming-course)"
+```
+
+In VS Code, choose **Python (swarming-course)** from the notebook kernel picker. Lecture notebooks link to the course-wide `media/` and `data/` directories using relative paths.
+
+Some classroom media have redistribution restrictions. Check [`media/README.md`](media/README.md) before publishing or redistributing the repository.
 
 ## Course site
 

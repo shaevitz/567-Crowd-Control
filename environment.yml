@@ -1,0 +1,11 @@
+name: swarming-course
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - jupyterlab
+  - ipykernel
+  - ipython
+  - numpy
+  - pandas
+  - matplotlib=3.10.*
