@@ -1,4 +1,5 @@
-# BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Manipulating Collective Behaviors and Swarm Dynamics
+# BNG/BPY/CBE/MAE 567 
+# Crowd Control: Understanding and Manipulating Collective Behaviors and Swarm Dynamics
 
 Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Manipulating Collective Behaviors and Swarm Dynamics**.
 
