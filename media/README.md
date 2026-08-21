@@ -36,6 +36,13 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **License:** Creative Commons Zero 1.0 (CC0 1.0), the Dryad dataset license.
 - **Processing:** Excerpt from 00:40:13 through 00:40:45; scaled from 1920 × 1080 to 1280 × 720, transcoded to H.264 MP4, audio removed, and display gamma set to 1.45 so flashes remain visible on a classroom projector. Timing and playback speed were not changed. Use the unmodified source movie for quantitative analysis.
 
+### `firefly-photinus-carolinus-closeup.jpg`
+
+- **What it shows:** A close-up of an adult *Photinus carolinus*, with the pale margins of the wing covers and the red patches beneath the pronotum visible.
+- **Teaching use:** A species-level visual anchor for the natural-history introduction immediately before the class moves from observable flashes to the event-data table.
+- **Source:** Abbott Nature Photography, via [Discover Life in America](https://dlia.org/event/fireflies-2022/synchronous-firefly-photinus-carolinus-credit-abbott-nature-photography/).
+- **Processing:** Downloaded at 1200 × 900 pixels; no crop, color adjustment, or other transformation.
+
 ## Paper figures (Lecture 2)
 
 ### `firefly-stereo-camera-geometry.png`
