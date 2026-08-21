@@ -5,7 +5,7 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 
 ## Instructors
 
-- Josh Shaevitz
+- Joshua W. Shaevitz
 - Daniel Cohen
 
 ## Lectures
