@@ -1,5 +1,7 @@
 # Firefly teaching windows
 
+`daily-observation-counts.csv` contains the number of rows in each complete Sony-camera `xyztMMDD.csv` table. It includes all nine recording days released in the Dryad dataset; June 4 and June 6 were not included in the release.
+
 These two headerless CSV files are lecture-sized excerpts of the Sony stereo-camera reconstructions released with Sarfati, Hayes, and Peleg, “Three-dimensional time-resolved flash occurrences of swarming *Photinus carolinus* fireflies in their natural habitat” ([Dryad DOI](https://doi.org/10.5061/dryad.2547d7wvn)). The source dataset is CC0 1.0.
 
 Each row has four columns: `x`, `y`, `z`, and `frame`. Coordinates are in meters. `frame` is the source-video frame index at 60 frames per second. There is deliberately no header so the excerpts preserve the schema of the released files.
