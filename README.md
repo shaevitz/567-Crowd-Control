@@ -24,7 +24,11 @@ python -m ipykernel install --user --name swarming-course --display-name "Python
 
 In VS Code, choose **Python (swarming-course)** from the notebook kernel picker. Lecture notebooks link to the course-wide `media/` and `data/` directories using relative paths.
 
-Some classroom media have redistribution restrictions. Check [`media/README.md`](media/README.md) before publishing or redistributing the repository.
+## License
+
+- Original lecture text, Markdown cells, and instructional figures are licensed under [CC BY 4.0](LICENSE).
+- Source code in `code/` and code cells in notebooks are licensed under the [MIT License](LICENSE-CODE).
+- Third-party media and data are not covered by these licenses. See [`media/README.md`](media/README.md) and [`data/`](data/) for source-specific terms.
 
 ## Course site
 
