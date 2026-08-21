@@ -10,7 +10,7 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 
 ## Lectures
 
-- [Lecture 2 — Temporal synchrony: from movies to numbers](lectures/lecture-02-firefly-synchronization.ipynb)
+- [Lecture 2 — Temporal synchrony and the beauty of fireflies](lectures/lecture-02-firefly-synchronization.ipynb)
 
 ## Local environment
 
