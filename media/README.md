@@ -60,3 +60,11 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **Source:** Sarfati, Hayes, and Peleg, “Self-organization in natural swarms of *Photinus carolinus* synchronous fireflies,” *Science Advances* 7 (2021), eabg9259. [doi:10.1126/sciadv.abg9259](https://doi.org/10.1126/sciadv.abg9259).
 - **License:** Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0).
 - **Processing:** Rendered directly from page 2 of the publisher PDF at 600 dpi, then cropped to the A–D and E–H panel rows without altering the figure content. The output dimensions are 3680 × 890 and 3680 × 930 pixels. These replace the earlier 440 × 217 web thumbnail.
+
+### `firefly-paper-figure-2-propagation.png`
+
+- **What it shows:** Relative flash timing within bursts, the spatial progression of early to late flashes across the ridge, and the increase in median separation that defines the propagation speed.
+- **Teaching use:** Connects the temporal onset of synchrony to the paper's proposed local relay mechanism.
+- **Source:** Sarfati, Hayes, and Peleg, “Self-organization in natural swarms of *Photinus carolinus* synchronous fireflies,” *Science Advances* 7 (2021), eabg9259, Fig. 2. [doi:10.1126/sciadv.abg9259](https://doi.org/10.1126/sciadv.abg9259).
+- **License:** Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0).
+- **Processing:** Extracted directly from page 3 of the publisher PDF with `pdfimages`, preserving the original panel content. Output dimensions are 1453 × 854 pixels.
