@@ -2,6 +2,15 @@
 
 This directory contains lecture-ready media shared across the course. Keep source, license, and transformation notes here whenever a new asset is added.
 
+## Phase-oscillator examples (Lecture 3)
+
+### `mouse-running.mp4`
+
+- **What it shows:** A mouse running from an overhead view.
+- **Teaching use:** Treat the four limbs as oscillators. A gait is a stable pattern of phase differences among their stride cycles.
+- **Source:** Original course video recorded by Joshua W. Shaevitz.
+- **Processing:** The original H.264 video stream was copied from a MOV container into an MP4 container for reliable notebook playback. Timing, resolution, frame rate, and image content were unchanged.
+
 ## Temporal synchrony examples (Lecture 2)
 
 ### `human-crowd-millennium-bridge-sway.mp4`

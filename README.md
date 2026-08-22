@@ -11,6 +11,7 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 ## Lectures
 
 - [Lecture 2 — Temporal synchrony and the beauty of fireflies](lectures/lecture-02-firefly-synchronization.ipynb)
+- [Lecture 3 — From phase to collective synchronization](lectures/lecture-03-kuramoto-model.ipynb)
 
 ## Local environment
 
@@ -27,7 +28,7 @@ In VS Code, choose **Python (swarming-course)** from the notebook kernel picker.
 ## License
 
 - Original lecture text, Markdown cells, and instructional figures are licensed under [CC BY 4.0](LICENSE).
-- Source code in `code/` and code cells in notebooks are licensed under the [MIT License](LICENSE-CODE).
+- Source code in notebook code cells is licensed under the [MIT License](LICENSE-CODE).
 - Third-party media and data are not covered by these licenses. See [`media/README.md`](media/README.md) and [`data/`](data/) for source-specific terms.
 
 ## Course site
