@@ -2,6 +2,24 @@
 
 This directory contains lecture-ready media shared across the course. Keep source, license, and transformation notes here whenever a new asset is added.
 
+## Circadian entrainment (Lecture 5)
+
+### `circadian-across-life.png`
+
+- **What it shows:** One day-night panorama connects cyanobacteria, a flowering plant, a fruit fly, and a mouse to the same daily environmental cycle.
+- **Teaching use:** Opens the lecture with the biological reach and anticipatory value of circadian clocks before defining free-running and entrainment.
+- **Source:** Original course illustration generated with the built-in OpenAI image-generation tool on 2026-08-23.
+- **Generation prompt:** “Create a polished original illustration showing that organisms across biological kingdoms use circadian clocks to anticipate the daily light-dark cycle. Use one continuous 24-hour landscape transitioning from pre-dawn through daylight to dusk and moonlit night. Integrate four biological vignettes: microscopic cyanobacteria associated with daytime photosynthesis, a flowering plant opening toward daylight, a Drosophila fruit fly active around dawn or dusk, and a laboratory mouse active under moonlight. Connect them with a subtle circular timing arc. Use an elegant, biologically recognizable scientific editorial style and a restrained indigo, amber, blue, and green palette. Make it a 16:9 landscape readable when projected. No text, labels, equations, arrows, logos, watermark, mechanical clocks, anthropomorphism, or molecular machinery.”
+- **Processing:** Copied from the generated PNG without further image edits. Notebook labels and biological explanations remain outside the image.
+
+### `drosophila-light-pulse-actogram.png` and `drosophila-light-pulse-prc.png`
+
+- **What they show:** A median double-plotted Drosophila locomotor actogram across light-dark cycles and constant darkness, including a light pulse and the resulting phase shift; and the corresponding phase-response curve for pulses delivered across circadian time.
+- **Teaching use:** The actogram distinguishes an autonomous free-running rhythm from a light-driven output. The PRC returns at the end of the lecture to connect CRYPTOCHROME/TIMELESS resetting to the same phase-map logic developed with KaiABC.
+- **Source:** Vinayak et al., “Exquisite Light Sensitivity of *Drosophila melanogaster* Cryptochrome,” *PLOS Genetics* 9 (2013), e1003615, Fig. 1. [doi:10.1371/journal.pgen.1003615](https://doi.org/10.1371/journal.pgen.1003615).
+- **License:** Creative Commons Attribution 4.0 (CC BY 4.0).
+- **Processing:** Downloaded from the publisher's large PNG and cropped into the actogram and PRC panels. Plot content was not otherwise altered.
+
 ## Phase-oscillator examples (Lecture 3)
 
 ### `mouse-running.mp4`

@@ -1,0 +1,5 @@
+genotype,phenotype,period_h,reported_uncertainty_h,n
+wild type,rhythmic,24.5,0.4,8
+perS,short period,19.5,0.4,5
+per0,arrhythmic,,,4
+perL,long period,28.6,0.5,4

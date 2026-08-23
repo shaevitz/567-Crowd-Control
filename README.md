@@ -13,6 +13,7 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 - [Lecture 2 — Temporal synchrony and the beauty of fireflies](lectures/lecture-02-firefly-synchronization.ipynb)
 - [Lecture 3 — From phase to collective synchronization](lectures/lecture-03-kuramoto-model.ipynb)
 - [Lecture 4 — From recordings to events, phase, and synchrony](lectures/lecture-04-recordings-to-phase.ipynb)
+- [Lecture 5 — External forcing and circadian entrainment](lectures/lecture-05-external-forcing-entrainment.ipynb)
 
 ## Local environment
 
