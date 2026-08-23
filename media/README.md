@@ -45,6 +45,14 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **License:** Creative Commons Zero 1.0 (CC0 1.0), the Dryad dataset license.
 - **Processing:** Excerpt from 00:40:13 through 00:40:45; scaled from 1920 × 1080 to 1280 × 720, transcoded to H.264 MP4, audio removed, and display gamma set to 1.45 so flashes remain visible on a classroom projector. Timing and playback speed were not changed. Use the unmodified source movie for quantitative analysis.
 
+### `firefly-synchrony-analysis.mp4`
+
+- **What it shows:** The same 32-second *P. carolinus* excerpt as `firefly-synchrony.mp4`, without the display gamma adjustment.
+- **Teaching use:** Source frames for the Lecture 4 background-subtraction, thresholding, connected-component, and two-dimensional detection-table demonstration.
+- **Source:** Sarfati, Hayes, and Peleg, Dryad dataset DOI [10.5061/dryad.2547d7wvn](https://doi.org/10.5061/dryad.2547d7wvn); source movie `20200611_GRSM_A1_0035.MP4`.
+- **License:** Creative Commons Zero 1.0 (CC0 1.0), the Dryad dataset license.
+- **Processing:** Excerpt from 00:40:13 through 00:40:45; scaled from 1920 × 1080 to 1280 × 720, transcoded to H.264 MP4, and audio removed. No gamma or other brightness adjustment was applied; timing and playback speed were unchanged.
+
 ### `firefly-photinus-carolinus-closeup.jpg`
 
 - **What it shows:** A close-up of an adult *Photinus carolinus*, with the pale margins of the wing covers and the red patches beneath the pronotum visible.

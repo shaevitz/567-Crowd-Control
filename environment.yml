@@ -8,4 +8,6 @@ dependencies:
   - ipython
   - numpy
   - pandas
+  - scipy
   - matplotlib=3.10.*
+  - opencv
