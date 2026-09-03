@@ -29,6 +29,22 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **Source:** Original course video recorded by Joshua W. Shaevitz.
 - **Processing:** The original H.264 video stream was copied from a MOV container into an MP4 container for reliable notebook playback. Timing, resolution, frame rate, and image content were unchanged.
 
+## Pose tracking (Lecture 4)
+
+### `leap-fly-pose-tracking.mp4`
+
+- **What it shows:** A fruit fly shown as raw imagery, pose-estimation confidence maps, and tracked body keypoints.
+- **Teaching use:** Introduces CNN-based keypoint pose tracking before the lecture extracts paw trajectories from a running mouse.
+- **Source:** Instructor-supplied file `LEAP_Movie1.mp4`; its original publication and license have not yet been recorded.
+- **Processing:** Copied unchanged into the course media directory. The H.264 video is 1152 × 384 pixels at 20 frames/s and runs for 100 seconds.
+
+### `mouse-coupling-fit-small-dataset.png` and `mouse-coupling-fit-large-dataset.png`
+
+- **What they show:** Directed paw-pair coupling strengths estimated from the small teaching dataset and from the full analysis of 30,000 locomotor bouts.
+- **Teaching use:** Compare the unstable small-data estimates with the more tightly constrained large-data fit at the end of Lecture 4.
+- **Source:** Instructor-supplied graphics provided on 2026-09-02; the underlying analysis provenance and license have not yet been recorded.
+- **Processing:** Copied byte-for-byte from the supplied PNG attachments. The images are 1166 × 866 and 1190 × 888 pixels, respectively.
+
 ## Temporal synchrony examples (Lecture 2)
 
 ### `human-crowd-millennium-bridge-sway.mp4`

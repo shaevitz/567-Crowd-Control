@@ -1,6 +1,6 @@
 # Mouse paw trajectories
 
-Ten running bouts supplied by Josh Shaevitz on 2026-08-22. Each CSV contains synchronized one-dimensional trajectories for four identified paws sampled at 80 frames/s.
+Ten running bouts supplied by Josh Shaevitz on 2026-08-22. SLEAP pose tracking assigned a labeled position to each paw in every movie frame. Each CSV contains the resulting synchronized one-dimensional trajectories for four identified paws sampled at 80 frames/s.
 
 | Column | Meaning |
 | --- | --- |
