@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-label="Question mark">
+  <circle cx="200" cy="200" r="184" fill="#eef2ff"/>
+  <path d="M140 135 C140 65 260 65 260 135 C260 180 200 180 200 230" fill="none" stroke="#4338ca" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="200" cy="288" r="16" fill="#4338ca"/>
+</svg>

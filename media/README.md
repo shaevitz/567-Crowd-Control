@@ -227,3 +227,17 @@ The lecture now teaches the U → T rate directly, rounding its saturating coeff
 - **Source:** Sarfati, Hayes, and Peleg, “Self-organization in natural swarms of *Photinus carolinus* synchronous fireflies,” *Science Advances* 7 (2021), eabg9259, Fig. 2. [doi:10.1126/sciadv.abg9259](https://doi.org/10.1126/sciadv.abg9259).
 - **License:** Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0).
 - **Processing:** Extracted directly from page 3 of the publisher PDF with `pdfimages`, preserving the original panel content. Output dimensions are 1453 × 854 pixels.
+
+
+### `firefly-luciferase-structure.jpg`
+
+- **What it shows:** Molecular illustration of Japanese firefly luciferase (PDB 2D1S), with the bound luciferyl-adenylate analogue in yellow. This is a representative firefly enzyme structure, not a structure from *Photinus carolinus*.
+- **Source:** David S. Goodsell / RCSB PDB-101, [Luciferase, Molecule of the Month (June 2006)](https://pdb101.rcsb.org/motm/78), [original image](https://cdn.rcsb.org/pdb101/motm/78/78_2d1s.jpg), [PDB 2D1S](https://www.rcsb.org/structure/2D1S).
+- **Processing:** Downloaded unchanged; displayed at 360 pixels wide. The adjacent lecture prose distinguishes the luciferase enzyme from the luciferin substrate and excited oxyluciferin emitter.
+
+
+### `firefly-luciferin-structure.png`
+
+- **What it shows:** Stereochemical structure of firefly D-luciferin, the substrate of luciferase.
+- **Source:** [PubChem CID 92934](https://pubchem.ncbi.nlm.nih.gov/compound/92934); [original PNG](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/92934/PNG?image_size=large).
+- **Processing:** Downloaded unchanged. Paired with the luciferase protein illustration in Lecture 2; the reaction uses native Markdown `mhchem` with `\ce{...}` (VS Code rendering unresolved; the attempted local renderer extension was removed after a notebook-loading failure) in the `luciferase-reaction-figure` notebook cell; arrow labels distinguish ATP activation, oxygenation, and photon emission.
