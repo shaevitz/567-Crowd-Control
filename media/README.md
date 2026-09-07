@@ -12,13 +12,100 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **Generation prompt:** “Create a polished original illustration showing that organisms across biological kingdoms use circadian clocks to anticipate the daily light-dark cycle. Use one continuous 24-hour landscape transitioning from pre-dawn through daylight to dusk and moonlit night. Integrate four biological vignettes: microscopic cyanobacteria associated with daytime photosynthesis, a flowering plant opening toward daylight, a Drosophila fruit fly active around dawn or dusk, and a laboratory mouse active under moonlight. Connect them with a subtle circular timing arc. Use an elegant, biologically recognizable scientific editorial style and a restrained indigo, amber, blue, and green palette. Make it a 16:9 landscape readable when projected. No text, labels, equations, arrows, logos, watermark, mechanical clocks, anthropomorphism, or molecular machinery.”
 - **Processing:** Copied from the generated PNG without further image edits. Notebook labels and biological explanations remain outside the image.
 
+### `kaiabc-cell-free-oscillator.png`
+
+- **What it shows:** Purified KaiA, KaiB, KaiC, and ATP diffusing together in a cell-free test tube, with a molecular close-up of the approximately 24-hour KaiC phosphorylation cycle.
+- **Teaching use:** Restored at Josh's request after the Lecture 5 test-tube introduction. The cartoon provides the molecular overview; the following two-site/four-state diagram explains the specific phosphorylation states.
+- **Source:** Original course illustration generated with the built-in OpenAI image-generation tool on 2026-09-03.
+- **Generation prompt:** “Create a polished 16:9 scientific illustration of the reconstituted cyanobacterial KaiABC circadian oscillator. Show purified KaiA, KaiB, KaiC, and ATP entering and freely diffusing through a transparent test tube. Add a magnified molecular cycle in which KaiA promotes KaiC phosphorylation, KaiB later binds and sequesters KaiA, and KaiC dephosphorylates and returns to its starting state over approximately 24 hours. Use a clean white background, a restrained indigo, amber, blue, green, and coral palette, and only the exact labels KaiA, KaiB, KaiC, ATP, and ≈24 h. Show no cell, DNA, transcription machinery, generic flowchart boxes, clocks, gears, or watermark.”
+- **Processing:** Copied from the generated PNG without further image edits.
+
+### `kaiabc-kaia-sequestration.png`
+
+- **What it shows:** KaiA binding to CII tails promotes U → T → ST phosphorylation. The representative pathway then separates T-phosphate loss (ST → S), binding of fold-switched KaiB to CI, capture of KaiA by CI-bound KaiB, and S-phosphate loss (S → U) followed by protein release. The S-P marker stays unchanged during KaiA capture. KaiC remains an intact hexamer throughout.
+- **Teaching use:** Connects the four-state diagram to KaiA sequestration in Lecture 5. Purple KaiA, green KaiB, and blue KaiC retain the test-tube cartoon's molecular style. CII and CI labels distinguish activating KaiA–CII-tail binding from inhibitory KaiA–KaiB–CI assembly.
+- **Source:** Original course illustration corrected with the built-in OpenAI image-generation tool on 2026-09-06. Binding logic follows [Chang et al. (2015)](https://pubmed.ncbi.nlm.nih.gov/26113641/) and [Tseng et al. (2017)](https://doi.org/10.1126/science.aag2516); the dominant phosphoform progression follows [Rust et al. (2007)](https://doi.org/10.1126/science.1148596).
+- **Interpretation:** Qualitative representative contacts and a dominant S-state pathway, not atomic structures, complete occupancy counts, or an obligatory sequence for every hexamer. Binding, conformational changes, and phosphorylation can overlap and cooperate. T-P and S-P identify the two phosphosites of one representative CII subunit; their placement is schematic, not an atomic coordinate or the hexamer's total phosphate count. The diagram identifies the binding-competent fold of KaiB but omits its switching kinetics, CI nucleotide states, and cooperative assembly. KaiB is not a phosphatase. The release step dissociates KaiA and KaiB, not KaiC's six subunits.
+- **Processing:** Replaced the preceding four-stage asset at Josh's request. Corrected the phosphate loss previously implied by the “KaiA capture” arrow and made the CII-tail and CI binding sites explicit. Prior versions remain recoverable in Git history. Copied the final generated PNG without further image processing.
+- **Remake prompt:**
+
+```text
+Use case: scientific-educational.
+Edit target: supplied KaiABC sequestration cartoon. Completely replace its THREE-stage composition with FOUR clearly separated molecular stages while preserving the same recognizable protein graphics, colors, softly shaded molecular surface texture, white background, and clean black sans-serif typography. This is a teaching correction, not an ornamental redesign.
+Critical lesson: KaiB binds KaiC without needing KaiA attached; KaiC-bound KaiB can then capture KaiA. Distinguish DIRECT activating KaiA–KaiC binding from INHIBITORY KaiA–KaiB binding.
+Canvas: broad landscape approximately 2:1, four equal columns in one left-to-right row, spacious margins. A small centered identity key across the top: the same purple two-lobed "KaiA", green "KaiB", blue "KaiC" graphics. No overall title, panel boxes, period number, or equations.
+KaiC: keep the recognizable blue six-subunit ring, but show a consistent slightly oblique double-tier hexamer view in every stage: the two stacked domain rings of ONE KaiC hexamer, not two independent proteins. The upper CII tier is where phosphorylation and activating KaiA binding occur; the lower CI tier is where KaiB binds. Do NOT print CI/CII labels; this anatomical separation should be visual, not an extra lesson.
+Stage 1 heading exactly "1. KaiA stimulates KaiC". Show ONE purple KaiA dimer physically attached to the upper outer edge / C-terminal tail region of the blue KaiC, with NO green KaiB at that contact. Purple must touch blue, not hover with an activation arrow. Two gold circular P markers on upper blue tier. Bottom text exactly "Direct KaiA–KaiC binding".
+Stage 2 heading exactly "2. KaiB binds KaiC". Show phosphorylated blue KaiC with ONE green KaiB attached to the lower outer edge, with NO PURPLE PROTEIN ATTACHED to green or blue. One purple KaiA floating well away above/right in this column, visibly separate, with a small plain label "free KaiA". Four gold P markers on upper blue tier. Bottom text exactly "KaiB can bind without KaiA".
+Stage 3 heading exactly "3. KaiA is sequestered". Preserve the blue+green contact from stage 2, but NOW physically attach the purple KaiA to the exposed outer face of GREEN KaiB. Green is the bridge touching both blue and purple. The purple is clearly at a different location from the activating top binding site in stage 1; no purple at that activating site. Two gold P markers remain on upper blue tier. Bottom text exactly "Bound KaiA cannot stimulate KaiC".
+Stage 4 heading exactly "4. The complex disassembles". Blue KaiC with NO gold P markers. Green KaiB and purple KaiA float separately away from blue and away from EACH OTHER. Neither green nor purple is bound. Use small outward arrows only if needed for release. Bottom text exactly "KaiA is available again".
+Connect the four stages with simple charcoal rightward progression arrows. Over the arrow from 2 to 3 label exactly "KaiA capture". Over the arrow from 3 to 4 label exactly "KaiC dephosphorylates". Keep these away from molecules and other labels. A fine return arrow along the bottom from stage 4 to stage 1 closes the cycle, no text on it.
+Maintain one depicted purple dimer, one depicted green KaiB when present, and one blue hexamer in each stage; these are representative contacts, not exact occupancy counts. In stage 1 omit green KaiB entirely to avoid implying a role in stimulation. Use the same purple protein identity in each stage, and don't destroy or transform it. No phosphate markers on green or purple. No phosphate-release arrow starting from KaiB. Labels must be spelled exactly, legible on a classroom projector, with ample whitespace. No extra scientific prose, no generic warning or caveat captions, no test tube, no clock, no logos or watermarks. PRIORITY: unmistakable physical contacts and the KaiB–KaiC-only intermediate.
+```
+
+- **Final targeted correction prompt:**
+
+```text
+Edit this four-stage KaiABC classroom cartoon. Make exactly ONE text correction: replace the bottom text under stage 3, currently "Bound KaiA cannot stimulate KaiC", with exactly "KaiB-bound KaiA is inactive". This matters because KaiA bound directly to KaiC in stage 1 is active, whereas KaiA bound to KaiB in stage 3 is inactive. Preserve EVERYTHING else: four-stage layout, all molecular graphics and contacts, colors, two-tier blue KaiC rings, the unpaired KaiB–KaiC intermediate and free purple KaiA in stage 2, phosphate markers, all other text, arrows, spacing, white background, and dimensions. Match existing black sans-serif typography, with no new text or images.
+```
+
+- **September 6 kinetic correction prompt (built-in image edit):**
+
+```text
+Use case: scientific-educational.
+Edit target: the supplied four-panel KaiABC sequestration cartoon. Correct the actual sequence of phosphate changes and protein binding while preserving the attractive blue/purple/green molecular-surface style, white background, four-column arrangement, and readable black sans-serif type. This is a graduate classroom figure. Keep it uncluttered.
+
+Scientific content:
+KaiC remains ONE INTACT HEXAMER through every stage. Each KaiC subunit has two stacked domains: CII above, CI below. Show two clearly distinct stacked blue rings in the SAME slightly side-on oblique orientation and size in every panel. KaiA stimulates phosphorylation by binding the flexible C-terminal tails protruding from CII. Fold-switched KaiB binds CI on the opposite lower face; KaiC-bound KaiB then binds and sequesters KaiA. KaiB does not remove phosphate. The dominant phosphoform progression is U -> T -> ST -> S -> U. Depict representative contacts, not complete binding stoichiometry.
+
+Keep the small identity key at the top: purple KaiA dimer, green KaiB, blue double-ring KaiC. Keep all labels sharp and legible with generous spacing. No overall title or footer.
+
+Four panels:
+1. Heading exactly "1. KaiA stimulates phosphorylation".
+Show a purple KaiA dimer contacting a short flexible tail extending from the upper CII ring of blue KaiC, with no green protein attached. Add small "CII" and "CI" callouts to identify the upper and lower rings ONLY in this first panel. Show TWO small gold site markers on one representative upper-ring subunit, explicitly labeled "T-P" and "S-P". These identify the doubly phosphorylated endpoint ST, not a count of phosphates over the whole hexamer. Near the upper part of this panel put the concise state progression "U → T → ST".
+Bottom text exactly "KaiA binds the CII tails".
+
+2. Heading exactly "2. KaiB binds nighttime KaiC".
+Show the same intact double-ring KaiC. Remove the T-P marker and retain the single S-P marker in the SAME position on the upper CII ring. Show one compact green fold-switched KaiB monomer bound clearly to the lower CI face, far from the upper phosphorylation sites. Purple KaiA floats free above/right of KaiC, visibly unbound, with the label "free KaiA".
+Bottom text exactly "Fold-switched KaiB binds CI".
+
+3. Heading exactly "3. KaiB captures KaiA".
+Copy the KaiC and green KaiB geometry from panel 2. Preserve the S-P marker EXACTLY: same position, same number, same label. Now show the purple KaiA dimer binding to the exposed face of CI-bound green KaiB. Green is the bridge between purple KaiA and blue CI; purple must not touch the upper CII tail. This is ONLY a protein-binding event. No phosphate is lost or added between panels 2 and 3.
+Bottom text exactly "KaiB-bound KaiA is inactive".
+
+4. Heading exactly "4. KaiA and KaiB are released".
+Show the SAME intact blue double-ring hexamer in the SAME orientation, with no phosphate markers. Show green KaiB and purple KaiA separately released, with small outward arrows away from the lower CI face. Do not break KaiC into pieces or separate its two rings.
+Bottom text exactly "KaiC remains a hexamer".
+
+Inter-panel arrows are essential and must represent distinct kinetic events:
+Between panels 1 and 2: rightward arrow labeled "T phosphate removed" (can wrap into two short lines). This represents the ST -> S transition preceding the representative S-state KaiB complex.
+Between panels 2 and 3: rightward arrow labeled "KaiA binding". There is NO change in phosphorylation here.
+Between panels 3 and 4: rightward arrow labeled "S phosphate removed" (can wrap into two short lines). This represents S -> U followed by release.
+One thin return arrow along the very bottom from panel 4 back to panel 1, without text.
+
+Preserve the original color identities and molecular texture. Distinguish upper CII from lower CI unmistakably; make the KaiA-CII tail contact in panel 1 and KaiB-CI/KaiA-KaiB contacts in panels 2-3 visible. Phosphate markers are ONLY on the upper blue CII ring; never on KaiA, KaiB, or lower CI. Keep all four panels comparable in size. Use a broad approximately 2:1 canvas and shorten line breaks cleanly where required. No ATP/ADP inset, no equations beyond the small U → T → ST progression, no numerical rate labels, no extra arrows, no invented reaction, no watermark.
+```
+
+### `drosophila-melanogaster-closeup.jpg`
+
+- **What it shows:** Macro photograph of an adult female *Drosophila melanogaster*.
+- **Teaching use:** Introduces the fruit fly immediately after jet-lag recovery and before the *period* mutants.
+- **Photographer:** Rolf Dietrich Brecher, 13 March 2018.
+- **Source:** [Original Flickr photograph](https://www.flickr.com/photos/rolfdietrichbrecher/38978426500/) and [Wikimedia Commons record](https://commons.wikimedia.org/wiki/File:Drosophila_melanogaster_%E2%99%80_(38978426500).jpg).
+- **License:** [Creative Commons Attribution 2.0 Generic](https://creativecommons.org/licenses/by/2.0/).
+- **Processing:** Downloaded the Flickr display image without further image edits; the notebook sets only the displayed width.
+
 ### `drosophila-light-pulse-actogram.png` and `drosophila-light-pulse-prc.png`
 
 - **What they show:** A median double-plotted Drosophila locomotor actogram across light-dark cycles and constant darkness, including a light pulse and the resulting phase shift; and the corresponding phase-response curve for pulses delivered across circadian time.
-- **Teaching use:** The actogram distinguishes an autonomous free-running rhythm from a light-driven output. The PRC returns at the end of the lecture to connect CRYPTOCHROME/TIMELESS resetting to the same phase-map logic developed with KaiABC.
-- **Source:** Vinayak et al., “Exquisite Light Sensitivity of *Drosophila melanogaster* Cryptochrome,” *PLOS Genetics* 9 (2013), e1003615, Fig. 1. [doi:10.1371/journal.pgen.1003615](https://doi.org/10.1371/journal.pgen.1003615).
+- **Teaching use:** The PRC appears at the end of Lecture 5 as a qualitative example of phase-dependent CRYPTOCHROME/TIMELESS resetting and a bridge to Lecture 6. The detailed KaiABC phase-map block was removed on September 6. It shows the one-hour white-light pulse condition in Figure 1B. The six-hour pulse actogram in Figure 1A is retained as an earlier draft asset but is no longer displayed.
+- **Source:** The displayed PRC is Figure 1B of Vinayak et al., “Exquisite Light Sensitivity of *Drosophila melanogaster* Cryptochrome,” *PLOS Genetics* 9 (2013), e1003615, which reproduces the one-hour white-light-pulse data from Kistenpfennig et al., “Phase-Shifting the Fruit Fly Clock without Cryptochrome,” *Journal of Biological Rhythms* 27:117–125 (2012). [Vinayak doi:10.1371/journal.pgen.1003615](https://doi.org/10.1371/journal.pgen.1003615); [Kistenpfennig doi:10.1177/0748730411434390](https://doi.org/10.1177/0748730411434390).
 - **License:** Creative Commons Attribution 4.0 (CC BY 4.0).
 - **Processing:** Downloaded from the publisher's large PNG and cropped into the actogram and PRC panels. Plot content was not otherwise altered.
+
+### Notebook-native diagrams
+
+Lecture 5 keeps the KaiC reaction network's TikZ/`tikz-cd` source in the `kaic-state-figure` notebook cell and the fly feedback-loop TikZ source in the `fly-clock-figure` cell. Each cell compiles its source with `latex` and `dvisvgm`, displays SVG with outlined fonts, and saves that figure in the notebook output; no separate source or image asset is needed. See the repository README for regeneration dependencies. The KaiC diagram shows four labeled subunit phosphorylation states with paired, equal-weight arrows. Clockwise reactions k1–k4 and their reverse reactions k−1–k−4 match the later kinetic equations; arrow weight does not encode rate magnitude or instantaneous net flux. The network follows Rust et al. (2007), [doi:10.1126/science.1148596](https://doi.org/10.1126/science.1148596). The fly diagram locates CRY-dependent TIM removal within the delayed negative-feedback loop described by Myers et al. (1996), [doi:10.1126/science.271.5256.1736](https://doi.org/10.1126/science.271.5256.1736). Quantitative figures are generated from the data documented in `../data/circadian/README.md` or from the explicitly identified phase model.
 
 ## Phase-oscillator examples (Lecture 3)
 
@@ -93,6 +180,27 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **Teaching use:** A species-level visual anchor for the natural-history introduction immediately before the class moves from observable flashes to the event-data table.
 - **Source:** Abbott Nature Photography, via [Discover Life in America](https://dlia.org/event/fireflies-2022/synchronous-firefly-photinus-carolinus-credit-abbott-nature-photography/).
 - **Processing:** Downloaded at 1200 × 900 pixels; no crop, color adjustment, or other transformation.
+
+## KaiABC kinetic simulation (Lecture 5)
+
+The notebook implements the autonomous four-state model of [Rust et al. (2007)](https://doi.org/10.1126/science.1148596), whose Figure 4 reports a roughly 21-hour cycle predicted from partial-reaction kinetics. Numerical coefficients are transcribed from the Rust-model rate list in [Li, Zhang, and Song (2020), Section 2](https://doi.org/10.1088/1674-1056/aba615); their additional CikA/quinone mechanism is not included. The source's doubly phosphorylated state D is called ST in this course.
+
+The rate law is `k = k0 + kA * free_KaiA / (0.43 + free_KaiA)`, with rates in inverse hours and concentrations in micromolar:
+
+| Transition | k0 | kA |
+|---|---:|---:|
+| U → T | 0 | 0.479077 |
+| T → ST | 0 | 0.212923 |
+| S → ST | 0 | 0.505692 |
+| U → S | 0 | 0.0532308 |
+| T → U | 0.21 | 0.0798462 |
+| ST → T | 0 | 0.173 |
+| ST → S | 0.31 | -0.319385 |
+| S → U | 0.11 | -0.133077 |
+
+Use the original model's total KaiC 3.4 µM and total KaiA 1.3 µM. Free KaiA is `max(0, 1.3 - 2*S)`: concentrations count subunits, and one S-state KaiC sequesters one KaiA dimer. These are effective transition rates, not ATPase turnover constants.
+
+The lecture now teaches the U → T rate directly, rounding its saturating coefficient to 0.48 per hour; the code retains every coefficient listed above. Clockwise k1–k4 correspond to U → T, T → ST, ST → S, S → U; k−1–k−4 label the reverse reactions. The former generic rate-law slide and four-row rate table are removed. The simulation begins with all KaiC unphosphorylated and measures the late peak spacing without time rescaling: approximately 20.7 hours. Its control holds free KaiA at 1.3 µM with all other parameters unchanged. Neither curve is experimental data or a fit to the separate 26-hour Rust 2011 trace used later for phase conversion.
 
 ## Paper figures (Lecture 2)
 
