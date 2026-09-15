@@ -118,19 +118,27 @@ Lecture 5 keeps the KaiC reaction network's TikZ/`tikz-cd` source in the `kaic-s
 
 ## Pose tracking (Lecture 4)
 
-### `leap-fly-pose-tracking.mp4`
+### `gait-trot.gif`, `gait-pace.gif`, and `gait-gallop.gif`
 
-- **What it shows:** A fruit fly shown as raw imagery, pose-estimation confidence maps, and tracked body keypoints.
+- **What they show:** Animated canine trot, pace, and transverse-gallop limb sequences.
+- **Teaching use:** The local copies make the gait-motion slide load reliably while students compare each pattern with the relative-phase event plots.
+- **Source:** Vicki L. Datt and Thomas F. Fletcher, [“Gaits”](https://vanat.ahc.umn.edu/gaits/), University of Minnesota College of Veterinary Medicine; the three GIFs were downloaded from the linked trot, pace, and transverse-gallop pages on 2026-09-14.
+- **Processing:** Downloaded unchanged at 428 × 220 pixels. The notebook displays each at 360 pixels wide.
+
+### `mouse_pose.mp4`
+
+- **What it shows:** A mouse shown as raw imagery, pose-estimation confidence maps, and tracked body keypoints.
 - **Teaching use:** Introduces CNN-based keypoint pose tracking before the lecture extracts paw trajectories from a running mouse.
-- **Source:** Instructor-supplied file `LEAP_Movie1.mp4`; its original publication and license have not yet been recorded.
-- **Processing:** Copied unchanged into the course media directory. The H.264 video is 1152 × 384 pixels at 20 frames/s and runs for 100 seconds.
+- **Source:** Instructor-supplied replacement file `mouse_pose.mp4`, added on 2026-09-14; its original publication and license have not yet been recorded.
+- **Processing:** Retained unchanged. The H.264 video is 1152 × 384 pixels at 34 frames/s and runs for approximately 29.4 seconds. It replaces the earlier fly pose-tracking movie.
 
 ### `mouse-coupling-fit-small-dataset.png` and `mouse-coupling-fit-large-dataset.png`
 
-- **What they show:** Directed paw-pair coupling strengths estimated from the small teaching dataset and from the full analysis of 30,000 locomotor bouts.
-- **Teaching use:** Compare the unstable small-data estimates with the more tightly constrained large-data fit at the end of Lecture 4.
+- **What they show:** Coupling strengths (first PNG) and phase offsets (second PNG) from the full analysis of 30,000 locomotor bouts. Josh confirmed on 2026-09-15 that the second PNG's “coupling strength” axis label is incorrect. The historical filenames do not distinguish datasets.
+- **Teaching use:** Original evidence for the editable full-data fit figures in Lecture 4, following the separately computed ten-bout teaching fit.
 - **Source:** Instructor-supplied graphics provided on 2026-09-02; the underlying analysis provenance and license have not yet been recorded.
 - **Processing:** Copied byte-for-byte from the supplied PNG attachments. The images are 1166 × 866 and 1190 × 888 pixels, respectively.
+- **Reconstruction:** Bar heights and both error-bar cap endpoints were digitized on 2026-09-15 into `data/mouse/mouse-full-fit-digitized.csv`. Values are approximate, not the original numerical fit output. The original labels use 1=LF, 2=RH, 3=RF, 4=LH, and pair ij denotes influence j→i. The notebook remaps anatomy to 1=LF, 2=RF, 3=LH, 4=RH and uses one shared pair order for both fits. Originals remain unchanged.
 
 ## Temporal synchrony examples (Lecture 2)
 
