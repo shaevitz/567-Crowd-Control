@@ -125,6 +125,21 @@ Lecture 5 keeps the KaiC reaction network's TikZ/`tikz-cd` source in the `kaic-s
 - **Source:** Vicki L. Datt and Thomas F. Fletcher, [“Gaits”](https://vanat.ahc.umn.edu/gaits/), University of Minnesota College of Veterinary Medicine; the three GIFs were downloaded from the linked trot, pace, and transverse-gallop pages on 2026-09-14.
 - **Processing:** Downloaded unchanged at 428 × 220 pixels. The notebook displays each at 360 pixels wide.
 
+### `drosophila-gait-umap.png` and `drosophila-gait-examples.png`
+
+- **What they show:** A density map of the two-dimensional UMAP projection of five independent fruit-fly leg-phase differences, plus six-leg phase trajectories sampled from seven numbered locations in that gait space.
+- **Teaching use:** Extends Lecture 4's relative-phase description from four mouse paws to six fly legs and shows how wave, tripod, tetrapod, and partial-synchrony patterns occupy a broader coordination space.
+- **Source:** Crops from an instructor-supplied composite slide provided on 2026-09-16. The related gait-space study is DeAngelis et al., “The manifold structure of limb coordination in walking Drosophila,” *eLife* 8 (2019), e46409, [doi:10.7554/eLife.46409](https://doi.org/10.7554/eLife.46409), which is also cited in the notebook Sources.
+- **Processing:** The UMAP and example-trajectory panels were cropped without rescaling; a fragment of the slide title outside the scientific content was masked white in the trajectory crop. Data graphics, labels, and colors were not altered.
+
+### `centipede-flat-walking.mp4`
+
+- **What it shows:** Slow-motion overhead recording of a freely walking *Scolopendra subspinipes mutilans* on flat terrain. The animal advances while its leg-movement wave propagates posteriorly.
+- **Teaching use:** Loops immediately after the centipede phase-lag slide in Lecture 4, making the retrograde metachronal wave visible before the final comparison across leg numbers.
+- **Source:** Supplementary Movie S1 from Yasui, Kano, Standen, Aonuma, Ijspeert, and Ishiguro, [“Decoding the essential interplay between central and peripheral control in adaptive locomotion of amphibious centipedes”](https://doi.org/10.1038/s41598-019-53258-3), *Scientific Reports* 9, 18288 (2019).
+- **License:** Creative Commons Attribution 4.0 International (CC BY 4.0), the article and supplementary-material license.
+- **Processing:** Downloaded from the Europe PMC supplementary-material archive. The H.264 source was cropped from 640 × 512 to 480 × 300 to enlarge the animal and remove empty margins, then re-encoded as H.264/yuv420p without changing its 30 fps timing or 2.73-second duration; the source contains no audio.
+
 ### `mouse_pose.mp4`
 
 - **What it shows:** A mouse shown as raw imagery, pose-estimation confidence maps, and tracked body keypoints.
@@ -209,6 +224,33 @@ The rate law is `k = k0 + kA * free_KaiA / (0.43 + free_KaiA)`, with rates in in
 Use the original model's total KaiC 3.4 µM and total KaiA 1.3 µM. Free KaiA is `max(0, 1.3 - 2*S)`: concentrations count subunits, and one S-state KaiC sequesters one KaiA dimer. These are effective transition rates, not ATPase turnover constants.
 
 The lecture now teaches the U → T rate directly, rounding its saturating coefficient to 0.48 per hour; the code retains every coefficient listed above. Clockwise k1–k4 correspond to U → T, T → ST, ST → S, S → U; k−1–k−4 label the reverse reactions. The former generic rate-law slide and four-row rate table are removed. The simulation begins with all KaiC unphosphorylated and measures the late peak spacing without time rescaling: approximately 20.7 hours. Its control holds free KaiA at 1.3 µM with all other parameters unchanged. Neither curve is experimental data or a fit to the separate 26-hour Rust 2011 trace used later for phase conversion.
+
+## Pedal locomotion (Lecture 5)
+
+### `bob-full-locomotion-ted-excerpt-vscode.mp4`
+
+- Source: Josh's archived teaching compilation, `/Users/jshaevitz/Documents/Teaching/PHY412 Biological Physics/2008-2009/Course Materials/Lecture_14 Bob Full Ted videos.mov`.
+- Content: Robert Full's locomotion and robotics presentation, corresponding to material in [Robots inspired by cockroach ingenuity](https://www.ted.com/talks/robert_full_robots_inspired_by_cockroach_ingenuity), TED2002. This local file is an archival teaching excerpt, not the complete current TED-hosted talk.
+- Processing: The first track pair was extracted; the H.264 video is preserved and the unsupported AAC audio was transcoded to MP3 for VS Code notebook playback. Duration 742.236667 s, source resolution 432 × 240.
+- Notebook cue: local 03:00–05:45 covers spring templates and passive mechanics. The cell has editable start/stop seconds and audio-enabled controls.
+- Third-party TED material; the course's original-content license does not cover it.
+
+### `cockroach-jetpack.mp4`
+
+- Source: Josh's archived teaching movie, `First_Cockroach_Jetpack_Movie.mp4`.
+- Content: Overhead high-speed footage of a running cockroach receiving a brief lateral impulse from the apparatus carried on its back.
+- Processing: H.264 video remuxed without re-encoding; AAC audio transcoded to MP3 for playback in VS Code notebook webviews. Duration 21.867 s, resolution 240 × 210.
+- Teaching role: Introduces the perturbation experiment immediately before the Jindrich–Full recovery-time measurements.
+- Archived third-party teaching material; the course's original-content license does not cover it.
+
+### `locomotion-force-and-template.png`
+
+- Source: Dickinson, Farley, Full, Koehl, Kram, and Lehman, “How Animals Move: An Integrative View,” *Science* 288, 100–106 (2000), [doi:10.1126/science.288.5463.100](https://doi.org/10.1126/science.288.5463.100), Figure 1A–B on printed p. 101.
+- Processing: Rendered from the article PDF at high resolution and cropped to panels A–B. Figure content was not redrawn or recolored.
+- Teaching role: Connects force vectors to the pendulum and spring mechanical templates.
+- Third-party AAAS figure; the course's original-content license does not cover it.
+
+All other Lecture 5 schematics, curves, and the spring-leg animation are generated by code inside the notebook. The Jindrich–Full timing table uses published mean ± SD and sample counts; no synthetic trace is presented as experimental data.
 
 ## Paper figures (Lecture 2)
 
