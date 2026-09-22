@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="510" viewBox="0 0 1200 510" role="img" aria-labelledby="title description">
+  <title id="title">Stricker's synthetic negative feedback oscillator</title>
+  <desc id="description">Two copies of the hybrid pLlacO-1 promoter drive lacI and the yemGFP reporter in separate transcriptional units. LacI expression, folding, and assembly take time, represented by delay tau. Active LacI represses both promoters. GFP reports expression.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#263238"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="510" fill="white"/>
+  <g fill="none" stroke="#263238" stroke-width="4" stroke-linejoin="round">
+    <path d="M 110 210 H 515 M 110 440 H 515"/>
+    <path d="M 170 210 V 155 H 270" marker-end="url(#arrow)"/>
+    <path d="M 170 440 V 385 H 270" marker-end="url(#arrow)"/>
+    <path d="M 530 205 H 855" marker-end="url(#arrow)"/>
+    <path d="M 530 435 H 855" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="300" y="175" width="200" height="60" rx="8" fill="#FFFFFF" stroke="#3B6FB6" stroke-width="4"/>
+  <rect x="300" y="405" width="200" height="60" rx="8" fill="#FFFFFF" stroke="#3A8D5D" stroke-width="4"/>
+  <rect x="885" y="160" width="220" height="90" rx="18" fill="#FFFFFF" stroke="#3B6FB6" stroke-width="4"/>
+  <rect x="885" y="390" width="220" height="90" rx="18" fill="#FFFFFF" stroke="#3A8D5D" stroke-width="4"/>
+  <g fill="none" stroke="#C74632" stroke-width="4.5" stroke-linejoin="round">
+    <path d="M 995 146 V 68 H 170 V 130"/>
+    <path d="M 170 68 H 75 V 338 H 170 V 360"/>
+    <path d="M 146 130 H 194 M 146 360 H 194" stroke-width="8"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263238" text-anchor="middle">
+    <text x="585" y="42" font-size="26" fill="#C74632">LacI represses both promoters</text>
+    <text x="400" y="216" font-size="32" font-style="italic" fill="#3B6FB6">lacI</text>
+    <text x="400" y="446" font-size="32" font-style="italic" fill="#3A8D5D">yemGFP</text>
+    <text x="995" y="216" font-size="31" fill="#3B6FB6">Active LacI</text>
+    <text x="995" y="446" font-size="31" fill="#3A8D5D">GFP reporter</text>
+    <text x="690" y="150" font-size="25">Expression + assembly</text>
+    <text x="690" y="252" font-size="28" fill="#D97706">delay τ</text>
+    <text x="690" y="395" font-size="25">Expression</text>
+    <text x="190" y="263" font-size="25">p<tspan baseline-shift="sub" font-size="19">LlacO-1</tspan></text>
+    <text x="190" y="493" font-size="25">p<tspan baseline-shift="sub" font-size="19">LlacO-1</tspan></text>
+  </g>
+</svg>

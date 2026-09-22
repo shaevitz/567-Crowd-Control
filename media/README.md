@@ -26,6 +26,15 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **Teaching use:** Follows the ordered KaiC state cycle in Lecture 6 and prepares the finite-KaiA kinetic model.
 - **Source:** Editable SVG created for the lecture; no external image source.
 
+### `stricker-negative-feedback-circuit.svg` and `stricker-2008-negative-feedback-traces.png`
+
+- **Source:** Stricker et al., “A fast, robust and tunable synthetic gene oscillator,” *Nature* 456, 516–519 (2008), [DOI 10.1038/nature07389](https://doi.org/10.1038/nature07389). The original paper plus supplementary information was retrieved from an [iGEM-hosted copy](https://static.igem.org/mediawiki/2013/7/7c/HUST-5.pdf) on September 22, 2026; SHA-256 `a03ed006a549173f0a70f98d8610a32a6af96102607e8b1d729eb0cf9db23655`.
+- **Circuit:** Course-authored editable SVG based on Figure 3a and the supplementary construction methods. The negative-feedback-only JS013 strain has two separate transcriptional units: the hybrid pLlacO-1 promoter drives ssrA-tagged lacI on a p15A plasmid and ssrA-tagged yemGFP on a ColE1 plasmid. This promoter combines phage lambda pL with lacO operator sites and requires no AraC activation. Active LacI represses both copies. Expression, folding, and multimerization supply an effective delay. The diagram omits plasmid backbones, degradation tags, and IPTG for clarity.
+- **Experiment:** Original Supplementary Figure 5B, supplementary page 9 (combined PDF page 14). Single-cell GFP fluorescence from JS013 at 0.6 mM IPTG; the authors applied Savitzky–Golay smoothing. All displayed trajectories, axes, points, and colors are retained. Only the surrounding page and unrelated panel A were removed; no traces were generated or digitized.
+- **Crop:** `pdftoppm -f 14 -l 14 -scale-to 3600 -x 740 -y 1140 -W 1310 -H 810 -png -singlefile INPUT.pdf stricker-2008-negative-feedback-traces`. Output is 1310 × 810 pixels, displayed at 760 pixels in the notebook.
+- **Equation:** Supplementary equation (6), supplementary pages 28–29 (combined PDF pages 33–34). The notebook renames the paper's maximum production rate K to v_max to avoid colliding with the course's coupling strength K; the delayed Hill repression and linear degradation terms are unchanged. This is the minimal architectural model, not a fit to the displayed fluorescence trajectories.
+- **Attribution:** The circuit is original course artwork; the experimental panel retains the original article's rights and is excluded from the course's original-content licenses.
+
 ### `kaiabc-kaia-sequestration.png`
 
 - **What it shows:** KaiA binding to CII tails promotes U → T → ST phosphorylation. The representative pathway then separates T-phosphate loss (ST → S), binding of fold-switched KaiB to CI, capture of KaiA by CI-bound KaiB, and S-phosphate loss (S → U) followed by protein release. The S-P marker stays unchanged during KaiA capture. KaiC remains an intact hexamer throughout.
