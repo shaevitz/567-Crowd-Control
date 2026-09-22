@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title description">
+  <title id="title">Delayed negative feedback in the KaiABC oscillator</title>
+  <desc id="description">Free KaiA promotes KaiC phosphorylation. Late C sub S KaiC recruits KaiB and sequesters KaiA. Sequestered KaiA inhibits KaiC phosphorylation. When C sub S dephosphorylates, KaiA is released and the cycle restarts.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#263238"/>
+    </marker>
+    <marker id="arrow-grey" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="600" fill="white"/>
+
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263238" text-anchor="middle">
+    <g>
+      <rect x="75" y="85" width="240" height="108" rx="19" fill="#FFF" stroke="#D97706" stroke-width="4"/>
+      <text x="195" y="132" font-size="29">Free</text>
+      <text x="195" y="166" font-size="32" font-weight="700">KaiA</text>
+    </g>
+    <g>
+      <rect x="445" y="85" width="310" height="108" rx="19" fill="#FFF" stroke="#3B6FB6" stroke-width="4"/>
+      <text x="600" y="132" font-size="29">KaiC</text>
+      <text x="600" y="166" font-size="29">phosphorylation</text>
+    </g>
+    <g>
+      <rect x="870" y="85" width="255" height="108" rx="19" fill="#FFF" stroke="#3A8D5D" stroke-width="4"/>
+      <text x="997" y="128" font-size="26">Late state</text>
+      <text x="997" y="160" font-size="29" font-style="italic">C<tspan baseline-shift="sub" font-size="20">S</tspan> + KaiB</text>
+    </g>
+    <g>
+      <rect x="445" y="340" width="310" height="108" rx="19" fill="#FFF" stroke="#C74632" stroke-width="4"/>
+      <text x="600" y="387" font-size="29">KaiA</text>
+      <text x="600" y="421" font-size="29">sequestered</text>
+    </g>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 330 139 L 428 139" stroke="#D97706" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M 770 139 L 853 139" stroke="#3B6FB6" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M 997 208 L 997 394 L 770 394" stroke="#3A8D5D" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M 600 325 L 600 211" stroke="#C74632" stroke-width="5"/>
+    <path d="M 550 211 L 650 211" stroke="#C74632" stroke-width="10"/>
+    <path d="M 480 455 Q 235 540 195 210" stroke="#9AA0A6" stroke-width="3.5" stroke-dasharray="12 11" marker-end="url(#arrow-grey)"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="380" y="62" fill="#D97706" font-size="22">promotes</text>
+    <text x="810" y="62" fill="#3B6FB6" font-size="22">delayed progression</text>
+    <text x="1045" y="280" fill="#3A8D5D" font-size="22">sequesters KaiA</text>
+    <text x="405" y="270" fill="#C74632" font-size="23">inhibits phosphorylation</text>
+    <text x="300" y="532" fill="#777D81" font-size="23">C<tspan baseline-shift="sub" font-size="16">S</tspan> dephosphorylates</text>
+    <text x="300" y="562" fill="#777D81" font-size="23">KaiA is released</text>
+  </g>
+</svg>

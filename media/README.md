@@ -2,7 +2,7 @@
 
 This directory contains lecture-ready media shared across the course. Keep source, license, and transformation notes here whenever a new asset is added.
 
-## Circadian entrainment (Lecture 5)
+## Circadian entrainment (Lecture 6)
 
 ### `circadian-across-life.png`
 
@@ -19,6 +19,12 @@ This directory contains lecture-ready media shared across the course. Keep sourc
 - **Source:** Original course illustration generated with the built-in OpenAI image-generation tool on 2026-09-03.
 - **Generation prompt:** “Create a polished 16:9 scientific illustration of the reconstituted cyanobacterial KaiABC circadian oscillator. Show purified KaiA, KaiB, KaiC, and ATP entering and freely diffusing through a transparent test tube. Add a magnified molecular cycle in which KaiA promotes KaiC phosphorylation, KaiB later binds and sequesters KaiA, and KaiC dephosphorylates and returns to its starting state over approximately 24 hours. Use a clean white background, a restrained indigo, amber, blue, green, and coral palette, and only the exact labels KaiA, KaiB, KaiC, ATP, and ≈24 h. Show no cell, DNA, transcription machinery, generic flowchart boxes, clocks, gears, or watermark.”
 - **Processing:** Copied from the generated PNG without further image edits.
+
+### `kaiabc-delayed-feedback.svg`
+
+- **What it shows:** A course-authored feedback diagram for the KaiABC oscillator: free KaiA promotes phosphorylation; delayed progression produces the late $C_S$ state; the KaiB–$C_S$ complex sequesters KaiA through an explicit inhibition bar; dephosphorylation releases KaiA.
+- **Teaching use:** Follows the ordered KaiC state cycle in Lecture 6 and prepares the finite-KaiA kinetic model.
+- **Source:** Editable SVG created for the lecture; no external image source.
 
 ### `kaiabc-kaia-sequestration.png`
 
@@ -105,7 +111,16 @@ Preserve the original color identities and molecular texture. Distinguish upper 
 
 ### Notebook-native diagrams
 
-Lecture 5 keeps the KaiC reaction network's TikZ/`tikz-cd` source in the `kaic-state-figure` notebook cell and the fly feedback-loop TikZ source in the `fly-clock-figure` cell. Each cell compiles its source with `latex` and `dvisvgm`, displays SVG with outlined fonts, and saves that figure in the notebook output; no separate source or image asset is needed. See the repository README for regeneration dependencies. The KaiC diagram shows four labeled subunit phosphorylation states with paired, equal-weight arrows. Clockwise reactions k1–k4 and their reverse reactions k−1–k−4 match the later kinetic equations; arrow weight does not encode rate magnitude or instantaneous net flux. The network follows Rust et al. (2007), [doi:10.1126/science.1148596](https://doi.org/10.1126/science.1148596). The fly diagram locates CRY-dependent TIM removal within the delayed negative-feedback loop described by Myers et al. (1996), [doi:10.1126/science.271.5256.1736](https://doi.org/10.1126/science.271.5256.1736). Quantitative figures are generated from the data documented in `../data/circadian/README.md` or from the explicitly identified phase model.
+Lecture 6 keeps the KaiC reaction network's TikZ/`tikz-cd` source in the `kaic-state-figure` notebook cell and the fly feedback-loop TikZ source in the `fly-clock-figure` cell. Each cell compiles its source with `latex` and `dvisvgm`, displays SVG with outlined fonts, and saves that figure in the notebook output; no separate source or image asset is needed. See the repository README for regeneration dependencies. The KaiC diagram shows four labeled subunit phosphorylation states with paired, equal-weight arrows. Clockwise reactions k1–k4 and their reverse reactions k−1–k−4 match the later kinetic equations; arrow weight does not encode rate magnitude or instantaneous net flux. The network follows Rust et al. (2007), [doi:10.1126/science.1148596](https://doi.org/10.1126/science.1148596). The fly diagram locates CRY-dependent TIM removal within the delayed negative-feedback loop described by Myers et al. (1996), [doi:10.1126/science.271.5256.1736](https://doi.org/10.1126/science.271.5256.1736). Quantitative figures are generated from the data documented in `../data/circadian/README.md` or from the explicitly identified phase model.
+
+### Human circadian experiments
+
+- **`human-siffre-midnight-cave-1972.jpg`:** Michel Siffre's illuminated camp during his 1972 Midnight Cave isolation experiment, from Joshua Foer and Michel Siffre, “Caveman,” *Cabinet* 30 (2008). Downloaded from the [publisher-hosted image](https://www.cabinetmagazine.org/issues/30/cabinet_030_foer_joshua_siffre_michel_001.jpg) without modification.
+- **`human-mars500-actograms-basner-2013.png`:** Sleep actograms for crewmembers B and C from Figure 3 of Basner et al., *PNAS* 110, 2635–2640 (2013), [DOI 10.1073/pnas.1212646110](https://doi.org/10.1073/pnas.1212646110). Panels were cropped from the paper and placed side by side without altering the data.
+- **`human-czeisler-28h-1999.png`:** Figure 1 right panel from Czeisler et al., *Science* 284, 2177–2181 (1999), [DOI 10.1126/science.284.5423.2177](https://doi.org/10.1126/science.284.5423.2177). Cropped from the article PDF; the plotted schedule and temperature-phase estimate are unchanged.
+- **`human-light-prc-khalsa-2003-reproduction.jpg`:** Reproduction of the human bright-light phase-response curve from Khalsa et al. (2003), as published by Duffy and Czeisler (2009), [PMC2717723](https://pmc.ncbi.nlm.nih.gov/articles/PMC2717723/). The publisher-hosted image is unmodified.
+- **`human-melatonin-entrainment-sack-2000.png`:** Treatment panel from Figure 2 of Sack et al., *NEJM* 343, 1070–1077 (2000), [DOI 10.1056/NEJM200010123431503](https://doi.org/10.1056/NEJM200010123431503). Cropped from the article PDF without altering the plotted records.
+- **`human-martian-periods-scheer-2007.png`:** Figure 2B from Scheer et al., *PLOS ONE* 2, e721 (2007), [DOI 10.1371/journal.pone.0000721](https://doi.org/10.1371/journal.pone.0000721). Cropped from the publisher image with all participant estimates and confidence intervals retained.
 
 ## Phase-oscillator examples (Lecture 3)
 

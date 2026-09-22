@@ -1,6 +1,6 @@
 # Circadian data
 
-This directory contains the compact teaching datasets used by Lecture 5.
+This directory contains the compact teaching datasets used by Lecture 6.
 
 ## Leypunskiy et al. 2017
 
@@ -27,3 +27,9 @@ The repeated-pulse map uses only the measured descending branch from pulse times
 ## Konopka and Benzer 1971
 
 `konopka-benzer-1971-period-mutants.csv` records the female locomotor periods reported in Konopka and Benzer, “Clock mutants of *Drosophila melanogaster*,” *PNAS* 68:2112-2116 (1971), DOI 10.1073/pnas.68.9.2112. The uncertainties and sample sizes are transcribed from the paper; `per0` was arrhythmic and therefore has no period estimate.
+
+## Human rhythms: Wyatt et al. 1999
+
+`human-wyatt-1999-digitized.csv` reproduces selected panels of Wyatt et al., “Circadian temperature and melatonin rhythms, sleep, and neurobehavioral function in humans living on a 20-h day,” [DOI 10.1152/ajpregu.1999.277.4.R1152](https://doi.org/10.1152/ajpregu.1999.277.4.R1152). These are approximate digitizations of published group figures, not participant-level source data. All internal-phase axes use 24 circadian hours per cycle, with phase zero at the temperature minimum; this does not assert a 24-hour intrinsic period.
+
+The Lecture 6 notebook uses the digitized mean melatonin and temperature profiles to introduce physiological phase, the sleep-efficiency means and SEM to show circadian variation in sleep, and the reaction-time means and SEM to separate circadian phase from elapsed wakefulness. Stored decimals support plotting and inversion of the source-image calibration, not additional measurement precision.
