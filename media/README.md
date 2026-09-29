@@ -315,3 +315,22 @@ All other Lecture 5 schematics, curves, and the spring-leg animation are generat
 - **What it shows:** Stereochemical structure of firefly D-luciferin, the substrate of luciferase.
 - **Source:** [PubChem CID 92934](https://pubchem.ncbi.nlm.nih.gov/compound/92934); [original PNG](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/92934/PNG?image_size=large).
 - **Processing:** Downloaded unchanged. Paired with the luciferase protein illustration in Lecture 2; the reaction uses native Markdown `mhchem` with `\ce{...}` (VS Code rendering unresolved; the attempted local renderer extension was removed after a notebook-loading failure) in the `luciferase-reaction-figure` notebook cell; arrow labels distinguish ATP activation, oxygenation, and photon emission.
+
+
+## Lecture 8 — Spatial correlations and the Ising model
+
+The notebook uses the following five assets. The published images retain their original measurement axes and scales. Original teaching diagrams are distinguished below from measured data.
+
+| Asset | Source and content |
+| --- | --- |
+| `spatial-order/cavagna-2010-velocity-maps.png` | Cavagna et al. (2010), Figure 1 A–B: velocities and deviations from the flock mean, with different arrow scales. |
+| `spatial-order/cavagna-2010-figure-2.png` | Cavagna et al. (2010), Figure 2 A–D: orientation and speed correlations, and first-zero-crossing ranges versus flock size. |
+| `spatial-order/honerkamp-smith-2008-membrane-sequence.png` | Honerkamp-Smith et al. (2008), Figure 1: nine fluorescence microscopy panels of a model membrane, with temperatures and 20 μm scale bar retained. |
+| `spatial-order/chain-three-lengths.svg` | Original schematic: a 21-site chain, one-bond interaction range, illustrative six-bond correlation length, and 20-bond total extent. |
+| `spatial-order/ising-three-interpretations.svg` | Original schematic: one binary pattern represented as magnetic moments, occupied/empty sites, and two molecular species. Not an equilibrium simulation. |
+
+Cavagna et al., *Scale-free correlations in starling flocks*, PNAS **107**, 11865–11870 (2010): [article](https://doi.org/10.1073/pnas.1005766107), [author manuscript](https://arxiv.org/abs/0911.4393). The velocity-map crop is `(35, 275, 1045, 860)` of the original 1069 × 1507 embedded Figure 1 image. Figure 2 is cropped to `(30, 250, 955, 1140)` from its original 1013 × 1433 image.
+
+Honerkamp-Smith et al., *Line tensions, correlation lengths, and critical exponents in lipid membranes near critical points*, Biophysical Journal **95**, 236–246 (2008): [article](https://doi.org/10.1529/biophysj.107.128421), [author manuscript](https://arxiv.org/abs/0802.3359). The membrane sequence contains the top nine microscopy panels of Figure 1, excluding the separate Ising-simulation row.
+
+Third-party figures remain under their original publishers’ and authors’ terms and are excluded from this repository’s original-content licenses.

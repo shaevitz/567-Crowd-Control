@@ -16,6 +16,8 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 - [Lecture 5 — Pedal locomotion](lectures/lecture-05-pedal-locomotion.ipynb)
 - [Lecture 6 — External forcing and circadian entrainment](lectures/lecture-06-external-forcing-entrainment.ipynb)
 
+- [Lecture 8 — From the telephone game to the Ising model](lectures/lecture-08-telephone-game-ising-model.ipynb)
+
 ## Local environment
 
 Create and register the shared course kernel:
