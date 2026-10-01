@@ -9,7 +9,7 @@
 | `source_frame_start` | Zero-based source frame indices 0, 130, and 300 |
 | `pixel_um` | 5/63 µm per pixel, from the 5 µm horizontal scale bar |
 | `roi_center_xy` | Disk center `(76, 78)` pixels |
-| `roi_radius_px` | Disk radius 38 pixels |
+| `roi_radius_px` | Disk radius 50 pixels |
 
 These are cell-derived giant plasma membrane vesicles, isolated from cells. No simulated observations, upsampling, denoising, or intensity corrections are stored in this file. The first two blocks were selected within the same vesicle's one-phase regime before the image covariance was examined. The added 23.6 °C block shows large separated domains in the same vesicle. Ten frames belong to each temperature step; the supplement specifies 2 fps acquisition, 250 ms exposures, and more than two minutes of equilibration between steps.
 
