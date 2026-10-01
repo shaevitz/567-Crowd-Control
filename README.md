@@ -17,6 +17,7 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 - [Lecture 6 — External forcing and circadian entrainment](lectures/lecture-06-external-forcing-entrainment.ipynb)
 
 - [Lecture 8 — From the telephone game to the Ising model](lectures/lecture-08-telephone-game-ising-model.ipynb)
+- [Lecture 9 — Pattern formation with local interactions](lectures/lecture-09-spatial-order-response-percolation.ipynb)
 
 ## Local environment
 
