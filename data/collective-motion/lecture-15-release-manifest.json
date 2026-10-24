@@ -5,13 +5,13 @@
   "files": [
     {
       "path": "data/collective-motion/lecture-15-browser-data.js",
-      "bytes": 2481133,
-      "sha256": "51c81b3830bbaeb642c7ca2eaf0635b58838355fa31bbf385c5bfa82b59e7788"
+      "bytes": 885895,
+      "sha256": "1b403743ca3fa589e40b497c6be6d9a80421e4688b5fec8bed9e72e436a06ff7"
     },
     {
       "path": "data/collective-motion/lecture-15-data-manifest.json",
-      "bytes": 4553,
-      "sha256": "e9b458d8eb879a183bc758e7c929782456ced2dd542663f6f719550ed9cc7cf2"
+      "bytes": 4322,
+      "sha256": "fd882c750a2a3fc691632f6615cba211dcb4eb427328617c4206fb6f91b42792"
     },
     {
       "path": "data/collective-motion/lecture-15-media-manifest.json",
@@ -20,8 +20,8 @@
     },
     {
       "path": "data/collective-motion/lecture-15-validation.json",
-      "bytes": 42450,
-      "sha256": "bdf084e3fb87f7de25c936b5cb36660f0d3550e00acff596b4d96fe05b3d1ce7"
+      "bytes": 7017,
+      "sha256": "bcfea49d3009cd4c0e64ddd9cb5bdca27f743dac1897c1425d22c4af0a002822"
     },
     {
       "path": "data/flies/dfft-2018/figure-02-bins.mat",
@@ -120,13 +120,13 @@
     },
     {
       "path": "lectures/lecture-15-animal-interaction-rules.html",
-      "bytes": 190963,
-      "sha256": "665be36e1fef9b9ed37887a4d47d047362a1f886577e1ca58349649e1f3108bf"
+      "bytes": 175541,
+      "sha256": "05f6dd90b28aa8af3aec97e9dac0645f410a8a27d111b1223f721faba863204c"
     },
     {
       "path": "lectures/lecture-15-animal-interaction-rules.ipynb",
-      "bytes": 1770897,
-      "sha256": "a8236f5f6bea3de7fd7f4f4f9b5d1448f023aad9eba7ea73c4d187c899ff2d17"
+      "bytes": 975818,
+      "sha256": "8ed5d861cd6c9a3f0bc8926d0264d11cb67d5c92a1c3d51d81b1eddd76bcc338"
     },
     {
       "path": "lectures/vendor/mathjax/LICENSE",

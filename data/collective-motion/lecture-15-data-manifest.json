@@ -1,16 +1,11 @@
 {
   "companion": "lectures/lecture-15-animal-interaction-rules.ipynb",
-  "code_cells_sha256": "187c35f69db4c06b733a827888d97970faffc2881c2addcc4278314cd4079554",
+  "code_cells_sha256": "a54939a956109e9f2e3f2bb8a2cb3f1925aebe86d31df9fb008d6fac9049fd90",
   "inputs": [
     {
       "path": "data/flocking/fish-pairs-2021.npz",
       "bytes": 15980977,
       "sha256": "fd439fd203419c9cc72892623d3b45b871e6a7bbf198206fffcf06ea052ac56d"
-    },
-    {
-      "path": "data/insect-swarms/midge-ob11.txt",
-      "bytes": 21810236,
-      "sha256": "785cd60954e35613388f09560d05083c0d8c94c0ddc63274ae9f6b02854826db"
     },
     {
       "path": "data/flies/dfft-2018/physical-bin-areas.json",
@@ -85,8 +80,8 @@
   ],
   "browser_payload": {
     "path": "data/collective-motion/lecture-15-browser-data.js",
-    "bytes": 2481133,
-    "sha256": "51c81b3830bbaeb642c7ca2eaf0635b58838355fa31bbf385c5bfa82b59e7788",
+    "bytes": 885895,
+    "sha256": "1b403743ca3fa589e40b497c6be6d9a80421e4688b5fec8bed9e72e436a06ff7",
     "precision_decimal_places": 6
   },
   "versions": {
@@ -98,7 +93,6 @@
   },
   "summary": {
     "fish_encounters": 162308,
-    "fish_test_trials": 10,
     "dfft_heldout_gain": 0.056484,
     "c_rmse_naive": 3.656753,
     "c_rmse_dfft": 1.199681,
@@ -106,7 +100,7 @@
     "square_rmse_dfft": 0.775495
   },
   "interpretation": {
-    "fish": "Trial-held-out conditional prediction; source identities are local to each sheet. Focal identity comparison uses trial 1 only.",
+    "fish": "Conditional turning and speed responses from 40 pair trials; identities are local to each trial.",
     "fly_transfer": "Shared nonparametric cost from rectangle first 80%; C-sparse bin means determine V; physical area rescaling follows author script; C-crowded data only evaluate prediction.",
     "fly_uncertainty": "SEM of eight contiguous observation blocks; no claim of biological replication or independent time samples.",
     "movie": "Golden-shiner experimental footage has no verified matching trajectory file; quantitative fish responses use the separate pair dataset.",
