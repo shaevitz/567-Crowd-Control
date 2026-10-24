@@ -392,3 +392,5 @@ Source figures and experimental media are indexed in [the release media manifest
 October 24 revision of `locust-density-and-bistability.png`: full-width row of three panels. Left panel replotted using 51 approximate marker centers digitized from Buhl Figure 3B, with bounded saturation fit with exponent fixed at 1 and midpoint refitted (480-min asymptote), plotted on linear axes. See `lectures/build_lecture_15_locust_figure.py`, digitized CSV and fit JSON under `data/collective-motion/`. Touching marker clusters are separated by pixel k-means. The line is descriptive, not a phase-transition scaling fit. Original 30/60-locust trace panels preserved.
 
 `collective-motion/sayin-field-directions.png`: Sayin et al. (2025), Figure 1C only; PDF page 2, crop [207,47,409,281] points, rendered 4×. Used beside the slide 34 bullets.
+
+`collective-motion/sayin-optomotor-stacked.png`: Sayin et al. (2025), https://doi.org/10.1126/science.adq7832, original Figure 3A above 3B. PDF page 4 crops [35,46,312,191] and [320,46,558,198], rendered 4×.
