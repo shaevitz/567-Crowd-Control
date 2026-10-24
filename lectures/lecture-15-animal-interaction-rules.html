@@ -1,0 +1,1411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15 · Measuring interactions in animal groups · BPY567</title>
+<meta name="description" content="Interactive lecture: fish responses and collective sensing, locust sensory experiments, bird alignment dynamics, and density prediction in fly crowds. Includes a runnable Python companion.">
+<style>
+:root{color-scheme:dark;--bg:#12110e;--rail:#181610;--panel:#201d17;--line:#3a352a;--ink:#f1ece2;--muted:#b6ad9b;--amber:#f2b33d;--blue:#67b7dc;--red:#ed8170;--green:#79be9e;--rail-width:260px}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.4 "Atkinson Hyperlegible",Arial,sans-serif;overflow:hidden}button,input,select{font:inherit}button,select{color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:7px 12px;cursor:pointer}button:hover,button:focus-visible,select:focus-visible{border-color:var(--amber);outline:none}button:disabled{opacity:.35;cursor:default}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}#rail{position:fixed;inset:0 auto 0 0;width:var(--rail-width);padding:24px 15px 30px;background:var(--rail);border-right:1px solid var(--line);overflow:auto;z-index:10}.brand{font-size:12px;letter-spacing:.16em;color:var(--amber);margin:0 8px 8px}.rail-title{font-size:21px;line-height:1.2;margin:0 8px 24px}#toc details{border-top:1px solid var(--line);padding:10px 0}#toc summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--muted);padding:4px 5px}#toc button{display:block;text-align:left;width:100%;background:transparent;border:0;font-size:13px;line-height:1.25;padding:8px 6px 8px 23px;border-left:2px solid transparent;border-radius:0}#toc button[aria-current=true]{color:var(--amber);border-left-color:var(--amber);background:#292318}.rail-footer{font-size:12px;padding:18px 8px;color:var(--muted)}#toolbar{position:fixed;left:var(--rail-width);right:0;top:0;height:56px;display:flex;align-items:center;gap:9px;padding:8px 20px;border-bottom:1px solid var(--line);z-index:9;background:var(--bg)}#toolbar button{font-size:14px;padding:6px 11px}#progress{font:13px monospace;color:var(--muted);min-width:65px}.spacer{flex:1}.toolbar-label{color:var(--muted);font-size:13px}#viewport{position:fixed;left:var(--rail-width);right:0;top:56px;bottom:0;display:flex;align-items:center;justify-content:center;overflow:hidden}#board{width:1280px;height:720px;flex-shrink:0;position:relative;transform-origin:center center;background:var(--bg)}.slide{position:absolute;inset:0;padding:30px 46px 40px;display:none}.slide.active{display:block}.eyebrow{font-size:14px;color:var(--amber);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px}h1,h2,h3,p{margin:0}h2{font-size:41px;line-height:1.12;font-weight:700;margin-bottom:22px;letter-spacing:-.025em}h3{font-size:25px;color:var(--amber);margin-bottom:12px}.split{display:grid;grid-template-columns:430px 1fr;gap:34px;height:528px;align-items:center}.prose{min-width:0;font-size:25px;line-height:1.42}.prose p+p{margin-top:22px}.prose .small{font-size:19px;color:var(--muted);line-height:1.4}.prose .math{font-size:26px;margin:25px 0}.prose .big{font-size:50px;font-weight:700;line-height:1.08;color:var(--amber)}strong{font-weight:700;color:var(--amber)}.blue{color:var(--blue)}.red{color:var(--red)}.green{color:var(--green)}.rule{width:50px;border-top:3px solid var(--amber);margin:24px 0}.wide{height:536px;display:grid;grid-template-rows:auto 1fr;gap:16px}.wide>.prose{font-size:24px;max-width:1130px}.viz{min-width:0;width:100%;height:100%;min-height:0;display:flex;flex-direction:column;position:relative}.plot-wrap{flex:1;min-height:0;position:relative;background:#171510;border:1px solid #2d291f;border-radius:5px;overflow:hidden}.plot-wrap canvas{display:block;width:100%;height:100%}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding-top:12px;font-size:17px;min-height:41px}.controls:empty,.readout:empty{display:none}.controls button,.controls select{font-size:16px;padding:5px 10px}.controls label{display:flex;align-items:center;gap:8px;color:var(--muted)}input[type=range]{accent-color:var(--amber);width:145px;min-width:70px;cursor:pointer}.controls .scrub{flex:1}.controls output{color:var(--ink);font-variant-numeric:tabular-nums;min-width:45px}.readout{display:flex;align-items:center;justify-content:space-around;gap:12px;padding:10px 6px 0;font-size:18px;color:var(--muted)}.readout b{font-size:24px;color:var(--ink);font-variant-numeric:tabular-nums}.readout .unit{font-size:15px}.badge{position:static;order:-1;align-self:flex-start;margin-bottom:8px;background:#12110ee8;padding:4px 8px;border:1px solid var(--line);font-size:12px;letter-spacing:.06em;color:var(--amber);z-index:2}.slide-footer{position:absolute;left:46px;right:46px;bottom:13px;display:flex;justify-content:space-between;color:#8f8777;font-size:12px}.video-wrap{background:#050504;display:flex;align-items:center;justify-content:center;border-radius:6px;overflow:hidden;position:relative;flex:1}.video-wrap video{width:100%;height:100%;max-height:470px;object-fit:contain}.video-meta{color:var(--muted);font-size:17px;margin-top:12px}.equation{padding:22px 24px;background:#1c1913;border-left:3px solid var(--amber);margin:22px 0;font-size:26px}.comparison{width:100%;border-collapse:collapse;font-size:24px}.comparison td,.comparison th{text-align:left;padding:18px 14px;border-bottom:1px solid var(--line)}.comparison th{color:var(--amber);font-size:20px;font-weight:400}.comparison td:first-child{color:var(--muted)}.reading{display:grid;grid-template-columns:1fr 1fr;gap:24px 42px;margin-top:8px}.reading article{border-top:1px solid var(--line);padding-top:17px}.reading h3{font-size:25px}.reading p{font-size:22px;margin-top:8px}.reading .small{font-size:18px;color:var(--muted)}.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:26px}.intro-grid article{border-top:1px solid var(--line);padding-top:18px}.intro-grid h3{font-size:26px}.intro-grid p{font-size:23px;max-width:480px}.intro-diagram{width:100%;height:205px;display:block;margin:12px 0}.intro-conclusion{margin-top:24px!important}.intro-tests{margin-top:20px}.intro-tests td{padding:23px 17px}.intro-tests td:first-child{color:var(--amber)}.chamber-image{height:132px;overflow:hidden;background:white;border-radius:5px}.chamber-image img{width:100%;height:auto}.paper-panel{height:100%;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:5px;padding:8px}.paper-panel img{width:100%;height:100%;object-fit:contain}.paper-figure{width:100%;height:100%;object-fit:contain}.equation-center{font-size:28px;text-align:center;align-self:center}#python-drawer{position:fixed;right:0;top:56px;bottom:0;width:min(780px,85vw);background:#191713;z-index:30;border-left:1px solid var(--line);box-shadow:-20px 0 80px #0008;padding:22px 28px;display:none;overflow:auto}#python-drawer.open{display:block}.drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:17px;margin-bottom:18px}.drawer-head h3{margin:0;font-size:21px}.drawer-info{font-size:15px;color:var(--muted);margin-bottom:18px}pre{font:14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre;overflow:auto;color:#d8d1bd;background:#100f0c;border:1px solid #373124;padding:18px;border-radius:5px}#python-content h4{font:16px monospace;color:var(--amber);margin:25px 0 8px}.key{font:13px monospace;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:1px 5px}.rail-hidden{--rail-width:0px}.rail-hidden #rail{display:none}.presentation{--rail-width:0px}.presentation #rail{display:none}.screenreader{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}mjx-container{max-width:100%}mjx-container[jax="SVG"]>svg{max-width:100%;height:auto}mjx-container[display=true]{margin:.7em 0!important}#boot-error{position:fixed;bottom:15px;left:280px;color:var(--red);z-index:80;font-size:16px}#keyboard-help{font-size:13px;color:var(--muted)}@media(max-width:850px){body{--rail-width:0px}#rail{display:none}body.mobile-toc #rail{display:block;width:260px;box-shadow:15px 0 30px #0008}.toolbar-label,#keyboard-help{display:none}#toolbar{padding:8px 10px}}@media print{body{overflow:visible;background:white}#rail,#toolbar,#python-drawer{display:none!important}#viewport{position:static;display:block;overflow:visible}#board{transform:none!important;width:1280px;height:auto}.slide{position:relative;display:block!important;height:720px;break-after:page;background:#12110e;print-color-adjust:exact}.controls{visibility:hidden}}
+
+/* Flexible content height preserves room for a two-line scientific title. */
+.slide.active{display:flex;flex-direction:column}
+.slide h2{flex-shrink:0;margin-bottom:18px}
+.slide .eyebrow{flex-shrink:0}
+.split{height:auto;flex:1;min-height:0;grid-template-columns:430px 1fr;align-items:center;padding-bottom:8px}
+.wide{height:auto;flex:1;min-height:0;padding-bottom:10px}
+.prose{font-size:24px;line-height:1.38}
+.prose p+p{margin-top:19px}
+.prose .math{font-size:24px;margin:19px 0}
+.wide>.prose{font-size:24px}
+.wide .math{font-size:29px}
+.paper-panel{min-height:0;overflow:hidden;text-decoration:none;cursor:zoom-in}
+.paper-panel.organism-photo{background:transparent;padding:0}
+.paper-panel img{min-height:0;display:block}
+.roadmap td{padding:19px 14px;line-height:1.35}
+.roadmap td:first-child{color:var(--amber);width:24%}
+.results-table td{padding:17px 14px}
+.slide-footer{pointer-events:none}
+
+
+.slide-citations{font-size:14px;line-height:1.35;letter-spacing:0;text-transform:none;max-width:1120px}.slide-citations a{color:var(--muted);pointer-events:auto}.slide-citations a:hover{color:var(--blue)}
+
+.slide-footer{position:static;flex-shrink:0;gap:16px;align-items:flex-end;margin-top:8px}.slide-citations{font-size:13px;line-height:1.3;max-width:1125px}.slide-footer>span:last-child{white-space:nowrap}
+#slide-31 .wide{grid-template-rows:minmax(0,1fr) auto;gap:10px}#slide-31 .wide>.viz{grid-row:1}#slide-31 .wide>.prose{grid-row:2;display:grid;grid-template-columns:1fr 1fr;gap:25px;font-size:22px;max-width:none}#slide-31 .math{font-size:25px;margin:0}#slide-31 .prose p{margin:4px 0}#slide-31 .prose ul{margin:8px 0 0}#slide-31 .prose li{margin:3px 0}
+#slide-38 .split{grid-template-columns:minmax(0,1fr) 500px;gap:38px}#slide-38 .prose{font-size:23px}
+#slide-38 .paper-panel{width:auto;aspect-ratio:285/305;max-width:100%;align-self:center;padding:4px}
+#slide-52 .split{grid-template-columns:420px 1fr;gap:34px;height:500px}
+#slide-53 .split,#slide-58 .split{grid-template-columns:410px 1fr;gap:32px;height:500px}
+#slide-53 .math{font-size:23px}
+#slide-56 .wide{grid-template-rows:auto 1fr;height:530px}
+#slide-56 .wide>.prose{font-size:23px}
+#slide-57 .split{grid-template-columns:425px 1fr;gap:28px;height:510px}
+#slide-57 .readout{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}#slide-57 .readout span:last-child{grid-column:1 / -1}
+
+/* Fly data → prediction → continuum. */
+.density-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:28px}.density-cards article{border-top:2px solid var(--line);padding-top:18px}.density-cards p{font-size:23px}.density-cards h3{font-size:25px}
+.fly-apparatus{background:white;border-radius:6px;padding:16px 25px;margin:5px 0 30px}.fly-apparatus img{display:block;width:100%;height:160px;object-fit:contain}
+.compact-terms td,.compact-terms th{font-size:21px;padding:11px 8px}.compact-terms td:first-child{color:var(--amber)}
+#slide-63 .split{grid-template-columns:440px 1fr;gap:24px}#slide-63 .math{font-size:26px}
+#slide-65 .split{grid-template-columns:465px 1fr;gap:24px}.transfer-plan td{font-size:23px;padding:15px 10px}
+#slide-66 .wide{grid-template-rows:auto minmax(0,1fr)}#slide-66 ul{margin:0;padding-left:24px}#slide-66 .badge{display:none}
+#slide-69 .math{font-size:27px;margin:36px 0}#slide-69 .density-cards{margin-top:26px}
+#slide-70 .math{font-size:30px;margin:24px 0}#slide-70 li{margin:16px 0}
+#slide-72 .paper-panel{background:transparent;padding:0}
+.density-feedback{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:center;gap:14px;margin:30px 0}.density-feedback article{background:var(--panel);border-top:3px solid var(--amber);padding:20px 18px}.density-feedback span{font-size:36px;color:var(--amber);text-align:center}.density-feedback h3{margin-bottom:10px}.density-feedback p{font-size:23px}
+#slide-73 .results-table td{font-size:23px;padding:16px 14px}#slide-73 .intro-conclusion{font-size:25px}
+
+#slide-67 .badge{display:none}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'local'},startup:{typeset:false}};</script>
+<script defer src="vendor/mathjax/tex-svg.js" onload="typeset(document.querySelector('.slide.active'))"></script>
+<script src="../data/collective-motion/lecture-15-browser-data.js?v=51c81b3830bb"></script>
+</head>
+<body>
+<aside id="rail" aria-label="Lecture contents"><div class="brand">BPY567 · LECTURE 15</div><div class="rail-title">Measuring interactions<br>in animal groups</div><nav id="toc"></nav><div class="rail-footer">October 29, 2026<br><br><a href="lecture-15-animal-interaction-rules.ipynb" download>Runnable Python companion ↗</a></div></aside>
+<header id="toolbar"><button id="contents" aria-label="Toggle contents">☰ Contents</button><button id="previous" aria-label="Previous slide">←</button><span id="progress"></span><button id="next" aria-label="Next slide">→</button><span class="spacer"></span><span id="keyboard-help">← → navigate</span><button id="python-toggle">Show Python</button><button id="fullscreen" aria-label="Toggle fullscreen">⛶</button></header>
+<main id="viewport"><div id="board" aria-live="off"></div></main>
+<aside id="python-drawer" aria-label="Python companion code"><div class="drawer-head"><h3>Python companion</h3><button id="python-close" aria-label="Close Python panel">×</button></div><p class="drawer-info">Code from the companion notebook. <a href="lecture-15-animal-interaction-rules.ipynb" download>Download notebook ↗</a><br>Run with the repository’s <code>swarming-course</code> environment.</p><div id="python-content"></div></aside>
+<div id="announcement" class="screenreader" aria-live="polite"></div><div id="boot-error" role="alert"></div>
+<script id="python-source" type="application/json">
+{
+  "setup": "from pathlib import Path\nimport json\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.io import loadmat\nfrom scipy.special import gammaln, logsumexp\nfrom scipy.optimize import minimize, brentq\nfrom scipy.interpolate import CubicSpline\nfrom scipy.signal import savgol_filter\n\nROOT = Path.cwd().parent if Path.cwd().name == 'lectures' else Path.cwd()\nDATA = ROOT / 'data'\nOUT = DATA / 'collective-motion'\nOUT.mkdir(exist_ok=True)\nCOLORS = dict(ink='#f1ece2', amber='#f2b33d', blue='#67b7dc', red='#ed8170', green='#79be9e', muted='#aaa18e')\nplt.rcParams.update({'figure.facecolor':'#12110e', 'axes.facecolor':'#12110e',\n                     'text.color':COLORS['ink'], 'axes.labelcolor':COLORS['ink'],\n                     'xtick.color':COLORS['muted'], 'ytick.color':COLORS['muted'],\n                     'axes.edgecolor':'#797264', 'font.size':13, 'axes.labelsize':14,\n                     'figure.figsize':(10.5,4), 'savefig.facecolor':'#12110e',\n                     'axes.spines.top':False, 'axes.spines.right':False})\npacket = {'schema':1, 'lecture':15, 'colors':COLORS, 'source_kind':{'fish':'measured trajectories', 'flies':'measured bin occupancies', 'birds':'measured 3D trajectories', 'midges':'measured 3D track fragments'}}\nrng = np.random.default_rng(56715)",
+  "order-parameters": "def order_parameters(positions, velocities):\n    speeds = np.linalg.norm(velocities, axis=-1)\n    valid = np.isfinite(velocities).all(axis=-1) & (speeds > 1e-9)\n    if not valid.any():\n        return dict(phi=np.nan, phi_v=np.nan, rotation=np.nan, count=0)\n    p, v, speed = positions[valid], velocities[valid], speeds[valid]\n    heading = v / speed[:, None]\n    relative = p - p.mean(axis=0)\n    radius = np.linalg.norm(relative, axis=-1)\n    radial = relative / np.maximum(radius[:, None], 1e-12)\n    circulation = np.cross(radial, heading) if p.shape[-1] == 3 else radial[:,0]*heading[:,1] - radial[:,1]*heading[:,0]\n    return dict(phi=float(np.linalg.norm(heading.mean(axis=0))),\n                phi_v=float(np.linalg.norm(v.sum(axis=0))/speed.sum()),\n                rotation=float(np.abs(np.mean(circulation)) if p.shape[-1]==2 else np.linalg.norm(circulation.mean(axis=0))), count=int(valid.sum()))\n\nexample_p = np.array([[-1.,0.],[1.,0.],[0.,1.]])\nexample_v = np.array([[1.,0.],[1.,0.],[-8.,0.]])\nassert np.isclose(order_parameters(example_p, example_v)['phi'], 1/3)\nassert np.isclose(order_parameters(example_p, example_v)['phi_v'], 0.6)",
+  "fish-load": "fish_archive = np.load(DATA/'flocking/fish-pairs-2021.npz')\nfish_trials = {key:fish_archive[key] for key in fish_archive.files}\nfish_dt = 1/40\nassert len(fish_trials)==40\nassert all(a.ndim==3 and a.shape[1:]==(2,2) for a in fish_trials.values())\n\ndef valid_runs(mask, minimum=1):\n    edges = np.diff(np.r_[False, mask, False].astype(int))\n    return [(int(a),int(b)) for a,b in zip(np.flatnonzero(edges==1),np.flatnonzero(edges==-1)) if b-a>=minimum]\n\nfish_summary = pd.DataFrame([{'trial':key,'frames':len(p),'both tracked':int(np.isfinite(p).all(axis=(1,2)).sum())} for key,p in fish_trials.items()])\nfish_summary.head()",
+  "kinematics": "def planar_kinematics(positions, dt, window=21):\n    smooth = savgol_filter(positions, window, 3, axis=0)\n    velocity = savgol_filter(positions, window, 3, deriv=1, delta=dt, axis=0)\n    acceleration = savgol_filter(positions, window, 3, deriv=2, delta=dt, axis=0)\n    speed = np.linalg.norm(velocity, axis=-1)\n    direction = velocity / np.maximum(speed[...,None], 1e-12)\n    speeding = np.sum(acceleration*direction, axis=-1)\n    turning = (velocity[...,0]*acceleration[...,1]-velocity[...,1]*acceleration[...,0])/np.maximum(speed**2,1e-12)\n    # A near-stationary velocity has no reliable measured heading.\n    turning=np.where(speed>=5,turning,np.nan)\n    return smooth, velocity, acceleration, speed, speeding, turning\n\nreplays=[]\nfor key in list(fish_trials)[:3]:\n    p=fish_trials[key]; a,b=max(valid_runs(np.isfinite(p).all(axis=(1,2)),minimum=100),key=lambda ab:ab[1]-ab[0])\n    b=min(b,a+2400)\n    raw=p[a:b]; sm,v,acc,speed,speeding,turning=planar_kinematics(raw,fish_dt)\n    keep=np.arange(12,len(raw)-12,4)\n    rows=np.column_stack(((a+keep)*fish_dt,raw[keep].reshape(len(keep),4),v[keep].reshape(len(keep),4),turning[keep]))\n    replays.append({'trial':key,'rows':rows,'dt':0.1,'source_start_frame':a,'position_units':'mm'})\npacket['fish_replays']=replays\n\np=fish_trials['group_01']; a,b=max(valid_runs(np.isfinite(p).all(axis=(1,2)),minimum=100),key=lambda ab:ab[1]-ab[0]);p=p[a:min(b,a+800),0]\nk11=planar_kinematics(p,fish_dt,11);k21=planar_kinematics(p,fish_dt,21)\nfig,ax=plt.subplots(1,2,figsize=(11,4))\nax[0].plot(p[:,0],p[:,1],color=COLORS['muted'],alpha=.6,label='Measured positions')\nax[0].plot(k21[0][:,0],k21[0][:,1],color=COLORS['amber'],label='21-frame smoothing')\nax[0].set(xlabel='x (mm)',ylabel='y (mm)',aspect='equal');ax[0].legend(fontsize=10)\nt=np.arange(len(p))*fish_dt\nax[1].plot(t,k11[-1],color=COLORS['blue'],alpha=.7,label='11 frames')\nax[1].plot(t,k21[-1],color=COLORS['amber'],label='21 frames')\nax[1].set(xlabel='Time in tracked interval (s)',ylabel='Turning rate (rad/s)');ax[1].legend(fontsize=10)\nplt.tight_layout();plt.show()\nkinematic_export={'time':t.copy(),'raw':p.copy(),'smoothed':k21[0],'velocity':k21[1],'acceleration':k21[2], 'turn11':k11[-1],'turn21':k21[-1]}",
+  "body-frame": "def body_coordinates(displacement, focal_velocity):\n    e=focal_velocity/np.maximum(np.linalg.norm(focal_velocity,axis=-1,keepdims=True),1e-12)\n    return np.stack((np.sum(displacement*e,axis=-1),-displacement[...,0]*e[...,1]+displacement[...,1]*e[...,0]),axis=-1)\n\ndef wrap_angle(angle):\n    return np.arctan2(np.sin(angle),np.cos(angle))\n\n# Features use the preceding 0.2 s of displacement. The response uses the next 0.2 s.\n# Trial splits therefore do not share frames, and predictors do not use future positions.\nfish_encounters=[]\nhop=8\nfor trial,(key,p) in enumerate(fish_trials.items(),1):\n    t=np.arange(hop,len(p)-hop,4)\n    now=(p[t]-p[t-hop])/(hop*fish_dt)\n    after=(p[t+hop]-p[t])/(hop*fish_dt)\n    for focal in [0,1]:\n        neighbor=1-focal\n        displacement=p[t,neighbor]-p[t,focal]\n        body=body_coordinates(displacement,now[:,focal])\n        speed=np.linalg.norm(now[:,focal],axis=1)\n        partner_speed=np.linalg.norm(now[:,neighbor],axis=1)\n        heading=np.arctan2(now[:,focal,1],now[:,focal,0])\n        future_heading=np.arctan2(after[:,focal,1],after[:,focal,0])\n        delta=wrap_angle(np.arctan2(now[:,neighbor,1],now[:,neighbor,0])-heading)\n        turn=wrap_angle(future_heading-heading)/(hop*fish_dt)\n        speeding=(np.linalg.norm(after[:,focal],axis=1)-speed)/(hop*fish_dt)\n        r=np.linalg.norm(body,axis=1)\n        good=np.isfinite(np.column_stack((body,delta,speed,partner_speed,turn,speeding))).all(axis=1)&(r>5)&(r\u003c180)&(speed>5)&(speed\u003c300)&(partner_speed>5)&(partner_speed\u003c300)\n        for j in np.flatnonzero(good):\n            fish_encounters.append((trial,int(t[j]),focal,body[j,0],body[j,1],r[j],delta[j],speed[j],partner_speed[j],turn[j],speeding[j]))\nenc=np.array(fish_encounters)\nassert len(enc)>1000\nprint(f'{len(enc):,} eligible encounters across {len(np.unique(enc[:,0]))} trials; overlapping observations remain grouped by trial.')",
+  "response-map": "def response_map(x,y,values,edges,minimum=20):\n    counts,_,_=np.histogram2d(y,x,bins=(edges,edges))\n    total,_,_=np.histogram2d(y,x,bins=(edges,edges),weights=values)\n    mean=np.divide(total,counts,out=np.full_like(total,np.nan),where=counts>=minimum)\n    return mean,counts\n\nmap_edges=np.linspace(-150,150,26)\nturn_map,map_counts=response_map(enc[:,3],enc[:,4],enc[:,9],map_edges)\nspeed_map,_=response_map(enc[:,3],enc[:,4],enc[:,10],map_edges)\nfig,ax=plt.subplots(1,3,figsize=(12,3.8))\nfor axis,values,label,cm,lim in zip(ax,[turn_map,speed_map,np.log10(np.maximum(map_counts,1))],['Mean turn (rad/s)','Mean speed change (mm/s²)','log₁₀ observation count'],['RdBu_r','RdBu_r','viridis'],[3,150,None]):\n    display_values=values[::-1,:].T\n    if label=='Mean turn (rad/s)': display_values=-display_values\n    artist=axis.imshow(display_values,origin='lower',extent=(-150,150,-150,150),cmap=cm,vmin=-lim if lim else None,vmax=lim,aspect='equal')\n    axis.set(xlabel='Left–right position (mm)',ylabel='Back–front position (mm)');fig.colorbar(artist,ax=axis,shrink=.75,label=label+ (' (right positive)' if label=='Mean turn (rad/s)' else ''))\nplt.tight_layout();plt.show()\npacket['fish_maps']={'edges':map_edges,'turn':turn_map,'speeding':speed_map,'counts':map_counts,'eligible_observations':len(enc),'trials':40,'minimum_observations':20}",
+  "response-fit": "def response_features(encounters,include_heading=False):\n    x,y,r=encounters[:,3],encounters[:,4],encounters[:,5]\n    delta,speed,partner_speed=encounters[:,6],encounters[:,7],encounters[:,8]\n    lateral=y/r;forward=x/r\n    features=[np.ones(len(r)),lateral,lateral*np.exp(-r/35),lateral*forward,\n              np.log(speed/50), (partner_speed-speed)/50]\n    if include_heading:\n        features += [np.sin(delta),np.sin(delta)*np.exp(-r/80)]\n    return np.column_stack(features)\n\ndef weighted_ridge(x,y,trial_ids,ridge=1e-3):\n    ids,counts=np.unique(trial_ids,return_counts=True)\n    w=np.array([1/counts[np.searchsorted(ids,t)] for t in trial_ids])\n    return np.linalg.solve(x.T@(w[:,None]*x)+ridge*np.eye(x.shape[1]), x.T@(w*y))\n\ntrain=enc[:,0]\u003c=30;test=~train\nmodels={}\nper_trial=[]\nfor name,heading in [('Position + speed',False),('Position + speed + heading',True)]:\n    x=response_features(enc,heading);coef=weighted_ridge(x[train],enc[train,9],enc[train,0])\n    prediction=x@coef\n    errors=[]\n    for trial in range(31,41):\n        mask=enc[:,0]==trial\n        errors.append(float(np.sqrt(np.mean((prediction[mask]-enc[mask,9])**2))))\n        per_trial.append({'trial':trial,'model':name,'RMSE (rad/s)':errors[-1]})\n    models[name]={'coefficients':coef,'rmse_by_trial':errors,'mean_trial_rmse':float(np.mean(errors))}\npacket['response_models']=models\nresult=pd.DataFrame(per_trial)\nfig,ax=plt.subplots(figsize=(9,4))\nfor name,c in zip(models,[COLORS['blue'],COLORS['amber']]):\n    a=result[result['model']==name];ax.plot(a['trial'],a['RMSE (rad/s)'],'o-',label=name,color=c)\nax.set(xlabel='Held-out trial',ylabel='Turn-response RMSE (rad/s)',xticks=range(31,41));ax.legend(fontsize=11)\nplt.tight_layout();plt.show()\nprint({name:round(v['mean_trial_rmse'],3) for name,v in models.items()})",
+  "response-diagnostics": "trial_maps=[]\nfor trial in range(1,41):\n    e=enc[enc[:,0]==trial]\n    trial_maps.append(response_map(e[:,3],e[:,4],e[:,9],map_edges,minimum=5)[0])\ntrial_maps=np.array(trial_maps)\nsupport=np.isfinite(trial_maps).sum(axis=0)\ntrial_mean=np.divide(np.nansum(trial_maps,axis=0),support,out=np.full_like(trial_maps[0],np.nan),where=support>0)\ntrial_sem=np.sqrt(np.nansum((trial_maps-trial_mean)**2,axis=0)/np.maximum(support-1,1))/np.sqrt(np.maximum(support,1))\ntrial_sem[support\u003c5]=np.nan\nheading_maps={}\nfor label,condition in [('Similar headings',np.abs(enc[:,6])\u003cnp.pi/6),('Opposing headings',np.abs(enc[:,6])>np.pi/2)]:\n    e=enc[condition]\n    m,c=response_map(e[:,3],e[:,4],e[:,9],map_edges)\n    heading_maps[label]={'turn':m,'counts':c,'observations':len(e)}\nrole_maps={}\nfor role in [0,1]:\n    e=enc[(enc[:,2]==role)&(enc[:,0]==1)]\n    role_maps[str(role+1)]=response_map(e[:,3],e[:,4],e[:,9],map_edges)[0]\nprediction=response_features(enc,True)@models['Position + speed + heading']['coefficients']\nresidual=enc[:,9]-prediction\nresidual_map,residual_counts=response_map(enc[test,3],enc[test,4],residual[test],map_edges,minimum=5)\nwindows=[]\nfor trial in range(31,41):\n for focal in [0,1]:\n    ids=np.flatnonzero((enc[:,0]==trial)&(enc[:,2]==focal))\n    for start in range(0,len(ids)-20,20):\n        ii=ids[start:start+20]\n        if enc[ii[-1],1]-enc[ii[0],1]>100:continue\n        windows.append((float(np.sqrt(np.mean(residual[ii]**2))),ii))\nwindows.sort(key=lambda z:z[0])\nexamples=[]\nfor label,which in [('Smallest window error',0),('Largest window error',-1)]:\n    error,ii=windows[which]\n    examples.append({'label':label,'trial':int(enc[ii[0],0]),'focal':int(enc[ii[0],2])+1,'rmse':error,\n                     'time_s':enc[ii,1]*fish_dt,'body':enc[ii,3:5], 'observed':enc[ii,9],'predicted':prediction[ii]})\npacket['fish_maps'].update({'trial_support':support,'trial_sem':trial_sem,'heading_conditions':heading_maps,'roles':role_maps,'residual':residual_map,'residual_counts':residual_counts})\npacket['fish_encounters']=enc[np.linspace(0,len(enc)-1,5000,dtype=int)]\npacket['fish_prediction']={'observed':enc[test,9][::10],'predicted':prediction[test][::10],'examples':examples}\npacket['fish_kinematics']=kinematic_export\n# The kinematic source arrays above retain the single-fish segment constructed earlier.\nfig,ax=plt.subplots(1,2,figsize=(11,4))\na=ax[0].imshow(-residual_map[::-1,:].T,origin='lower',extent=(-150,150,-150,150),vmin=-2,vmax=2,cmap='RdBu_r');ax[0].set(xlabel='Left–right position (mm)',ylabel='Back–front position (mm)');fig.colorbar(a,ax=ax[0],label='Observed − predicted right turn (rad/s)')\nfor example,c in zip(examples,[COLORS['blue'],COLORS['red']]):\n ax[1].plot(example['time_s']-example['time_s'][0],example['observed'],color=c)\n ax[1].plot(example['time_s']-example['time_s'][0],example['predicted'],'--',color=c,label=example['label'])\nax[1].set(xlabel='Time in held-out window (s)',ylabel='Turn response (rad/s)');ax[1].legend(fontsize=9);plt.tight_layout();plt.show()",
+  "interaction-rule": "def interaction_rule(x,y,delta,alignment=1.,attraction=1.,repulsion=1.):\n    r=np.maximum(np.hypot(x,y),1e-9)\n    lateral=y/r\n    turn=alignment*np.sin(delta)+attraction*lateral-repulsion*lateral*np.exp(-(r/35)**2)\n    speeding=40*np.tanh((r-55)/45)*x/r\n    return turn,speeding\n\nsynthetic_x=rng.uniform(-150,150,12000);synthetic_y=rng.uniform(-150,150,12000)\nsynthetic_delta=0.5*np.arctan2(synthetic_y,synthetic_x+170)+rng.normal(0,.25,12000)\nsynthetic_noise=rng.normal(0,.35,12000)\nsynthetic={}\nfor name,weights in [('Heading alignment',(2.,0.,0.)),('Position response',(0.,2.,2.5))]:\n    truth,_=interaction_rule(synthetic_x,synthetic_y,synthetic_delta,*weights)\n    observed=truth+synthetic_noise\n    m,c=response_map(synthetic_x,synthetic_y,observed,map_edges,minimum=5)\n    synthetic[name]={'map':m,'counts':c,'weights':weights}\npacket['synthetic_maps']=synthetic\npacket['synthetic_encounters']=np.column_stack((synthetic_x[:1000],synthetic_y[:1000],synthetic_delta[:1000],synthetic_noise[:1000]))",
+  "pair-model": "def pair_model_step(position,heading,speed,time,dt,mode):\n    p=np.asarray(position,float);h=np.asarray(heading,float);s=np.asarray(speed,float)\n    e=np.column_stack((np.cos(h),np.sin(h)))\n    body=body_coordinates((p[0]-p[1])[None,:],(e[1]*s[1])[None,:])[0]\n    delta=wrap_angle(h[0]-h[1])\n    omega_leader=.28*np.sin(.7*time)+.12*np.sin(1.3*time)\n    omega_follower=2.0*np.sin(delta) if mode=='alignment' else 2.0*np.arctan2(body[1],body[0])\n    s_new=np.array([50.,np.clip(s[1]+dt*(.7*(body[0]-55)-1.8*(s[1]-50)),10,100)])\n    h_new=h+dt*np.array([omega_leader,omega_follower])\n    e_new=np.column_stack((np.cos(h_new),np.sin(h_new)))\n    return p+dt*s_new[:,None]*e_new,h_new,s_new\n\npair_histories={}\nfor mode in ['alignment','position']:\n    position=np.array([[55.,0.],[0.,0.]]);heading=np.zeros(2);speed=np.full(2,50.)\n    rows=[];phi=[]\n    for j in range(4000):\n        position,heading,speed=pair_model_step(position,heading,speed,j*.01,.01,mode)\n        if j%10==0:\n            rows.append([j*.01,*position.ravel(),*heading,*speed])\n            phi.append(order_parameters(position,np.column_stack((np.cos(heading),np.sin(heading)))*speed[:,None])['phi'])\n    rows=np.array(rows)\n    # Recover follower turning from generated trajectories, avoiding endpoints.\n    recovered=planar_kinematics(rows[:,3:5],.1,11)[-1]\n    pair_histories[mode]={'rows':rows,'phi':phi,'mean_phi':float(np.mean(phi)), 'recovered_turn':recovered}\npacket['pair_models']=pair_histories\nprint('Mean polarization in the two different follower models:', {k:round(v['mean_phi'],4) for k,v in pair_histories.items()})",
+  "triplet-superposition": "def triplet_prediction(pair_responses, coefficient=0.5):\n    return coefficient*np.asarray(pair_responses,float).sum(axis=0)\n\npair_example=np.array([[20.,8.],[-10.,5.]])\nassert np.allclose(triplet_prediction(pair_example),[5.,6.5])\n",
+  "informed-heading": "def informed_heading_step(heading,fraction=0.1,preference=1.,alignment=1.,dt=0.01):\n    heading=np.asarray(heading,float)\n    c,s=np.cos(heading).mean(),np.sin(heading).mean()\n    informed=np.arange(len(heading))\u003cround(fraction*len(heading))\n    rate=alignment*(s*np.cos(heading)-c*np.sin(heading))-informed*preference*np.sin(heading)\n    return heading+dt*rate\n\nheading_start=0.8+0.35*np.sin(np.arange(40)*2.4)\nfig,ax=plt.subplots()\nfor frac,color in zip([0.,.05,.2,1.],['#aaa18e','#67b7dc','#f2b33d','#79be9e']):\n    h=heading_start.copy();means=[]\n    for j in range(2001):\n        means.append(np.arctan2(np.sin(h).mean(),np.cos(h).mean()))\n        h=informed_heading_step(h,frac)\n    ax.plot(np.arange(2001)*.01,means,color=color,label=f'{100*frac:g}% informed')\nax.set(xlabel='Model time',ylabel='Mean heading (rad)');ax.legend();plt.tight_layout();plt.show()\n",
+  "collective-sensing": "def light_field(x,y,time):\n    cx,cy=15*np.sin(time/35),10*np.cos(time/40)\n    return 1-0.9*np.exp(-((np.asarray(x)-cx)**2+(np.asarray(y)-cy)**2)/(2*22**2))\n\ndef sensing_step(state,time,dt=.02,separation=12.,gain=4.):\n    x,y,heading=state\n    nx,ny=-np.sin(heading),np.cos(heading)\n    vl=2+gain*light_field(x+separation*nx/2,y+separation*ny/2,time)\n    vr=2+gain*light_field(x-separation*nx/2,y-separation*ny/2,time)\n    speed=(vl+vr)/2\n    return np.array([x+dt*speed*np.cos(heading),y+dt*speed*np.sin(heading),heading+dt*(vr-vl)/separation])\n\nfig,ax=plt.subplots()\nfor gain,color in [(0.,COLORS['muted']),(4.,COLORS['amber'])]:\n    state=np.array([-55.,-10.,.4]);path=[]\n    for j in range(1751):\n        path.append(state.copy());state=sensing_step(state,j*.02,gain=gain)\n    path=np.asarray(path);ax.plot(path[:,0],path[:,1],color=color,label=f'Speed response {gain:g}')\nax.set(xlabel='x (model length)',ylabel='y (model length)',aspect='equal');ax.legend();plt.tight_layout();plt.show()\n",
+  "marching-landscape": "def marching_landscape(a=0.6,b=1.,noise=.04):\n    m=np.linspace(-1,1,401);potential=-a*m*m/2+b*m**4/4\n    weights=np.exp(-(potential-potential.min())/noise)\n    density=weights/(weights.sum()*(m[1]-m[0]))\n    return m,potential,density\n\nfig,ax=plt.subplots(1,2,figsize=(11,4))\nfor a,color in [(-.4,COLORS['blue']),(.6,COLORS['amber'])]:\n    m,u,density=marching_landscape(a)\n    ax[0].plot(m,u,color=color,label=f'a = {a:g}')\n    ax[1].plot(m,density,color=color,label=f'a = {a:g}')\nax[0].set(xlabel='Signed order m',ylabel='Potential U');ax[1].set(xlabel='Signed order m',ylabel='Probability density');ax[0].legend();ax[1].legend();plt.tight_layout();plt.show()\n",
+  "bearing-choice": "def choice_potential(angle,beta=.7,sharpness=4.):\n    angle=np.asarray(angle)\n    return -np.exp(sharpness*np.cos(angle-beta))-np.exp(sharpness*np.cos(angle+beta))\n\ndef choice_curvature(beta,sharpness):\n    return 2*sharpness*np.exp(sharpness*np.cos(beta))*(np.cos(beta)-sharpness*np.sin(beta)**2)\n\nangles=np.linspace(-np.pi,np.pi,721)\nfig,ax=plt.subplots()\nfor beta,color in [(.25,COLORS['blue']),(.85,COLORS['amber'])]:\n    u=choice_potential(angles,beta);ax.plot(angles,u-u.min(),color=color,label=f'Target separation {2*beta:.2f} rad')\nax.set(xlabel='Heading (rad)',ylabel='Potential above minimum');ax.legend();plt.tight_layout();plt.show()\neps=1e-4\nassert np.isclose((choice_potential(eps)-2*choice_potential(0.)+choice_potential(-eps))/eps**2,choice_curvature(.7,4.),rtol=1e-6)\n",
+  "network-modes": "from scipy.linalg import expm\n\ndef ring_laplacian(size=24):\n    identity=np.eye(size)\n    return 2*identity-np.roll(identity,1,axis=0)-np.roll(identity,-1,axis=0)\n\ndef ring_kernel(size=24,rate=1.,interval=.5):\n    modes=np.arange(size);lam=4*np.sin(np.pi*modes/size)**2\n    return np.array([np.mean(np.exp(-rate*lam*interval)*np.cos(2*np.pi*modes*j/size)) for j in range(size)])\n\nlap=ring_laplacian();eigenvalues,eigenvectors=np.linalg.eigh(lap)\nassert np.allclose(lap.sum(axis=1),0)\nassert np.allclose(ring_kernel(),expm(-.5*lap)[:,0],atol=1e-14)\nfig,ax=plt.subplots(1,2,figsize=(11,4))\ntimes=np.linspace(0,12,241)\nfor mode,color in [(1,COLORS['blue']),(4,COLORS['amber']),(8,COLORS['green'])]:\n    lam=4*np.sin(np.pi*mode/24)**2\n    ax[0].plot(times,np.exp(-lam*times),color=color,label=f'Mode {mode}')\nfor interval,color in [(.05,COLORS['blue']),(.5,COLORS['amber']),(2.,COLORS['green'])]:\n    distance=np.arange(-8,9);kernel=ring_kernel(interval=interval)\n    ax[1].plot(distance,kernel[distance%24],'o-',color=color,label=f'Interval {interval:g}')\nax[0].set(xlabel='Model time',ylabel='Remaining mode amplitude');ax[1].set(xlabel='Network distance from perturbed node',ylabel='Mean heading response');ax[0].legend();ax[1].legend();plt.tight_layout();plt.show()\n",
+  "finite-time-inference": "from scipy.optimize import minimize_scalar\n\ndef modal_transition(eigenvalues,rate,noise,interval):\n    eigenvalues=np.asarray(eigenvalues,float)\n    decay=np.exp(-rate*eigenvalues*interval)\n    variance=noise*(-np.expm1(-2*rate*eigenvalues*interval))/(rate*eigenvalues)\n    return decay,variance\n\npositive=eigenvalues[1:];true_rate=1.3;noise_strength=.025;sample_interval=.7\nlocal_rng=np.random.default_rng(151516)\ndecay,variance=modal_transition(positive,true_rate,noise_strength,sample_interval)\ny=local_rng.normal(size=(2501,len(positive)))*np.sqrt(noise_strength/(true_rate*positive))\nfor t in range(2500):y[t+1]=decay*y[t]+local_rng.normal(size=len(positive))*np.sqrt(variance)\ndef transition_nll(rate):\n    decay,variance=modal_transition(positive,rate,noise_strength,sample_interval)\n    residual=y[1:]-decay*y[:-1]\n    return .5*np.sum(np.log(2*np.pi*variance)+residual**2/variance)\nfit=minimize_scalar(transition_nll,bounds=(.2,3.),method='bounded')\nassert abs(fit.x-true_rate)\u003c.08\nfig,ax=plt.subplots();rates=np.linspace(.8,1.8,101);loss=np.array([transition_nll(v) for v in rates]);ax.plot(rates,loss-loss.min(),color=COLORS['amber']);ax.axvline(true_rate,color=COLORS['blue'],label='Generating rate');ax.set(xlabel='Alignment rate (inverse model time)',ylabel=r'$-\\log L+\\log L_{\\max}$');ax.legend();plt.tight_layout();plt.show()\nprint(f'Generating rate {true_rate:.3f}; inferred rate {fit.x:.3f}')\n",
+  "local-relaxation": "def relaxation_step(angle,target,dt,tau_relax):\n    if tau_relax \u003c= 0 or dt \u003c 0:\n        raise ValueError('Relaxation time must be positive and dt nonnegative.')\n    return target+(angle-target)*np.exp(-dt/tau_relax)\n\nlocal_time=np.linspace(0,3,301)\nfig,ax=plt.subplots()\nfor tau,color in zip([.1,.3,1.],[COLORS['blue'],COLORS['amber'],COLORS['green']]):\n    ax.plot(local_time,.5*np.exp(-local_time/tau),color=color,label=f'τ_relax = {tau:g}')\nax.set(xlabel='Model time',ylabel='Local heading deviation (rad)');ax.legend()\nplt.tight_layout();plt.show()\nassert np.isclose(relaxation_step(.5,0,.2,.2),.5/np.e)\nassert np.isclose(relaxation_step(relaxation_step(.5,-.1,.1,.2),-.1,.2,.2),relaxation_step(.5,-.1,.3,.2))\npacket['local_alignment']={'initial_angle':.5,'tau_relax':.2,'tau_network':3.,'dt':.01,\n 'interpretation':'Deterministic small-angle illustration; no fitted biological parameters or stochastic inference.'}\n",
+  "changing-neighbors": "LOCAL_TARGETS=np.array([0.,.35,-.25,.3,-.35,.2,0.])\n\ndef changing_neighbors(tau_relax=.2,tau_network=3.,dt=.01):\n    if tau_network \u003c= 0 or dt \u003c= 0:\n        raise ValueError('Exchange interval and time step must be positive.')\n    steps=int(round(7*tau_network/dt))\n    time=np.arange(steps+1)*dt\n    target=LOCAL_TARGETS[np.minimum(np.floor(time/tau_network+1e-9).astype(int),6)]\n    angle=np.zeros(len(time))\n    for k in range(steps):\n        angle[k+1]=relaxation_step(angle[k],target[k],dt,tau_relax)\n    return dict(time=time,angle=angle,target=target)\n\nfig,axes=plt.subplots(1,2,figsize=(11,4))\ntracking_errors=[]\nfor ax,tau in zip(axes,[.2,2.]):\n    trajectory=changing_neighbors(tau_relax=tau,tau_network=1.)\n    ax.step(trajectory['time'],trajectory['target'],where='post',color=COLORS['blue'],label='Local mean')\n    ax.plot(trajectory['time'],trajectory['angle'],color=COLORS['amber'],label=f'Focal: τ_relax = {tau:g}')\n    ax.set(xlabel='Model time',ylabel='Heading deviation (rad)',ylim=(-.4,.4));ax.legend(fontsize=10)\n    tracking_errors.append(float(np.sqrt(np.mean((trajectory['angle']-trajectory['target'])**2))))\nplt.tight_layout();plt.show()\nassert tracking_errors[0]\u003ctracking_errors[1]\nprint('Tracking RMSE, fast / slow relaxation:',np.round(tracking_errors,3))\npacket['local_alignment']['targets']=LOCAL_TARGETS\n",
+  "propagation-step": "def propagation_step(angle,rate,dt,dx,model='wave',diffusivity=1.,c=2.,damping=.3):\n    lap=(np.roll(angle,-1)-2*angle+np.roll(angle,1))/dx**2\n    if model=='diffusion':\n        return angle+dt*diffusivity*lap,np.zeros_like(rate)\n    next_rate=(rate+dt*c*c*lap)/(1+damping*dt)\n    return angle+dt*next_rate,next_rate\n\nwave_x=np.arange(160)*.125\nwave_initial=.5*np.exp(-((wave_x-10)/.6)**2)\nwave_histories={}\nfor model in ['diffusion','wave']:\n    angle=wave_initial.copy();rate=np.zeros_like(angle);frames=[]\n    for k in range(1501):\n        if k%10==0:frames.append(angle.copy())\n        angle,rate=propagation_step(angle,rate,.004,.125,model=model)\n    wave_histories[model]=np.array(frames)\nfig,ax=plt.subplots(1,2,figsize=(11,4))\nfor axis,model in zip(ax,['diffusion','wave']):\n    a=axis.imshow(wave_histories[model],origin='lower',aspect='auto',extent=(0,20,0,6),vmin=-.5,vmax=.5,cmap='RdBu_r')\n    axis.set(xlabel='Position x (model length)',ylabel='Model time');fig.colorbar(a,ax=axis,label='Heading perturbation (rad)',shrink=.8)\nplt.tight_layout();plt.show()\npacket['propagation']={'x':wave_x,'initial':wave_initial,'dt':.004,'dx':.125,'histories':wave_histories,'frame_dt':.04}",
+  "turn-reach": "def turn_reach(distance, speed, damping):\n    \"\"\"Weak-damping traveling-wave amplitude envelope; distances in model units.\"\"\"\n    return np.exp(-damping*np.asarray(distance)/(2*speed))\n\nassert np.allclose(turn_reach([0, 4, 8], 2, .5), [1, np.exp(-.5), np.exp(-1)])\nassert np.allclose(turn_reach([0, 12], 2, 0), [1, 1])\ndistance = np.linspace(0, 12, 241)\nfig, ax = plt.subplots(figsize=(8, 4))\nfor damping in [.1, .3, .8]:\n    ax.plot(distance, turn_reach(distance, 2, damping), lw=3,\n            label=fr\"$\\gamma_{{\\rm turn}}={damping}$\")\nax.axvline(8, color=\"0.5\", ls=\"--\", label=\"Far side of flock\")\nax.set(xlabel=\"Distance traveled (model units)\", ylabel=\"Remaining amplitude A / A₀\",\n       xlim=(0, 12), ylim=(0, 1.05))\nax.legend()\nplt.tight_layout()\nplt.show()\n",
+  "propagation-spectrum": "field=wave_histories['wave'];spectrum=np.abs(np.fft.fftshift(np.fft.fft2(field-field.mean(axis=0))))**2\nk=2*np.pi*np.fft.fftshift(np.fft.fftfreq(field.shape[1],d=.125))\nw=2*np.pi*np.fft.fftshift(np.fft.fftfreq(field.shape[0],d=.04))\nfig,ax=plt.subplots();im=ax.imshow(np.log10(spectrum+1e-10),origin='lower',aspect='auto',extent=(k[0],k[-1],w[0],w[-1]),cmap='magma');ax.set(xlabel='Angular wavenumber k',ylabel='Angular frequency ω',xlim=(-12,12),ylim=(-25,25));fig.colorbar(im,ax=ax,label='log₁₀ spectral power');plt.tight_layout();plt.show()",
+  "wave-dispersion": "def wave_dispersion(k,speed=2.,damping=.7):\n    root=np.sqrt((speed*np.asarray(k))**2-damping**2/4+0j)\n    return -.5j*damping+root,-.5j*damping-root\n\nk=np.linspace(0,2,401);plus,minus=wave_dispersion(k)\nfig,ax=plt.subplots(1,2,figsize=(11,4))\nfor branch,color in [(plus,COLORS['amber']),(minus,COLORS['blue'])]:\n    ax[0].plot(k,branch.real,color=color);ax[1].plot(k,-branch.imag,color=color)\nax[0].set(xlabel='Wavenumber k',ylabel='Real frequency');ax[1].set(xlabel='Wavenumber k',ylabel='Decay rate');plt.tight_layout();plt.show()\nassert np.all(plus.imag\u003c=1e-12) and np.all(minus.imag\u003c=1e-12)\n",
+  "fly-load": "fly_dir=DATA/'flies/dfft-2018'\nrect=loadmat(fly_dir/'figure-03-rectangle-high-occupancies.mat')['occ_rectangle_96flies'].astype(int)\nc_low=loadmat(fly_dir/'figure-03-c-shape-low-occupancies.mat')['occ_C_2flies'].astype(int)\nc_high=loadmat(fly_dir/'figure-03-c-shape-high-occupancies.mat')['occ_C_189flies'].astype(int)\nsquare_low=loadmat(fly_dir/'figure-03-square-low-occupancies.mat')['occ_square_1fly'].astype(int)\nsquare_high=loadmat(fly_dir/'figure-03-square-high-occupancies.mat')['occ_square_125flies'].astype(int)\nareas=json.loads((fly_dir/'physical-bin-areas.json').read_text())['bin_area_cm2']\nassert c_low.shape[1]==c_high.shape[1]==37\nassert np.all(c_low.sum(axis=1)==2) and np.all(c_high.sum(axis=1)==189)\nprint({'rectangle_mean_observed_total':round(float(rect.sum(axis=1).mean()),2),'C_sparse_total':2,'C_crowded_total':189,'bin_areas_cm2':areas})",
+  "canonical-occupancy": "def canonical_counts(total=6,potential=(0.,0.,0.),crowding=.4):\n    states=np.array([[a,b,total-a-b] for a in range(total+1) for b in range(total-a+1)],float)\n    logweight=-np.sum(.5*crowding*states*(states-1)+states*np.asarray(potential)+gammaln(states+1),axis=1)\n    probability=np.exp(logweight-logsumexp(logweight))\n    mean=probability@states\n    covariance=(states-mean).T@(probability[:,None]*(states-mean))\n    return mean,covariance,probability,states\n\nmeans,covariance,probability,states=canonical_counts(potential=(.7,0.,0.))\nassert np.allclose(states.sum(axis=1),6) and np.isclose(means.sum(),6)\nassert np.allclose(covariance.sum(axis=1),0,atol=1e-12)\neps=1e-4\nresponse=-(canonical_counts(potential=(.7+eps,0,0))[0]-canonical_counts(potential=(.7-eps,0,0))[0])/(2*eps)\nassert np.allclose(response,covariance[:,0],rtol=1e-7,atol=1e-9)\nfig,ax=plt.subplots(1,2,figsize=(10,4));ax[0].bar(range(1,4),means,color=[COLORS['amber'],COLORS['blue'],COLORS['green']]);ax[0].set(xlabel='Bin',ylabel='Mean count',xticks=range(1,4));im=ax[1].imshow(covariance,cmap='RdBu_r',vmin=-1.5,vmax=1.5);ax[1].set(xlabel='Bin',ylabel='Bin',xticks=range(3),yticks=range(3),xticklabels=range(1,4),yticklabels=range(1,4));fig.colorbar(im,ax=ax[1],label='Count covariance');plt.tight_layout();plt.show()\n",
+  "count-law": "def count_probabilities(f,V,mu=0.):\n    f=np.asarray(f,float);V=np.atleast_1d(V).astype(float);n=np.arange(len(f))\n    log_weight=-f[None,:]-(V[:,None]-mu)*n-gammaln(n+1)\n    return np.exp(log_weight-logsumexp(log_weight,axis=1,keepdims=True))\n\ndef count_mean(f,V,mu=0.):\n    return count_probabilities(f,V,mu)@np.arange(len(f))\n\nassert np.allclose(count_probabilities(np.zeros(50),[-1,0,1]).sum(axis=1),1)\nassert np.allclose(count_mean(np.zeros(50),[-1,0,1]),np.exp(-np.array([-1,0,1])))",
+  "independent-counts": "from scipy.stats import binom,poisson\nN_reference=65\nindependent_n=np.arange(18)\nq_reference=float(rect.mean(axis=0).max()/N_reference)\npacket['independent_counts']={'N':N_reference,'q':q_reference,'n':independent_n,\n 'binomial':binom.pmf(independent_n,N_reference,q_reference),'poisson':poisson.pmf(independent_n,N_reference*q_reference),\n 'rectangle_variance':rect.var(axis=0,ddof=1)}",
+  "dfft-fit": "def fit_dfft(occupancies):\n    a=np.asarray(occupancies,int);T,B=a.shape;nmax=int(a.max());n=np.arange(nmax+1)\n    histogram=np.stack([np.bincount(a[:,b],minlength=nmax+1) for b in range(B)])\n    mean=a.mean(axis=0)\n    def objective(parameters):\n        f=np.r_[0.,0.,parameters[:nmax-1]];V=parameters[nmax-1:]\n        logw=-f[None,:]-V[:,None]*n-gammaln(n+1)\n        logz=logsumexp(logw,axis=1)\n        p=np.exp(logw-logz[:,None])\n        loss=(T*logz.sum()+(histogram*(f[None,:]+V[:,None]*n+gammaln(n+1))).sum())/(T*B)\n        grad_f=(histogram.sum(axis=0)-T*p.sum(axis=0))[2:]/(T*B)\n        grad_v=(T*mean-T*(p@n))/(T*B)\n        return loss,np.r_[grad_f,grad_v]\n    initial=np.r_[np.zeros(nmax-1),-np.log(np.maximum(mean,1e-8))]\n    opt=minimize(objective,initial,jac=True,method='L-BFGS-B',options={'maxiter':2500,'gtol':1e-9,'ftol':1e-12})\n    if not opt.success: raise RuntimeError(opt.message)\n    return np.r_[0.,0.,opt.x[:nmax-1]],opt.x[nmax-1:],float(opt.fun)\n\nsplit=int(.8*len(rect))\nf_rect,V_rect,train_nll=fit_dfft(rect[:split])\nprob_rect=count_probabilities(f_rect,V_rect)\nobserved_prob=np.stack([np.bincount(rect[:,b],minlength=len(f_rect))/len(rect) for b in range(rect.shape[1])])\nheld=rect[split:]\n# The baseline uses the full Poisson law; DFFT uses its declared measured count support.\nlam=rect[:split].mean(axis=0)\npoisson_log=held*np.log(lam)-lam-gammaln(held+1)\ndfft_log=np.log(np.maximum(prob_rect[np.arange(held.shape[1])[None,:],held],1e-300))\nll_gain=float(np.mean(dfft_log-poisson_log))\nassert np.isfinite(ll_gain)\nprint({'held_out_gain_nats_per_bin_observation':round(ll_gain,4),'training_occupancy_range':[0,len(f_rect)-1]})\nfig,ax=plt.subplots(1,2,figsize=(11,4))\nchosen=np.argsort(rect.mean(axis=0))[[10,25,40]]\nn=np.arange(len(f_rect))\nfor b,c in zip(chosen,[COLORS['blue'],COLORS['amber'],COLORS['green']]):\n    ax[0].plot(n,observed_prob[b],'o',color=c,label=f'Bin {b+1} measured')\n    ax[0].plot(n,prob_rect[b],color=c)\nax[0].set(xlabel='Occupancy n',ylabel='Probability',xticks=n);ax[0].legend(fontsize=9)\nax[1].plot(n,f_rect,'o-',color=COLORS['amber']);ax[1].set(xlabel='Occupancy n',ylabel='Crowding cost fₙ',xticks=n)\nplt.tight_layout();plt.show()",
+  "pseudo-free-energy": "logz=logsumexp(-f_rect[None,:]-V_rect[:,None]*n-gammaln(n+1),axis=1)\npseudo=-np.log(np.where(observed_prob>0,observed_prob,np.nan))-gammaln(n+1)\ncollapsed=pseudo-V_rect[:,None]*n-logz[:,None]\nfig,ax=plt.subplots(1,2,figsize=(11,4))\nfor b,c in zip(chosen,[COLORS['blue'],COLORS['amber'],COLORS['green']]):\n    ax[0].plot(n,pseudo[b],'o-',color=c,label=f'Bin {b+1}')\n    ax[1].plot(n,collapsed[b],'o',color=c)\nax[1].plot(n,f_rect,color=COLORS['ink'],label='Shared fitted fₙ')\nax[0].set(xlabel='Occupancy n',ylabel='−ln(n! pᵦ(n))');ax[1].set(xlabel='Occupancy n',ylabel='After fitted linear terms');ax[0].legend();ax[1].legend();plt.tight_layout();plt.show()",
+  "density-functional": "def density_functional(rho,V,area=1.,crowding=1.):\n    rho=np.asarray(rho,float);V=np.asarray(V,float)\n    environment=float(area*np.dot(V,rho))\n    interaction=float(.5*area*crowding*np.dot(rho,rho))\n    return dict(environment=environment,interaction=interaction,total=environment+interaction)\n\nprofile_x=np.linspace(0,1,48)\nprofile_V=3*profile_x\nprofile_flat=np.full(48,2.)\nprofile_biased=np.exp(-profile_V);profile_biased*=96/profile_biased.sum()\nassert np.isclose(profile_flat.sum(),profile_biased.sum())\npacket['functional']={'x':profile_x,'V':profile_V,'flat':profile_flat,'biased':profile_biased}",
+  "density-stationarity": "def density_profile(potential,total=96.,crowding=.5):\n    potential=np.asarray(potential,float)\n    def at_mu(mu):\n        target=mu-potential\n        log_rho=np.minimum(target, np.log(np.maximum(np.abs(target)+1,1)/max(crowding,1e-12))) if crowding>0 else target.copy()\n        for _ in range(60):\n            rho=np.exp(log_rho)\n            log_rho-=(log_rho+crowding*rho-target)/(1+crowding*rho)\n        return np.exp(log_rho)\n    mu=brentq(lambda value:at_mu(value).sum()-total,-30,50)\n    return at_mu(mu),mu\n\nprofile_coordinate=np.linspace(0,1,48);potential=3*profile_coordinate\nfig,ax=plt.subplots()\nfor g,color in [(0.,COLORS['blue']),(.5,COLORS['amber']),(2.,COLORS['green'])]:\n    density,mu=density_profile(potential,crowding=g)\n    assert np.isclose(density.sum(),96.)\n    assert np.allclose(np.log(density)+g*density+potential,mu,atol=1e-10)\n    ax.plot(profile_coordinate,density,color=color,label=f'Crowding coefficient {g:g}')\nax.set(xlabel='Position (model length)',ylabel='Density (model units)');ax.legend();plt.tight_layout();plt.show()\n",
+  "dfft-transfer": "def rescale_cost(f,area_old,area_new):\n    ratio=area_new/area_old\n    n_new=np.arange(int(np.floor((len(f)-1)*ratio))+1)\n    values=CubicSpline(np.arange(len(f))*ratio,np.asarray(f)*ratio)(n_new)\n    # The spline arguments already include both area rescalings; remove its linear gauge.\n    return values-values[0]-n_new*(values[1]-values[0])\n\ndef infer_preference_from_mean(f,means):\n    return np.array([brentq(lambda V:count_mean(f,[V])[0]-m,-60,60) for m in means])\n\ndef predict_total(f,V,total):\n    mu=brentq(lambda value:count_mean(f,V,value).sum()-total,-60,60)\n    return count_mean(f,V,mu),float(mu)\n\nf_c=rescale_cost(f_rect,areas['rectangle'],areas['c_shape'])\nV_c=infer_preference_from_mean(f_c,c_low.mean(axis=0))\npred_c,mu_c=predict_total(f_c,V_c,189)\nnaive_c=189*c_low.mean(axis=0)/c_low.sum(axis=1).mean()\nobs_c=c_high.mean(axis=0)\nblocks=np.array_split(c_high,8)\nsem_c=np.std([b.mean(axis=0) for b in blocks],axis=0,ddof=1)/np.sqrt(8)\nrmse_naive=float(np.sqrt(np.mean((naive_c-obs_c)**2)))\nrmse_dfft=float(np.sqrt(np.mean((pred_c-obs_c)**2)))\nassert np.isclose(pred_c.sum(),189)\nprint({'C_chamber_naive_RMSE_flies_per_bin':round(rmse_naive,3),'C_chamber_DFFT_RMSE':round(rmse_dfft,3),'mu':round(mu_c,3)})\nfig,ax=plt.subplots(1,2,figsize=(11,4))\nmaxn=max(obs_c.max(),naive_c.max())*1.08\nax[0].errorbar(obs_c,naive_c,xerr=sem_c,fmt='o',color=COLORS['blue'],label='Sparse preference only')\nax[0].errorbar(obs_c,pred_c,xerr=sem_c,fmt='o',color=COLORS['amber'],label='Transferred crowding cost')\nax[0].plot([0,maxn],[0,maxn],ls='--',color=COLORS['muted']);ax[0].set(xlabel='Observed mean (flies/bin)',ylabel='Predicted mean (flies/bin)');ax[0].legend(fontsize=9)\nax[1].plot(obs_c,color=COLORS['ink'],label='Measured 189 flies');ax[1].plot(naive_c,color=COLORS['blue'],ls='--',label='Preference only');ax[1].plot(pred_c,color=COLORS['amber'],label='DFFT');ax[1].set(xlabel='Source bin index',ylabel='Mean flies/bin');ax[1].legend(fontsize=9);plt.tight_layout();plt.show()",
+  "dfft-square-test": "f_square=rescale_cost(f_rect,areas['rectangle'],areas['square'])\nV_square=infer_preference_from_mean(f_square,square_low.mean(axis=0))\npred_square,mu_square=predict_total(f_square,V_square,125)\nnaive_square=125*square_low.mean(axis=0)\nobs_square=square_high.mean(axis=0)\nsquare_sem=np.std([b.mean(axis=0) for b in np.array_split(square_high,8)],axis=0,ddof=1)/np.sqrt(8)\nsquare_result={'f':f_square,'V':V_square,'mu':mu_square,'predicted':pred_square,'naive':naive_square,\n 'observed':obs_square,'sem':square_sem,'sparse_mean':square_low.mean(axis=0),'nominal_total':125,\n 'mean_detected_total':float(square_high.sum(axis=1).mean()),\n 'rmse_naive':float(np.sqrt(np.mean((naive_square-obs_square)**2))),\n 'rmse_dfft':float(np.sqrt(np.mean((pred_square-obs_square)**2)))}\nassert np.isclose(pred_square.sum(),125)\nprint('Square mean-density comparison:', {k:round(square_result[k],3) for k in ['rmse_naive','rmse_dfft','mean_detected_total']})\nfig,ax=plt.subplots(figsize=(6,4.5))\nax.errorbar(obs_square,naive_square,xerr=square_sem,fmt='o',color=COLORS['blue'],label='Sparse preference only')\nax.errorbar(obs_square,pred_square,xerr=square_sem,fmt='o',color=COLORS['amber'],label='Transferred crowding cost')\nlimit=max(naive_square.max(),obs_square.max())*1.08\nax.plot([0,limit],[0,limit],'--',color=COLORS['muted']);ax.set(xlabel='Observed mean (flies/bin)',ylabel='Predicted mean (flies/bin)');ax.legend(fontsize=10);plt.tight_layout();plt.show()",
+  "fly-export": "from scipy.ndimage import zoom\n\ndef small_bin_map(path,variable,max_side=150):\n    a=loadmat(path)[variable]\n    step=max(1,int(np.ceil(max(a.shape)/max_side)))\n    return a[::step,::step].astype(int)\n\npacket['flies']={'f':f_rect,'V_rectangle':V_rect,'observed_probability':observed_prob,'probability':prob_rect,\n                 'pseudo':pseudo,'collapsed':collapsed,'chosen_bins':chosen,'rectangle_means':rect.mean(axis=0),\n                 'rectangle_counts':rect[::25], 'rectangle_mask':small_bin_map(fly_dir/'figure-03-rectangle-bins.mat','bins_f'),\n                 'c_mask':small_bin_map(fly_dir/'figure-03-c-shape-bins.mat','bins'),\n                 'c_sparse_mean':c_low.mean(axis=0),'c_observed':obs_c,'c_naive':naive_c,'c_predicted':pred_c,'c_sem':sem_c,\n                 'c_f':f_c,'c_V':V_c,'c_mu':mu_c,'areas_cm2':areas,'held_out_gain':ll_gain,\n                 'rmse_naive':rmse_naive,'rmse_dfft':rmse_dfft,'count_support':[0,len(f_rect)-1]}\nsquare_result['mask']=small_bin_map(fly_dir/'figure-03-square-bins.mat','bins')\npacket['flies']['square']=square_result",
+  "midge-order": "midges=np.loadtxt(DATA/'insect-swarms/midge-ob11.txt',delimiter=',')\nframe_times,frame_start,frame_count=np.unique(midges[:,4],return_index=True,return_counts=True)\n# Source rows are grouped by track, so build explicit time groups rather than using frame_start.\nby_time=np.argsort(midges[:,4],kind='stable');sorted_midges=midges[by_time]\nmt,starts,counts=np.unique(sorted_midges[:,4],return_index=True,return_counts=True)\nselected=np.arange(0,len(mt),10)\nmidge_frames=[];midge_stats=[]\nfor k in selected:\n    rows=sorted_midges[starts[k]:starts[k]+counts[k]]\n    pos=rows[:,[1,3,2]];vel=rows[:,[5,7,6]]\n    stats=order_parameters(pos,vel)\n    n=stats['count']\n    null=rng.normal(size=(300,n,3));null/=np.linalg.norm(null,axis=-1,keepdims=True)\n    null_phi=np.linalg.norm(null.mean(axis=1),axis=1)\n    midge_frames.append({'time':float(mt[k]),'rows':np.column_stack((rows[:,0],pos,vel))})\n    midge_stats.append([mt[k],stats['phi'],stats['phi_v'],n,*np.quantile(null_phi,[.025,.5,.975])])\nmidge_stats=np.array(midge_stats)\npacket['midges']={'frames':midge_frames[::2], 'stats':midge_stats,'units':'mm, s','source':'Ob11','identity':'track fragments'}\nfig,ax=plt.subplots();ax.fill_between(midge_stats[:,0],midge_stats[:,4],midge_stats[:,6],color=COLORS['blue'],alpha=.2,label='Independent 3D headings: central 95%');ax.plot(midge_stats[:,0],midge_stats[:,1],color=COLORS['amber'],lw=1,label='Measured heading polarization');ax.set(xlabel='Source time (s)',ylabel='Polarization',ylim=(0,1));ax.legend(fontsize=10);plt.tight_layout();plt.show()",
+  "validation-export": "fixtures={\n 'order':{'positions':example_p,'velocities':example_v,'expected':order_parameters(example_p,example_v)},\n 'body':{'displacement':np.array([[3.,4.],[-2.,1.]]),'velocity':np.array([[0.,2.],[3.,4.]])},\n 'count':{'f':np.array([0.,0.,.2,.7,1.6,3.]),'V':np.array([-1.,0.,1.]),'mu':.3},\n 'wave':{'angle':np.array([0.,.2,.4,.1,-.1]),'rate':np.array([.1,0.,-.1,0.,.05]),'dt':.004,'dx':.125},\n 'rule':{'x':40.,'y':25.,'delta':.4,'alignment':1.2,'attraction':.8,'repulsion':1.5},\n}\nfixtures['body']['expected']=body_coordinates(fixtures['body']['displacement'],fixtures['body']['velocity'])\nfixtures['count']['expected']=count_probabilities(fixtures['count']['f'],fixtures['count']['V'],fixtures['count']['mu'])\nfor model in ['wave','diffusion']:\n    fixtures['wave'][model]=propagation_step(fixtures['wave']['angle'],fixtures['wave']['rate'],.004,.125,model=model)\nfixtures['rule']['expected']=interaction_rule(**{k:fixtures['rule'][k] for k in ['x','y','delta','alignment','attraction','repulsion']})\nfixtures['pair']={'position':np.array([[55.,2.],[0.,0.]]),'heading':np.array([.2,0.]),'speed':np.array([50.,48.]),'time':1.,'dt':.01}\nfor mode in ['alignment','position']:\n    fixtures['pair'][mode+'_expected']=pair_model_step(fixtures['pair']['position'],fixtures['pair']['heading'],fixtures['pair']['speed'],1.,.01,mode)\nfixtures['functional']={'rho':np.array([1.,2.,3.]),'V':np.array([0.,1.,2.]),'area':.5,'crowding':.3}\nfixtures['functional']['expected']=density_functional(**fixtures['functional'])\nfixtures['relaxation']={'angle':.4,'target':-.1,'dt':.03,'tau_relax':.2}\nfixtures['relaxation']['expected']=relaxation_step(**fixtures['relaxation'])\nfixtures['tracking']={'tau_relax':.35,'tau_network':.5,'dt':.1}\nfixtures['tracking']['expected']=changing_neighbors(**fixtures['tracking'])\nfixtures['extended']={\n 'triplet':triplet_prediction(pair_example),\n 'informed':informed_heading_step(heading_start,.2,1.3,.8,.03),\n 'sensing':sensing_step(np.array([-20.,4.,.3]),3.,.02,12.,4.),\n 'landscape':marching_landscape(.6,1.,.04),\n 'choice':choice_potential(np.array([-.8,0.,.8]),.7,4.),\n 'kernel':ring_kernel(24,1.2,.7),\n 'canonical':canonical_counts(6,(.7,0.,0.),.4)[:2],\n 'profile':density_profile(np.linspace(0,3,48),96.,.5),\n 'dispersion':[[v.real.tolist(),v.imag.tolist()] for v in wave_dispersion(np.array([0.,.1,.5,1.]),2.,.7)]\n}\npacket['validation']=fixtures\n\ndef json_ready(value):\n    if isinstance(value,np.ndarray):return json_ready(value.tolist())\n    if isinstance(value,(np.floating,float)):return round(float(value),6) if np.isfinite(value) else None\n    if isinstance(value,np.integer):return int(value)\n    if isinstance(value,dict):return {str(k):json_ready(v) for k,v in value.items()}\n    if isinstance(value,(tuple,list)):return [json_ready(v) for v in value]\n    return value\n\n# Fixtures retain full precision; scientific display/replay payloads use six decimal places.\nfixture_path=OUT/'lecture-15-validation.json'\ndef precise(value):\n    if isinstance(value,np.ndarray):return value.tolist()\n    if isinstance(value,(np.integer,np.floating)):return value.item()\n    if isinstance(value,dict):return {k:precise(v) for k,v in value.items()}\n    if isinstance(value,(tuple,list)):return [precise(v) for v in value]\n    return value\nfixture_path.write_text(json.dumps(precise(fixtures),indent=2,allow_nan=False)+'\\n')\npacket['summary']={'fish_encounters':len(enc),'fish_test_trials':10,'dfft_heldout_gain':ll_gain,\n                   'c_rmse_naive':rmse_naive,'c_rmse_dfft':rmse_dfft,'square_rmse_naive':square_result['rmse_naive'],'square_rmse_dfft':square_result['rmse_dfft']}\noutput=OUT/'lecture-15-browser-data.js'\noutput.write_text('/* Generated by the executed Lecture 15 Python companion. */\\nwindow.LECTURE15_DATA='+json.dumps(json_ready(packet),separators=(',',':'),allow_nan=False)+';\\n')\nprint(f'Browser dataset written ({output.stat().st_size/1e6:.2f} MB).')\nprint('Normalization, observed totals, normal-acceleration orthogonality and deterministic fixtures checked.')\n# Reproducible provenance for the browser payload; code-cell hash excludes saved outputs.\nimport hashlib\nimport importlib.metadata\nimport nbformat\ncompanion=ROOT/'lectures/lecture-15-animal-interaction-rules.ipynb'\nsource_nb=nbformat.read(companion,4)\ncode_sources='\\n\\n'.join(c.source for c in source_nb.cells if c.cell_type=='code')\ninputs=[DATA/'flocking/fish-pairs-2021.npz',DATA/'insect-swarms/midge-ob11.txt',fly_dir/'physical-bin-areas.json']\ninputs+=sorted(fly_dir.glob('*.mat'))\nmanifest={'companion':str(companion.relative_to(ROOT)),'code_cells_sha256':hashlib.sha256(code_sources.encode()).hexdigest(),\n 'inputs':[{ 'path':str(p.relative_to(ROOT)), 'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in inputs],\n 'browser_payload':{'path':str(output.relative_to(ROOT)),'bytes':output.stat().st_size,'sha256':hashlib.sha256(output.read_bytes()).hexdigest(),'precision_decimal_places':6},\n 'versions':{name:importlib.metadata.version(name) for name in ['numpy','scipy','pandas','matplotlib','nbformat']},\n 'summary':json_ready(packet['summary']),\n 'interpretation':{'fish':'Trial-held-out conditional prediction; source identities are local to each sheet. Focal identity comparison uses trial 1 only.',\n 'fly_transfer':'Shared nonparametric cost from rectangle first 80%; C-sparse bin means determine V; physical area rescaling follows author script; C-crowded data only evaluate prediction.',\n 'fly_uncertainty':'SEM of eight contiguous observation blocks; no claim of biological replication or independent time samples.',\n 'movie':'Golden-shiner experimental footage has no verified matching trajectory file; quantitative fish responses use the separate pair dataset.',\n 'local_alignment':'Mora published starling results motivate deterministic local-mode illustrations; no new Mora parameter fit is claimed.'}}\n(OUT/'lecture-15-data-manifest.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\\n')\nprint('Input hashes, code-source hash, package versions and processing manifest recorded.')\n"
+}
+</script>
+<script>
+
+
+'use strict';
+const D=window.LECTURE15_DATA;
+const C={ink:'#f1ece2',muted:'#b6ad9b',amber:'#f2b33d',blue:'#67b7dc',red:'#ed8170',green:'#79be9e',bg:'#171510',line:'#3a352a'};
+const chapters=["Experiments and interaction rules", "Measuring fish interactions", "Responses to several neighbors", "Collective decisions and sensing", "Coordinated marching in locusts", "Measuring collective turns", "Alignment dynamics", "Propagation through a flock", "Fluctuations in fly density", "Predicting a new chamber", "From counts to continuum fields", "What the experiments establish"];
+const slides=[
+  {
+    "t": "Experiments can distinguish the rules animals use",
+    "g": 0,
+    "text": "<p>We have already seen that simple interaction rules can generate complex and diverse collective behaviors.</p><p>But, given a real-world example of a bird flock or fish school, how can you tell from experiments what interaction rules the animals use?</p>",
+    "view": "movie",
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "opening": true,
+    "citations": [
+      {
+        "label": "Tunstrøm, K., Katz, Y., Ioannou, C.C., Huepe, C., Lutz, M.J., Couzin, I.D. (2013). Collective States, Multistability and Transitional Behavior in Schooling Fish. PLoS Computational Biology 9, e1002915. doi:10.1371/journal.pcbi.1002915",
+        "url": "https://doi.org/10.1371/journal.pcbi.1002915"
+      }
+    ]
+  },
+  {
+    "t": "We will infer interactions from movement, sensory cues, and density",
+    "g": 0,
+    "text": "<table class=\"comparison roadmap\"><tr><th>System</th><th>Experimental question</th></tr><tr><td>Schooling fish</td><td>How do fish respond to neighbors, and how do those responses help a school make decisions?</td></tr><tr><td>Marching locusts</td><td>Which sensory cues determine when an animal moves and where it goes?</td></tr><tr><td>Bird flocks</td><td>How quickly do headings adjust, and how does a turn spread?</td></tr><tr><td>Fruit-fly crowds</td><td>Can count fluctuations predict density in a different environment?</td></tr></table>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Golden shiners school in shallow, vegetated water",
+    "g": 0,
+    "text": "<p><i>Notemigonus crysoleucas</i></p><ul><li>North American freshwater minnow</li><li>Schools in shallow, vegetated water</li><li>Feeds on small aquatic organisms; prey for larger fish</li><li>Prefers shade—a natural behavior we can use to study collective sensing</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/flocking/golden-shiner-photo.jpg",
+    "wide": false,
+    "photo": true,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Berdahl, A., Torney, C.J., Ioannou, C.C., Faria, J.J., Couzin, I.D. (2013). Emergent Sensing of Complex Environments by Mobile Animal Groups. Science 339, 574-576. doi:10.1126/science.1225883",
+        "url": "https://doi.org/10.1126/science.1225883"
+      }
+    ]
+  },
+  {
+    "t": "The same fish switch between linear and rotating schools",
+    "g": 0,
+    "text": "<ul><li>Group of 150 fish</li><li>Switches between a linear school and rotating school</li></ul>",
+    "view": "movie",
+    "autoplay": true,
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Alignment and attraction predict different turns",
+    "g": 1,
+    "text": "<p>With Vicsek and Boids, we saw two potential flocking mechanisms:</p><ul><li><b>Alignment:</b> turn toward a neighbor’s heading</li><li><b>Attraction:</b> turn toward a neighbor’s position</li></ul>",
+    "view": "encounter-choice",
+    "mode": "compare",
+    "code": [
+      "interaction-rule"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Small groups let us measure responses to individual neighbors",
+    "g": 1,
+    "text": "<ul><li>Katz and colleagues tracked freely swimming golden shiners in groups of <b>two</b> and <b>three</b>.</li><li>For each focal fish, they measured its acceleration together with the positions and velocities of its neighbors.</li><li>Groups of 10 and 30 tested whether the spatial response structure persisted.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/katz-pair-geometry.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Katz, Y., Tunstrøm, K., Ioannou, C.C., Huepe, C., Couzin, I.D. (2011). Inferring the structure and dynamics of interactions in schooling fish. Proceedings of the National Academy of Sciences 108, 18720-18725. doi:10.1073/pnas.1107583108",
+        "url": "https://doi.org/10.1073/pnas.1107583108"
+      }
+    ]
+  },
+  {
+    "t": "Translational force changes speed; rotational force changes direction",
+    "g": 1,
+    "text": "<table class=\"comparison\"><thead><tr><th>Quantity</th><th>Measured component</th><th>Effect on motion</th></tr></thead><tbody><tr><td>Translational force</td><td>\\(F_{\\parallel}/m=\\mathbf a_i\\cdot\\hat{\\mathbf e}_i=\\dot v_i\\)</td><td>Speeds up or slows down</td></tr><tr><td>Rotational force</td><td>\\(F_{\\perp}/m=\\mathbf a_i\\cdot\\hat{\\mathbf e}_{i,\\perp}=v_i\\dot\\vartheta_i\\)</td><td>Turns the velocity vector</td></tr></tbody></table><ul><li>\\(v_i\\): speed; \\(\\vartheta_i\\): heading; \\(\\hat{\\mathbf e}_i\\): direction of motion</li><li>Forces are reported per unit mass, from measured acceleration.</li></ul><p class=\"small\">“Rotational force” = transverse force. Paper terminology: “speeding force” and “turning force.”</p>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Neighbor position predicts translational and rotational force",
+    "g": 1,
+    "text": "<ul><li><b>Two-fish experiments</b>; focal fish at the origin, swimming upward</li><li><b>Axes:</b> neighbor’s position in body lengths (BL)</li><li><b>Color:</b> mean force per unit mass—translational on the left, rotational on the right</li><li><b>C — Translational:</b> a neighbor ahead generally makes the focal fish speed up; a neighbor behind makes it slow down.</li><li><b>D — Rotational:</b> a neighbor to the left generally produces a left turn; a neighbor to the right produces a right turn.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/katz-pair-responses.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Turning depends more strongly on neighbor position than relative heading",
+    "g": 1,
+    "text": "<ul><li><b>Horizontal axis:</b> neighbor’s position to the left or right of the focal fish</li><li><b>Vertical axis:</b> difference between the fish’s headings</li><li><b>Color:</b> rotational force per unit mass</li><li>Color varies strongly from left to right, but much less with relative heading: turning mainly follows the neighbor’s position.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/katz-turning-relative-heading.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Following position can also align a pair",
+    "g": 1,
+    "text": "<ul><li>A follower can align with its neighbor by turning toward its position, without copying its heading.</li><li><b>Bottom graphs:</b> heading alignment \\(\\Phi\\) over time. \\(\\Phi=1\\) means both fish point in the same direction.</li></ul>",
+    "view": "pair-model",
+    "mode": "",
+    "code": [
+      "pair-model"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Mosquitofish provide a second test of interaction rules",
+    "g": 1,
+    "text": "<p><i>Gambusia holbrooki</i></p><ul><li>Small fish that give birth to live young. They have been introduced widely for mosquito control, often with harmful effects on native aquatic communities.</li><li>We have trajectories from 40 pair trials, recorded at 40 frames/s.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/flocking/mosquitofish-photo.jpg",
+    "wide": false,
+    "photo": true,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Schaerf, T.M., Herbert-Read, J.E., Ward, A.J.W. (2021). A statistical method for identifying different rules of interaction between individuals in moving animal groups. Journal of The Royal Society Interface 18, rsif.2020.0925. doi:10.1098/rsif.2020.0925",
+        "url": "https://doi.org/10.1098/rsif.2020.0925"
+      }
+    ]
+  },
+  {
+    "t": "The fish’s reference frame separates encounters ahead and behind",
+    "g": 1,
+    "text": "<ul><li><b>Gold:</b> selected focal fish, held at the origin and pointing up</li><li><b>Blue:</b> the other fish, shown relative to the focal fish</li><li>Changing the focal fish recenters and rotates the coordinates; the gold fish stays fixed.</li></ul>",
+    "view": "fish",
+    "mode": "body",
+    "code": [
+      "fish-load",
+      "body-frame"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Both species stay together by turning and adjusting speed",
+    "g": 1,
+    "text": "<ul><li><b>Turning:</b> fish steer toward neighbors on either side.</li><li><b>Speed:</b> fish speed up when a neighbor is ahead and slow down when it is behind.</li><li>Together, these responses keep the pair together and can produce aligned motion without directly matching headings.</li></ul>",
+    "view": "fish-map",
+    "mode": "both",
+    "code": [
+      "response-map",
+      "response-diagnostics"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A third fish tests how responses to neighbors combine",
+    "g": 2,
+    "text": "<ul><li>A pair experiment measures the response to one neighbor. In a school, several neighbors influence the same animal.</li><li>The next test is whether responses measured in pairs predict what happens when two neighbors are present.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/katz-pair-geometry.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Pairwise averaging gives a prediction for two neighbors",
+    "g": 2,
+    "text": "<ul><li>The focal fish now has <b>two neighbors</b>.</li><li>The pair measurements give the force associated with each neighbor separately: \\(\\mathbf F_1\\) and \\(\\mathbf F_2\\).</li><li><b>Averaging hypothesis:</b> the fish responds to the mean of those two forces.</li></ul><div class=\"math\">\\[\\mathbf F_{\\mathrm{predicted}}=\\frac{\\mathbf F_1+\\mathbf F_2}{2}\\]</div><ul><li>Compare the prediction with the force measured in three-fish groups, separately for <b>translational</b> and <b>rotational</b> components.</li><li>A structured difference reveals a response that pairwise averaging does not explain.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [
+      "triplet-superposition"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Pairwise averaging misses changes in translational force",
+    "g": 2,
+    "text": "<ul><li>Each axis gives one neighbor’s position ahead of or behind the focal fish.</li><li>The measured map contains regions of stronger acceleration and braking than the pairwise prediction.</li><li>Averaging the two pair responses does not reproduce the fish’s speed adjustment.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/katz-triplet-speed.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Two neighbors on the same side amplify turning",
+    "g": 2,
+    "text": "<ul><li>Each axis gives one neighbor’s position to the left or right of the focal fish.</li><li>When both neighbors are on the same side, the fish turns more strongly than pairwise averaging predicts.</li><li>The rotational response depends on the combination of neighbors, not just their separate pair responses.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/katz-triplet-turn.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Informed fish can guide neighbors that lack a target preference",
+    "g": 3,
+    "text": "<ul><li>An informed fish has a preferred direction in addition to its response to neighbors.</li><li>Other fish can follow its movement without knowing which individual has useful information.</li></ul><div class=\"math\">\\[\\dot\\vartheta_i=\\frac{J_{\\rm align}}N\\sum_j\\sin(\\vartheta_j-\\vartheta_i)+h_i\\sin(\\vartheta_{\\rm target}-\\vartheta_i)\\]</div>",
+    "view": "leadership",
+    "mode": "",
+    "code": [
+      "informed-heading"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Couzin, I.D., Krause, J., Franks, N.R., Levin, S.A. (2005). Effective leadership and decision-making in animal groups on the move. Nature 433, 513-516. doi:10.1038/nature03236",
+        "url": "https://doi.org/10.1038/nature03236"
+      }
+    ]
+  },
+  {
+    "t": "A strongly motivated minority can outweigh the majority",
+    "g": 3,
+    "text": "<h3>Simulation results</h3><ul><li>A strongly motivated minority can outweigh a weakly motivated majority.</li><li>Adding individuals with no target preference can restore the majority’s influence.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/couzin-uninformed-model.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Couzin, I.D., Ioannou, C.C., Demirel, G., Gross, T., Torney, C.J., Hartnett, A., Conradt, L., Levin, S.A., Leonard, N.E. (2011). Uninformed Individuals Promote Democratic Consensus in Animal Groups. Science 334, 1578-1580. doi:10.1126/science.1210280",
+        "url": "https://doi.org/10.1126/science.1210280"
+      }
+    ]
+  },
+  {
+    "t": "Untrained fish shift the school toward the majority’s target",
+    "g": 3,
+    "text": "<ul><li><b>Fish:</b> six trained to blue, five to preferred yellow; 0, 5, or 10 untrained fish added. 18 trials per condition.</li><li><b>Simulation:</b> four minority-preference strengths, \\(\\omega_2\\). </li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/couzin-model-fish-comparison.png",
+    "wide": true,
+    "photo": true,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Visibility determines which neighbors can supply information",
+    "g": 3,
+    "text": "<ul><li>Distance and neighbor rank are proxies for the information available to an animal.</li><li>A nearer fish can block a more distant one. Body orientation changes how much of a neighbor appears in the visual field.</li><li>The resulting sensory network can be directed.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/visual-network-candidates.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Strandburg-Peshkin, A., Twomey, C.R., Bode, N.W., Kao, A.B., Katz, Y., Ioannou, C.C., Rosenthal, S.B., Torney, C.J., Wu, H.S., Levin, S.A., Couzin, I.D. (2013). Visual sensory networks and effective information transfer in animal groups. Current Biology 23, R709-R711. doi:10.1016/j.cub.2013.07.059",
+        "url": "https://doi.org/10.1016/j.cub.2013.07.059"
+      }
+    ]
+  },
+  {
+    "t": "Different definitions of a neighbor produce different interaction networks",
+    "g": 3,
+    "text": "<ul><li><b>Metric:</b> every fish within a fixed distance—the shaded circle.</li><li><b>Topological:</b> a fixed number of nearest neighbors, regardless of distance.</li><li><b>Voronoi:</b> fish whose surrounding territories share a boundary with the focal fish’s territory.</li><li><b>Visual:</b> fish occupying more than a threshold angular area in the focal fish’s view, accounting for obstruction by other fish.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/visual-network-candidates.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Response times reveal how a change spreads through the school",
+    "g": 3,
+    "text": "<ul><li>Some fish were trained to swim toward a visual target; the others were untrained.</li><li>Each dot marks where a fish was when it responded. Color shows when it responded.</li><li>Black outlines identify the trained fish.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/visual-network-response.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Who a fish can see best explains when it responds",
+    "g": 3,
+    "text": "<ul><li><b>Test:</b> which model best explains when each fish responds?</li><li><b>Nonsocial:</b> responses depend on a constant rate, distance to the target, or target visibility.</li><li><b>Social:</b> responses also depend on other fish; the models differ in which fish count as neighbors.</li><li><b>Higher score = better support from the data.</b> Visual neighbors rank first; Voronoi neighbors rank second.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/visual-network-model-comparison.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A group can track objects an individual can’t",
+    "g": 3,
+    "text": "<ul><li>Berdahl and colleagues projected a moving light field onto a shallow tank.</li><li>Golden shiners naturally prefer darker regions. Larger groups tracked those regions more effectively.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/berdahl-environment-performance.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Berdahl, A., Torney, C.J., Ioannou, C.C., Faria, J.J., Couzin, I.D. (2013). Emergent Sensing of Complex Environments by Mobile Animal Groups. Science 339, 574-576. doi:10.1126/science.1225883",
+        "url": "https://doi.org/10.1126/science.1225883"
+      }
+    ]
+  },
+  {
+    "t": "Fish speed is related to light level",
+    "g": 3,
+    "text": "<ul><li>Fish swim faster in bright regions and slower in dark regions.</li><li>This explains changes in speed, but not steering toward shade.</li><li><i>Kinesis</i>: a change in speed in response to local light level.</li><li><i>Taxis</i>: movement biased toward or away from light, using information about the light <i>gradient</i>.</li><li><strong>Conclusion:</strong> Individual fish can’t track dark patches.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/berdahl-speed.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Fish respond more strongly to neighbors than to light gradients",
+    "g": 3,
+    "text": "<ul><li><b>Social vector:</b> sum of the vectors from a fish to its nearby neighbors.</li><li>Its magnitude is large when neighbors are concentrated on one side of the fish.</li><li><b>Blue:</b> correlation between acceleration and the social direction.</li><li><b>Red:</b> correlation between acceleration and the direction of increasing darkness.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/berdahl-social-versus-gradient.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Groups can track light by making multi-fish measurements",
+    "g": 3,
+    "text": "<ul><li>Two sides of a cohesive group sample different light levels. The brighter side moves faster.</li></ul><div class=\"math\">\\[\\dot\\vartheta=\\frac{v_{\\rm right}-v_{\\rm left}}d\\simeq-\\partial_\\perp v\\]</div><ul><li>The group curves toward the slower, darker side.</li><li>Group size sets the distance between measurements. Tracking depends on group width relative to the patch.</li></ul>",
+    "view": "sensing",
+    "mode": "",
+    "code": [
+      "collective-sensing"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Juvenile locusts march in bands; adults fly in swarms",
+    "g": 4,
+    "text": "<p><i>Schistocerca gregaria</i> · Desert locust</p><ul><li><b>Green:</b> raised alone; avoids others (<i>solitarious</i>).</li><li><b>Yellow and black:</b> raised crowded; seeks others (<i>gregarious</i>).</li><li>Same species. Crowding changes behavior and color.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/locust-phases.jpg",
+    "wide": false,
+    "photo": true,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Sayin, S., Couzin-Fuchs, E., Petelski, I., Günzel, Y., Salahshour, M., Lee, C., Graving, J.M., Li, L., Deussen, O., Sword, G.A., Couzin, I.D. (2025). The behavioral mechanisms governing collective motion in swarming locusts. Science 387, 995-1000. doi:10.1126/science.adq7832",
+        "url": "https://doi.org/10.1126/science.adq7832"
+      },
+      {
+        "label": "Buhl, J., Sumpter, D.J.T., Couzin, I.D., Hale, J.J., Despland, E., Miller, E.R., Simpson, S.J. (2006). From Disorder to Order in Marching Locusts. Science 312, 1402-1406. doi:10.1126/science.1125142",
+        "url": "https://doi.org/10.1126/science.1125142"
+      }
+    ],
+    "subtitle": "Locusts offer another collective system where we can perturb the system"
+  },
+  {
+    "t": "Starting to move and choosing a direction are distinct behaviors",
+    "g": 4,
+    "text": "<ul><li><b>120 locusts in a ring:</b> most travel in the same direction, while individuals stop and restart.</li><li><b>Two measurements:</b> the fraction walking and the agreement among their walking directions.</li><li>Sensory perturbations test what triggers walking and what guides direction.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "../media/collective-motion/locust-ring-experiment.mp4",
+    "meta": "",
+    "autoplay": true
+  },
+  {
+    "t": "Density-dependent collective marching (it takes two to tango)",
+    "g": 4,
+    "text": "<div><div class=\"math\">\\[m=\\frac{2}{\\pi N_{\\rm moving}}\\sum_i\\psi_i,\\qquad \\text{ordered: }|m|>0.3\\]</div><p class=\"small\">\\(\\psi_i\\): signed walking angle from the radial direction.</p></div><div><p>\\(m=+1\\): counterclockwise; \\(m=-1\\): clockwise.<br>\\(m\\approx0\\): no net alignment.</p><ul><li>Increasing number produces order.</li><li>Intermediate densities are bistable.</li></ul></div>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/locust-density-and-bistability.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Cannibalism provides an incentive to keep moving",
+    "g": 4,
+    "text": "<ul><li>Locusts bite one another from behind.</li><li><b>Perturbation:</b> reduce sensation in the abdomen.</li><li><b>Result:</b> walking decreases much more in groups than in isolated animals.</li><li>Contact from other locusts helps keep the group moving.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/bazazi-nerve-control.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Bazazi, S., Buhl, C., Hale, J.J., Anstey, M.L., Sword, G.A., Simpson, S.J., Couzin, I.D. (2008). Collective Motion and Cannibalism in Locust Migratory Bands. Current Biology 18, 735-739. doi:10.1016/j.cub.2008.04.035",
+        "url": "https://doi.org/10.1016/j.cub.2008.04.035"
+      }
+    ]
+  },
+  {
+    "t": "Contact from behind is especially effective at initiating movement",
+    "g": 4,
+    "text": "<ul><li>For a stationary locust, the probability of starting to move depends on where another animal makes contact.</li><li>Reducing abdominal sensation particularly weakens the response to contact from behind.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/bazazi-contact-direction.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Vision is needed to follow the marching band",
+    "g": 4,
+    "text": "<ul><li>Sayin and colleagues manipulated sensory input in wild marching bands in Kenya.</li><li>Blinded animals still moved, but their directions no longer followed the band.</li><li>Removing olfactory input or polarized vision did not produce the same loss of coordination.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/sayin-field-directions.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Virtual neighbors let us control the visual cues a locust receives",
+    "g": 4,
+    "text": "<ul><li>One real locust walks freely on a motorized ball that keeps it in the center.</li><li>A surrounding screen shows moving, computer-generated locusts.</li><li><b>Independent controls:</b> how many neighbors it sees and how closely their walking directions agree.</li><li><b>Measure:</b> whether the real locust follows the virtual band.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/sayin-vr.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A real locust walks among virtual neighbors",
+    "g": 4,
+    "text": "",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "embed": "https://www.youtube.com/embed/oBJnY4HKmeY?rel=0"
+  },
+  {
+    "t": "Directional coherence guides marching more strongly than density",
+    "g": 4,
+    "text": "<ul><li>A sparse virtual band can move coherently. A dense one can move in many directions.</li><li>The focal locust’s marching direction depended strongly on the coherence of the scene, with little additional density dependence across the tested range.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/sayin-order-density.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "The optomotor response does not explain collective marching",
+    "g": 4,
+    "text": "<p><b>Sol:</b> raised alone<br><b>Greg:</b> raised crowded</p><ul><li><b>A — Visual motion:</b> both turn with moving dots. Both have the optomotor reflex.</li><li><b>B — Virtual band:</b> Sol walks in different directions; Greg follows the band.</li><li><b>Sol responds in A, but not B:</b> the reflex alone cannot explain marching.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/sayin-optomotor-stacked.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Following animals ahead can coordinate marching",
+    "g": 4,
+    "text": "<ul><li>Virtual neighbors moving away from the focal locust produced strong following.</li><li>The animal’s trajectory depends on the bearings of neighbors ahead.</li><li>Coordinated headings can emerge from following these positions.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/sayin-pull.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Locusts choose one target when the alternatives are far apart",
+    "g": 4,
+    "text": "<ul><li>With two nearby targets, the locust often travels between them. As the targets separate, trajectories divide toward one or the other.</li><li>A vector average always points between equal targets. A decision process can instead select one.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/sayin-choice.png",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Starlings gather in large flocks before entering communal roosts",
+    "g": 5,
+    "text": "<p><i>Sturnus vulgaris</i></p><ul><li>Ground-foraging songbirds that gather in large flocks before entering communal roosts.</li><li>They are accomplished vocal mimics. Their coordinated flight gives a different view of how information spreads through an animal group.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/flocking/starling-photo.jpg",
+    "wide": false,
+    "photo": true,
+    "video": "",
+    "meta": "",
+    "citations": []
+  },
+  {
+    "t": "A turn travels across the flock at nearly constant speed",
+    "g": 5,
+    "text": "<ul><li>In starlings, velocity fluctuations are correlated across the flock. How quickly does a turn spread?</li><li><b>Distance grows nearly linearly with delay:</b> the turn travels at approximately constant speed.</li><li>Correlations tell us how far coordination extends. Delays tell us how fast a turn spreads.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/collective-motion/attanasi-propagation.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Attanasi, A., Cavagna, A., Del Castello, L., Giardina, I., Grigera, T.S., Jelić, A., Melillo, S., Parisi, L., Pohl, O., Shen, E., Viale, M. (2014). Information transfer and behavioural inertia in starling flocks. Nature Physics 10, 691-696. doi:10.1038/nphys3035",
+        "url": "https://doi.org/10.1038/nphys3035"
+      }
+    ]
+  },
+  {
+    "t": "Local alignment is faster than neighbor exchange",
+    "g": 6,
+    "text": "<ul><li>Mora and colleagues inferred local heading relaxation from the dynamics and measured network memory from changing neighbors.</li></ul><div class=\"math\">\\[\\tau_{\\rm relax}\\ll\\tau_{\\rm network}\\]</div><ul><li>There is time for local heading differences to relax while the neighborhood is approximately fixed.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/flocking/mora-2016-timescales.png",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Mora, T., Walczak, A.M., Del Castello, L., Ginelli, F., Melillo, S., Parisi, L., Viale, M., Cavagna, A., Giardina, I. (2016). Local equilibrium in bird flocks. Nature Physics 12, 1153-1157. doi:10.1038/nphys3846",
+        "url": "https://doi.org/10.1038/nphys3846"
+      }
+    ]
+  },
+  {
+    "t": "Small heading differences make alignment dynamics approximately linear",
+    "g": 6,
+    "text": "<ul><li>For a fixed neighborhood, a planar alignment model is:</li></ul><div class=\"math\">\\[\\dot\\vartheta_i=J_{\\rm align}\\sum_jw_{ij}\\sin(\\vartheta_j-\\vartheta_i)+\\xi_i\\]</div><ul><li>In a strongly aligned flock, the heading differences are small.</li></ul><div class=\"math\">\\[\\dot{\\delta\\vartheta}_i\\simeq J_{\\rm align}\\sum_jw_{ij}(\\delta\\vartheta_j-\\delta\\vartheta_i)+\\xi_i\\]</div>",
+    "view": "",
+    "mode": "",
+    "code": [
+      "network-modes"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Separate the neighbors’ headings from the bird’s own heading",
+    "g": 6,
+    "text": "<ul><li>\\(\\delta\\vartheta_i\\): bird \\(i\\)’s heading deviation from a common reference direction.</li><li>\\(w_{ij}\\): influence of bird \\(j\\) on bird \\(i\\). Sum over all birds; \\(w_{ii}=0\\).</li></ul><div class=\"math\">\\[\\dot{\\delta\\vartheta}_i=J_{\\rm align}\\sum_j w_{ij}(\\delta\\vartheta_j-\\delta\\vartheta_i)+\\xi_i\\]</div><div class=\"math\">\\[=J_{\\rm align}\\left[\\underbrace{\\sum_jw_{ij}\\delta\\vartheta_j}_{\\text{neighbors}}-\\underbrace{\\left(\\sum_jw_{ij}\\right)\\delta\\vartheta_i}_{\\text{bird }i}\\right]+\\xi_i\\]</div><ul><li>The same alignment rule, with the two contributions written separately.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [
+      "network-modes"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "The Laplacian collects these coefficients into a matrix",
+    "g": 6,
+    "text": "<ul><li>Three birds in a chain: \\(1\\leftrightarrow2\\leftrightarrow3\\), with unit weight on each link.</li></ul><div class=\"math\">\\[\\begin{pmatrix}\\dot{\\delta\\vartheta}_1\\\\\\dot{\\delta\\vartheta}_2\\\\\\dot{\\delta\\vartheta}_3\\end{pmatrix}=-J_{\\rm align}\\underbrace{\\begin{pmatrix}1&-1&0\\\\-1&2&-1\\\\0&-1&1\\end{pmatrix}}_{\\boldsymbol\\Lambda_{\\rm align}}\\begin{pmatrix}\\delta\\vartheta_1\\\\\\delta\\vartheta_2\\\\\\delta\\vartheta_3\\end{pmatrix}+\\boldsymbol\\xi\\]</div><ul><li>Diagonal: total weight of a bird’s neighbors. Off-diagonal: negative interaction weight.</li><li>Row 2 gives \\(\\dot{\\delta\\vartheta}_2=J_{\\rm align}(\\delta\\vartheta_1-2\\delta\\vartheta_2+\\delta\\vartheta_3)+\\xi_2\\).</li></ul><div class=\"math\">\\[\\dot{\\delta\\boldsymbol\\vartheta}=-J_{\\rm align}\\boldsymbol\\Lambda_{\\rm align}\\delta\\boldsymbol\\vartheta+\\boldsymbol\\xi\\]</div>",
+    "view": "",
+    "mode": "",
+    "code": [
+      "network-modes"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A mode is a heading pattern that keeps its shape as it relaxes",
+    "g": 6,
+    "text": "<div style=\"display:flex;align-items:center;justify-content:space-between;gap:24px\"><span>Each mode specifies one heading deviation per bird.</span><span>\\(\\boldsymbol\\Lambda_{\\rm align}\\mathbf u_\\alpha=\\lambda_\\alpha\\mathbf u_\\alpha\\)</span></div><p style=\"font-size:21px;color:var(--muted);margin:16px 0\">Dashed: reference heading. Gold: bird heading, \\(\\delta\\boldsymbol\\vartheta=\\epsilon\\mathbf u_\\alpha\\). Here \\(\\epsilon=12^\\circ\\).</p><table style=\"width:100%;border-collapse:collapse;text-align:center;font-size:23px\"><tr style=\"font-size:21px;color:var(--muted)\"><th>Mode</th><th>Birds 1, 2, 3</th><th>Eigenvalue</th><th style=\"text-align:left\">Heading pattern</th></tr><tr><td>\\((1,1,1)\\)</td><td><svg viewBox=\"0 0 270 92\" width=\"270\" height=\"92\" role=\"img\" aria-label=\"Bird headings for mode (1, 1, 1)\"><line x1=\"45\" y1=\"65\" x2=\"45\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"45\" y1=\"65\" x2=\"35.02023884074755\" y2=\"18.048915164777327\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"35.02023884074755,18.048915164777327 32.41652943607387,29.848097226937988 42.19800544341193,27.76898031876039\" fill=\"#f2b33d\"/><circle cx=\"45\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"45\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">1</text><line x1=\"135\" y1=\"65\" x2=\"135\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"135\" y1=\"65\" x2=\"125.02023884074755\" y2=\"18.048915164777327\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"125.02023884074755,18.048915164777327 122.41652943607387,29.848097226937988 132.19800544341194,27.76898031876039\" fill=\"#f2b33d\"/><circle cx=\"135\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"135\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">2</text><line x1=\"225\" y1=\"65\" x2=\"225\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"225\" y1=\"65\" x2=\"215.02023884074754\" y2=\"18.048915164777327\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"215.02023884074754,18.048915164777327 212.41652943607386,29.848097226937988 222.19800544341194,27.76898031876039\" fill=\"#f2b33d\"/><circle cx=\"225\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"225\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">3</text></svg></td><td>\\(0\\)</td><td style=\"text-align:left\">All birds turn together</td></tr><tr><td>\\((1,0,-1)\\)</td><td><svg viewBox=\"0 0 270 92\" width=\"270\" height=\"92\" role=\"img\" aria-label=\"Bird headings for mode (1, 0, -1)\"><line x1=\"45\" y1=\"65\" x2=\"45\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"45\" y1=\"65\" x2=\"35.02023884074755\" y2=\"18.048915164777327\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"35.02023884074755,18.048915164777327 32.41652943607387,29.848097226937988 42.19800544341193,27.76898031876039\" fill=\"#f2b33d\"/><circle cx=\"45\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"45\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">1</text><line x1=\"135\" y1=\"65\" x2=\"135\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"135\" y1=\"65\" x2=\"135.0\" y2=\"17.0\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"135.0,17.0 130.0,28.0 140.0,28.0\" fill=\"#f2b33d\"/><circle cx=\"135\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"135\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">2</text><line x1=\"225\" y1=\"65\" x2=\"225\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"225\" y1=\"65\" x2=\"234.97976115925246\" y2=\"18.048915164777327\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"234.97976115925246,18.048915164777327 227.80199455658806,27.76898031876039 237.58347056392614,29.848097226937988\" fill=\"#f2b33d\"/><circle cx=\"225\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"225\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">3</text></svg></td><td>\\(1\\)</td><td style=\"text-align:left\">Heading changes across the chain</td></tr><tr><td>\\((1,-2,1)\\)</td><td><svg viewBox=\"0 0 270 92\" width=\"270\" height=\"92\" role=\"img\" aria-label=\"Bird headings for mode (1, -2, 1)\"><line x1=\"45\" y1=\"65\" x2=\"45\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"45\" y1=\"65\" x2=\"35.02023884074755\" y2=\"18.048915164777327\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"35.02023884074755,18.048915164777327 32.41652943607387,29.848097226937988 42.19800544341193,27.76898031876039\" fill=\"#f2b33d\"/><circle cx=\"45\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"45\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">1</text><line x1=\"135\" y1=\"65\" x2=\"135\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"135\" y1=\"65\" x2=\"154.52335886763842\" y2=\"21.149818033155157\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"154.52335886763842,21.149818033155157 145.4815285055916,29.165134851844766 154.6169830820176,33.23250128260277\" fill=\"#f2b33d\"/><circle cx=\"135\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"135\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">2</text><line x1=\"225\" y1=\"65\" x2=\"225\" y2=\"12\" stroke=\"#b6ad9b\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><line x1=\"225\" y1=\"65\" x2=\"215.02023884074754\" y2=\"18.048915164777327\" stroke=\"#f2b33d\" stroke-width=\"4\"/><polygon points=\"215.02023884074754,18.048915164777327 212.41652943607386,29.848097226937988 222.19800544341194,27.76898031876039\" fill=\"#f2b33d\"/><circle cx=\"225\" cy=\"65\" r=\"3\" fill=\"#f1ece2\"/><text x=\"225\" y=\"87\" fill=\"#b6ad9b\" font-size=\"15\" text-anchor=\"middle\">3</text></svg></td><td>\\(3\\)</td><td style=\"text-align:left\">Middle bird opposes both neighbors</td></tr></table><ul style=\"margin-top:12px\"><li>Uniform rotation creates no disagreement, so alignment does not restore it.</li><li>These three modes can be combined to describe any small heading perturbation.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [
+      "network-modes"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Each mode reduces the coupled equations to one decay equation",
+    "g": 6,
+    "text": "<ul><li>Follow one mode: \\(\\delta\\boldsymbol\\vartheta(t)=c_\\alpha(t)\\mathbf u_\\alpha\\). Set noise to zero to calculate its relaxation.</li></ul><div class=\"math\">\\[\\dot c_\\alpha\\mathbf u_\\alpha=-J_{\\rm align}c_\\alpha\\boldsymbol\\Lambda_{\\rm align}\\mathbf u_\\alpha=-J_{\\rm align}\\lambda_\\alpha c_\\alpha\\mathbf u_\\alpha\\]</div><div class=\"math\">\\[\\dot c_\\alpha=-J_{\\rm align}\\lambda_\\alpha c_\\alpha\\quad\\Longrightarrow\\quad c_\\alpha(t)=c_\\alpha(0)e^{-J_{\\rm align}\\lambda_\\alpha t}\\]</div><div class=\"math\">\\[\\tau_\\alpha=\\frac{1}{J_{\\rm align}\\lambda_\\alpha}\\qquad(\\lambda_\\alpha>0)\\]</div><ul><li>The middle-against-ends pattern decays three times faster than the gradual pattern in the three-bird example.</li></ul>",
+    "view": "",
+    "mode": "",
+    "code": [
+      "network-modes"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Local alignment can be fast while a broad heading pattern relaxes slowly",
+    "g": 6,
+    "text": "<ul><li>Example: birds interact with their two neighbors on a ring.</li><li>A smooth heading pattern produces small differences between neighbors and relaxes slowly.</li><li>An alternating pattern produces large differences and relaxes quickly.</li></ul><div class=\"math\">\\[\\text{Decay rate}=J_{\\rm align}\\lambda_\\alpha\\]</div><ul><li>Local relaxation and relaxation across the whole flock are different time scales.</li></ul>",
+    "view": "network",
+    "mode": "modes",
+    "code": [
+      "network-modes"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Fit the change between frames, using the decay we just derived",
+    "text": "<ul><li>The camera records headings at times \\(t\\) and \\(t+\\Delta t\\). Project them onto a mode to measure \\(c_\\alpha(t)\\) and \\(c_\\alpha(t+\\Delta t)\\).</li></ul><div class=\"math\">\\[\\underbrace{\\mathbb E[c_\\alpha(t+\\Delta t)\\mid c_\\alpha(t)]}_{\\text{predicted amplitude at the next frame}}=c_\\alpha(t)e^{-\\Delta t/\\tau_\\alpha},\\qquad \\tau_\\alpha^{-1}=J_{\\rm align}\\lambda_\\alpha\\]</div><ul><li>A short-time (Euler) fit replaces the exponential by a straight line:</li></ul><div class=\"math\">\\[e^{-\\Delta t/\\tau_\\alpha}\\simeq1-\\frac{\\Delta t}{\\tau_\\alpha}\\qquad\\text{only when }\\Delta t\\ll\\tau_\\alpha\\]</div><ul><li>If a mode relaxes substantially between frames, that approximation changes the inferred interaction.</li></ul>",
+    "g": 6,
+    "fig": "",
+    "view": "",
+    "mode": "",
+    "code": [
+      "finite-time-inference"
+    ],
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Noise gives a spread around the predicted heading change",
+    "text": "<ul><li>For a positive mode, the next amplitude is the predicted mean plus a random contribution:</li></ul><div class=\"math\">\\[c_\\alpha(t+\\Delta t)=c_\\alpha(t)e^{-\\Delta t/\\tau_\\alpha}+\\text{Gaussian noise}\\]</div><div class=\"math\">\\[\\underbrace{\\operatorname{Var}[\\text{noise}]}_{\\text{spread between repeated observations}}=D_{\\rm ang}\\tau_\\alpha\\left(1-e^{-2\\Delta t/\\tau_\\alpha}\\right)\\]</div><ul><li>\\(D_{\\rm ang}\\) is angular noise strength. At short intervals, the variance is \\(2D_{\\rm ang}\\Delta t\\); at long intervals, it approaches \\(D_{\\rm ang}\\tau_\\alpha\\).</li><li>Fit the interaction weights, alignment rate, and noise strength by making the observed frame-to-frame changes most probable.</li><li>Both the predicted change and its expected scatter enter the fit.</li></ul>",
+    "g": 6,
+    "fig": "",
+    "view": "",
+    "mode": "",
+    "code": [
+      "finite-time-inference"
+    ],
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "This flock aligns over roughly 6–8 neighbors",
+    "text": "<ul><li><strong>One starling flock</strong>, analyzed at different intervals between frames.</li><li><strong>Red:</strong> the full relaxation model gives \\(n_c\\approx3–4\\), equivalent to roughly <strong>6–8 equally weighted neighbors</strong>.</li><li><strong>Green:</strong> the short-time approximation overestimates the range when frames are skipped.</li></ul><p class=\"small\" style=\"margin-top:24px\">\\(n_c\\) measures how quickly influence fades with neighbor rank.</p>",
+    "g": 6,
+    "fig": "../media/collective-motion/mora-natural-flock-sampling.png",
+    "view": "",
+    "mode": "",
+    "code": [],
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Our model predicts diffusion, but starling turns travel as waves",
+    "text": "<ul><li>The previous alignment model, applied to a chain of neighbors, predicts <strong>diffusive spreading</strong>:</li></ul><div class=\"math\">\\[\\partial_t\\delta\\vartheta=D_\\vartheta\\partial_x^2\\delta\\vartheta\\]</div><div class=\"math\">\\[\\text{distance reached}\\propto\\sqrt{t}\\]</div><ul><li><strong>Starling measurements:</strong> the distance reached grows approximately linearly with time during the turn’s initial spread.</li><li><strong>A nearly constant propagation speed—a wave.</strong></li></ul>",
+    "g": 7,
+    "fig": "../media/collective-motion/attanasi-turn-distance.png",
+    "view": "",
+    "mode": "",
+    "wide": false,
+    "code": [
+      "propagation-step"
+    ],
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A bird’s turning rate persists while its neighbors respond",
+    "text": "<ul><li>In the previous model, heading differences set the turning rate immediately.</li><li>In this model, neighbors change a bird’s turning rate; damping reduces it.</li></ul><div class=\"math\">\\[\\underbrace{\\partial_t^2\\delta\\vartheta}_{\\text{angular acceleration}}=\\underbrace{c_s^2\\partial_x^2\\delta\\vartheta}_{\\text{response to neighbors}}-\\underbrace{\\gamma_{\\rm turn}\\partial_t\\delta\\vartheta}_{\\text{damping of turning}}\\]</div><table style=\"width:100%;border-spacing:14px;font-size:24px\"><tr><td>Without neighbor input</td><td>\\(\\partial_t\\delta\\vartheta\\propto e^{-\\gamma_{\\rm turn}t}\\)</td><td>A bird’s turning rate dies away gradually.</td></tr><tr><td>Without damping</td><td>\\(\\partial_t^2\\delta\\vartheta=c_s^2\\partial_x^2\\delta\\vartheta\\)</td><td>A heading disturbance travels as a wave.</td></tr></table><ul><li>\\(c_s\\): undamped signal speed. \\(\\gamma_{\\rm turn}\\): damping rate. This persistence is <strong>behavioral inertia</strong>.</li></ul>",
+    "g": 7,
+    "fig": "",
+    "view": "",
+    "mode": "",
+    "wide": true,
+    "code": [
+      "propagation-step"
+    ],
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "The wave solution gives both a speed and a decay time",
+    "text": "<ul><li>For a sinusoidal heading pattern, \\(\\delta\\vartheta\\propto e^{i(kx-\\omega t)}\\), with \\(k=2\\pi/\\text{wavelength}\\):</li></ul><div class=\"math\">\\[-\\omega^2-i\\gamma_{\\rm turn}\\omega=-c_s^2k^2\\quad\\Longrightarrow\\quad\\omega_\\pm=-\\frac{i\\gamma_{\\rm turn}}2\\pm\\sqrt{c_s^2k^2-\\frac{\\gamma_{\\rm turn}^2}{4}}\\]</div><ul><li>When damping is weak, \\(\\gamma_{\\rm turn}\\ll2c_s|k|\\), the real heading pattern is approximately</li></ul><div class=\"math\">\\[\\delta\\vartheta(x,t)\\simeq\\underbrace{A_0e^{-\\gamma_{\\rm turn}t/2}}_{\\text{shrinking amplitude}}\\qquad\\underbrace{\\cos[k(x\\mp c_st)]}_{\\text{pattern moving at }c_s}\\]</div><ul><li><strong>Propagation speed:</strong> \\(c_s\\). <strong>Amplitude decay time:</strong> \\(2/\\gamma_{\\rm turn}\\).</li></ul>",
+    "g": 7,
+    "fig": "",
+    "view": "",
+    "mode": "",
+    "wide": true,
+    "code": [
+      "wave-dispersion"
+    ],
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Persistent turning sends the disturbance outward",
+    "text": "<ul><li><strong>Same initial heading change:</strong> diffusion broadens it; turning dynamics produces two traveling signals.</li><li>Color shows heading deviation. Sloping bands show propagation; increasing damping weakens them.</li></ul>",
+    "g": 7,
+    "fig": "",
+    "view": "wave",
+    "mode": "spacetime",
+    "wide": true,
+    "code": [
+      "propagation-step"
+    ],
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Damping would weaken the turn as it crosses the flock",
+    "text": "<ul><li>A wave can travel but still fade before it reaches the other side of the flock.</li></ul><div class=\"math\">\\[\\frac{A(L)}{A_0}=e^{-t_{\\rm cross}/\\tau_{\\rm decay}}\\]</div><p>\\(t_{\\rm cross}=L/c_s\\): time to cross the flock.<br>\\(\\tau_{\\rm decay}=2/\\gamma_{\\rm turn}\\): amplitude decay time.</p><ul><li><strong>Strong damping predicts weaker turns in birds reached later.</strong></li><li>Peak turning accelerations test whether that weakening actually occurs.</li></ul>",
+    "g": 7,
+    "fig": "",
+    "view": "turn-reach",
+    "mode": "",
+    "wide": false,
+    "code": [
+      "turn-reach"
+    ],
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Starling turns cross the flock with little loss of strength",
+    "text": "<ul><li><strong>Red birds turn first, green birds next, blue birds last.</strong> The curves show their radial accelerations.</li><li>Later birds turn almost as strongly. The inset shows little decline in peak acceleration across the turning order.</li><li><strong>The turn crosses the flock before it fades.</strong> Together with the constant propagation speed, this is the behavior of a weakly damped wave.</li><li>Local interactions can coordinate a whole-flock turn.</li></ul>",
+    "g": 7,
+    "fig": "../media/collective-motion/attanasi-turn-amplitude.png",
+    "view": "",
+    "mode": "",
+    "wide": false,
+    "code": [],
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Fly crowds let us predict density without tracking every interaction",
+    "text": "<h3><i>Drosophila melanogaster</i></h3><ul><li>Small flies that feed and breed on fermenting fruit; yeasts supply much of their food.</li><li>They walk, fly, court, and respond to temperature and to other flies.</li><li>Here we want to predict <strong>where the crowd accumulates</strong>, rather than each animal’s trajectory.</li></ul>",
+    "g": 8,
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/drosophila-melanogaster-closeup.jpg",
+    "wide": false,
+    "photo": true,
+    "video": "",
+    "meta": "",
+    "citations": [
+      {
+        "label": "Méndez-Valderrama, J.F., Kinkhabwala, Y.A., Silver, J., Cohen, I., Arias, T.A. (2018). Density-functional fluctuation theory of crowds. Nature Communications 9, 3538. doi:10.1038/s41467-018-05750-z",
+        "url": "https://doi.org/10.1038/s41467-018-05750-z"
+      }
+    ]
+  },
+  {
+    "t": "Heat drives flies toward one end of the chamber",
+    "text": "<div class=\"fly-apparatus\"><img src=\"../media/flies-dfft-chamber.png\" alt=\"Published overhead view of walking flies in spatial bins, with heat applied at the right end\"></div><div class=\"density-cards\"><article><h3>A walking crowd</h3><p>A 1.5 mm-high chamber prevents flying and climbing over other flies.</p></article><article><h3>A controlled preference</h3><p>Heating the right end makes the left end more favorable.</p></article><article><h3>Two effects to separate</h3><p>Temperature attracts flies to some regions; crowding limits how many accumulate there.</p></article></div>",
+    "g": 8,
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Repeated counts measure the fluctuations in local density",
+    "text": "<ul><li>Divide the chamber into fixed spatial bins.</li><li>Count the flies in each bin in every recorded frame.</li></ul><div class=\"math\">\\[N_b(t)=\\text{count in bin }b\\]</div><div class=\"math\">\\[p_b(n)=\\Pr[N_b=n]\\]</div><ul><li>The histogram records how often a bin is empty, occupied, or crowded.</li></ul>",
+    "g": 8,
+    "view": "fly-counts",
+    "mode": "replay",
+    "code": [
+      "fly-load"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Crowded bins fluctuate less than independent flies would",
+    "text": "<ul><li>Independent flies give an approximately <strong>Poisson</strong> count in a small bin.</li></ul><div class=\"math\">\\[\\operatorname{Var}(N_b)\\simeq\\langle N_b\\rangle\\]</div><ul><li>Compare distributions with the <strong>same measured mean</strong>.</li><li>The crowded bin has fewer very low and very high counts. An interaction model has to explain this narrowing.</li></ul>",
+    "g": 8,
+    "view": "fly-counts",
+    "mode": "baseline",
+    "code": [
+      "fly-load",
+      "independent-counts"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "One count law separates location preference from crowding",
+    "text": "<div class=\"math\">\\[p_b(n)=\\frac{e^{-f_n-(V_b-\\mu_{\\rm occ})n}}{\\mathcal Z_b\\,n!}\\]</div><table class=\"comparison compact-terms\"><tr><td>\\(V_b\\)</td><td><strong>Environmental potential.</strong> Lower values favor this location.</td></tr><tr><td>\\(f_n\\)</td><td><strong>Crowding cost</strong> for \\(n\\) flies, the same in every bin.</td></tr><tr><td>\\(\\mu_{\\rm occ}\\)</td><td>Sets the mean total population.</td></tr></table><p class=\"small\">\\(\\mathcal Z_b\\) normalizes the probabilities; \\(n!\\) is the independent-particle counting factor.</p>",
+    "g": 8,
+    "view": "fly-counts",
+    "mode": "fit",
+    "code": [
+      "count-law",
+      "dfft-fit"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Different locations reveal the same crowding cost",
+    "text": "<div class=\"math\">\\[-\\ln[n!p_b(n)]=f_n+(V_b-\\mu_{\\rm occ})n+\\ln\\mathcal Z_b\\]</div><ul><li>Location preference changes the slope; normalization changes the vertical offset.</li><li>Subtract those straight-line terms. The remaining <strong>curvature</strong> is the crowding cost.</li><li>The measured curves approximately collapse onto one function.</li></ul>",
+    "g": 8,
+    "view": "collapse",
+    "mode": "",
+    "code": [
+      "pseudo-free-energy",
+      "dfft-fit"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Use two flies to predict a crowd of 189",
+    "text": "<table class=\"comparison transfer-plan\"><tr><th>Measure</th><th>Learn</th></tr><tr><td>Crowded rectangle</td><td>The crowding cost</td></tr><tr><td><strong>Two flies</strong> in the C-shaped chamber</td><td>Where flies prefer to spend time</td></tr><tr><td><strong>189 flies</strong> in that chamber</td><td>Test the prediction</td></tr></table><ul><li>Keep the inferred crowding cost fixed. Change the geometry and the population.</li></ul>",
+    "g": 9,
+    "view": "transfer",
+    "mode": "sparse",
+    "code": [
+      "dfft-transfer"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Crowding spreads flies out of the most favorable regions",
+    "text": "<ul><li><strong>Same chamber, same total: 189 flies.</strong> Preference alone puts too many flies in the favored bins.</li><li>Adding the transferred crowding cost brings the predicted distribution close to the measurement.</li></ul>",
+    "g": 9,
+    "view": "transfer",
+    "mode": "comparison",
+    "code": [
+      "dfft-transfer"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Crowding improves predictions in two new chambers",
+    "text": "<ul><li>Each point is one spatial bin. Accurate predictions lie on the diagonal.</li><li>The crowding cost reduces the mean-density error by roughly <strong>a factor of three</strong>.</li></ul><table class=\"comparison compact-terms\"><tr><th>RMSE<br>(flies/bin)</th><th>Preference only</th><th>With crowding</th></tr><tr><td>C-shaped</td><td>3.66</td><td>1.20</td></tr><tr><td>Square</td><td>1.98</td><td>0.78</td></tr></table>",
+    "g": 9,
+    "view": "transfer",
+    "mode": "scatter",
+    "code": [
+      "dfft-transfer",
+      "dfft-square-test"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A density field replaces the list of animal positions",
+    "text": "<div class=\"math\">\\[\\rho(\\mathbf x_b,t)\\simeq\\frac{N_b(t)}{A_b}\\]</div><ul><li>\\(A_b\\) is the area of bin \\(b\\); density has units of flies per area.</li><li>Coarse graining keeps spatial variation and discards individual identities.</li></ul><div class=\"math\">\\[\\sum_bN_b=N\\quad\\longrightarrow\\quad\\int\\rho(\\mathbf x,t)\\,d^2x=N\\]</div>",
+    "g": 10,
+    "view": "density-field",
+    "mode": "",
+    "code": [
+      "fly-load",
+      "density-functional"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A density functional assigns a cost to the whole density profile",
+    "text": "<p>A <strong>functional</strong> assigns one cost to an entire density profile \\(\\rho(\\mathbf x)\\).</p><div class=\"math\">\\[\\mathcal G_{\\rm occ}[\\rho]=\\int\\!\\left[\\underbrace{\\rho\\!\\left(\\ln\\frac{\\rho}{\\rho_{\\rm ref}}-1\\right)}_{\\text{counting entropy}}+\\underbrace{f_{\\rm loc}(\\rho)}_{\\text{crowding}}+\\underbrace{V_{\\rm env}(\\mathbf x)\\rho}_{\\text{environment}}\\right]d^2x\\]</div><div class=\"density-cards\"><article><h3>Counting entropy</h3><p>The \\(n!\\) counting factor favors spreading animals out.</p></article><article><h3>Crowding</h3><p>\\(f_n\\simeq A_b f_{\\rm loc}(\\rho)\\): the bin cost becomes a local cost per area.</p></article><article><h3>Environment</h3><p>\\(V_{\\rm env}(\\mathbf x)\\) is the location cost \\(V_b\\), now written as a field.</p></article></div><p class=\"small\" style=\"margin-top:24px\">\\(\\rho_{\\rm ref}\\) is a fixed reference density that makes the logarithm dimensionless.</p>",
+    "g": 10,
+    "view": "",
+    "mode": "",
+    "code": [
+      "density-functional"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "At the predicted density, moving one fly cannot lower the cost",
+    "text": "<p>Minimize \\(\\mathcal G_{\\rm occ}\\) while keeping the total number of flies fixed:</p><div class=\"math\">\\[\\frac{\\delta\\mathcal G_{\\rm occ}}{\\delta\\rho(\\mathbf x)}=\\mu_{\\rm occ}\\]</div><div class=\"math\">\\[\\underbrace{\\ln\\frac{\\rho}{\\rho_{\\rm ref}}}_{\\text{counting}}+\\underbrace{f_{\\rm loc}^{\\prime}(\\rho)}_{\\text{extra crowding cost}}+\\underbrace{V_{\\rm env}(\\mathbf x)}_{\\text{location cost}}=\\mu_{\\rm occ}\\]</div><ul><li>The derivative is the cost of adding density at one location. It must be the same everywhere.</li><li>A favorable location has low \\(V_{\\rm env}\\). It fills until the extra crowding and counting costs balance that advantage.</li></ul>",
+    "g": 10,
+    "view": "",
+    "mode": "",
+    "code": [
+      "density-stationarity"
+    ],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "A growing crowding cost flattens the density profile",
+    "text": "<p>A simple example:</p><div class=\"math\">\\[f_{\\rm loc}(\\rho)=\\frac{g}{2}\\rho^2,\\qquad g\\geq0\\]</div><div class=\"math\">\\[\\ln\\frac{\\rho}{\\rho_{\\rm ref}}+g\\rho+V_{\\rm env}=\\mu_{\\rm occ}\\]</div><ul><li>The left side of the chamber is more favorable.</li><li>Increasing \\(g\\) moves animals out of the crowded end.</li><li>The total population stays fixed.</li></ul>",
+    "g": 10,
+    "view": "stationarity",
+    "mode": "",
+    "code": [
+      "density-stationarity"
+    ],
+    "fig": "",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "Density changes when animals flow into or out of a region",
+    "text": "<div class=\"math\">\\[\\frac{\\partial\\rho}{\\partial t}+\\nabla\\!\\cdot\\mathbf j=0\\]</div><ul><li>\\(\\mathbf j(\\mathbf x,t)\\) is the <strong>number current</strong>: the flow of animals per unit width and time.</li><li>More flow out than in makes the local density fall.</li><li>Conservation gives this equation. The animals’ motion determines the current.</li></ul>",
+    "g": 10,
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "../media/density-current.svg",
+    "wide": false,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  },
+  {
+    "t": "The right interaction model depends on what we want to predict",
+    "text": "<table class=\"comparison results-table\"><tr><th>System</th><th>What the experiments taught us</th></tr><tr><td>Fish</td><td>Neighbors’ positions, speeds, and headings constrain movement; interactions let groups make choices and sense their environment.</td></tr><tr><td>Locusts</td><td>Sensory interventions distinguish cues that initiate walking from cues that coordinate direction.</td></tr><tr><td>Starlings</td><td>Local alignment is fast, and turns cross the flock as waves with little loss of strength.</td></tr><tr><td>Flies</td><td>Count fluctuations reveal a crowding cost that predicts density in a new environment.</td></tr></table><p class=\"intro-conclusion\">We can predict where a crowd accumulates without reconstructing every animal’s movement rule.</p>",
+    "g": 11,
+    "view": "",
+    "mode": "",
+    "code": [],
+    "fig": "",
+    "wide": true,
+    "photo": false,
+    "video": "",
+    "meta": ""
+  }
+];
+
+// SCIENCE-BEGIN · Deterministic functions checked against the Python companion.
+const Science={
+ turnReach(distance,speed,damping){return distance.map(x=>Math.exp(-damping*x/(2*speed)));},
+ neighbors(p,focal,count=10){if(count<1||count>=p.length)throw new Error('Neighbor count must be between 1 and N-1.');return p.map((r,i)=>({i,d:i===focal?Infinity:r.reduce((a,x,j)=>a+(x-p[focal][j])**2,0)})).sort((a,b)=>a.d-b.d||a.i-b.i).slice(0,count).map(r=>r.i);},
+ relaxation(angle,target,dt,tauRelax){if(tauRelax<=0||dt<0)throw new Error('Relaxation time must be positive and dt nonnegative.');return target+(angle-target)*Math.exp(-dt/tauRelax);},
+ tracking(tauRelax=.2,tauNetwork=3,dt=.01){if(tauNetwork<=0||dt<=0)throw new Error('Exchange interval and time step must be positive.');let targets=[0,.35,-.25,.3,-.35,.2,0],steps=Math.round(7*tauNetwork/dt),time=[],angle=[0],target=[];for(let i=0;i<=steps;i++){let t=i*dt;time.push(t);target.push(targets[Math.min(Math.floor(t/tauNetwork+1e-9),6)]);if(i<steps)angle.push(this.relaxation(angle[i],target[i],dt,tauRelax));}return{time,angle,target};},
+ norm:a=>Math.hypot(...a),
+ order(p,v){let pp=[],vv=[],s=[];for(let i=0;i<v.length;i++){let z=Math.hypot(...v[i]);if(z>1e-9&&v[i].every(Number.isFinite)){pp.push(p[i]);vv.push(v[i]);s.push(z);}}let N=s.length;if(!N)return{phi:NaN,phi_v:NaN,rotation:NaN,count:0};let dim=p[0].length,mean=Array(dim).fill(0),sumv=Array(dim).fill(0),center=Array(dim).fill(0);for(let i=0;i<N;i++)for(let j=0;j<dim;j++){mean[j]+=vv[i][j]/s[i]/N;sumv[j]+=vv[i][j];center[j]+=pp[i][j]/N;}let rot=dim===2?0:[0,0,0];for(let i=0;i<N;i++){let r=pp[i].map((x,j)=>x-center[j]),rr=Math.max(Math.hypot(...r),1e-12),e=vv[i].map(x=>x/s[i]);r=r.map(x=>x/rr);if(dim===2)rot+=(r[0]*e[1]-r[1]*e[0])/N;else{rot[0]+=(r[1]*e[2]-r[2]*e[1])/N;rot[1]+=(r[2]*e[0]-r[0]*e[2])/N;rot[2]+=(r[0]*e[1]-r[1]*e[0])/N;}}return{phi:Math.hypot(...mean),phi_v:Math.hypot(...sumv)/s.reduce((a,b)=>a+b,0),rotation:dim===2?Math.abs(rot):Math.hypot(...rot),count:N};},
+ body(d,v){let z=Math.max(Math.hypot(...v),1e-12),e=v.map(x=>x/z);return[d[0]*e[0]+d[1]*e[1],-d[0]*e[1]+d[1]*e[0]];},
+ wrap:a=>Math.atan2(Math.sin(a),Math.cos(a)),
+ rule(x,y,delta,alignment=1,attraction=1,repulsion=1){let r=Math.max(Math.hypot(x,y),1e-9),l=y/r;return[alignment*Math.sin(delta)+attraction*l-repulsion*l*Math.exp(-((r/35)**2)),40*Math.tanh((r-55)/45)*x/r];},
+ probabilities(f,V,mu=0){return V.map(v=>{let lf=0;let lw=f.map((a,n)=>{if(n>1)lf+=Math.log(n);return-a-(v-mu)*n-lf;});let m=Math.max(...lw),w=lw.map(x=>Math.exp(x-m)),z=w.reduce((a,b)=>a+b,0);return w.map(x=>x/z);});},
+ means(f,V,mu=0){return this.probabilities(f,V,mu).map(p=>p.reduce((a,b,n)=>a+b*n,0));},
+ total(f,V,N){let lo=-60,hi=60;for(let k=0;k<90;k++){let m=(lo+hi)/2;if(this.means(f,V,m).reduce((a,b)=>a+b,0)<N)lo=m;else hi=m;}let mu=(lo+hi)/2;return{means:this.means(f,V,mu),mu};},
+ propagation(angle,rate,dt,dx,model='wave',diffusivity=1,c=2,damping=.3){let n=angle.length,lap=angle.map((x,i)=>(angle[(i+1)%n]-2*x+angle[(i+n-1)%n])/dx**2);if(model==='diffusion')return[angle.map((x,i)=>x+dt*diffusivity*lap[i]),rate.map(()=>0)];let v=rate.map((x,i)=>(x+dt*c*c*lap[i])/(1+damping*dt));return[angle.map((x,i)=>x+dt*v[i]),v];},
+ pair(p,h,s,t,dt,mode){let e=h.map(a=>[Math.cos(a),Math.sin(a)]),b=this.body(p[0].map((x,j)=>x-p[1][j]),e[1].map(x=>x*s[1])),delta=this.wrap(h[0]-h[1]),w0=.28*Math.sin(.7*t)+.12*Math.sin(1.3*t),w1=mode==='alignment'?2*Math.sin(delta):2*Math.atan2(b[1],b[0]);let sn=[50,Math.min(100,Math.max(10,s[1]+dt*(.7*(b[0]-55)-1.8*(s[1]-50))))],hn=[h[0]+dt*w0,h[1]+dt*w1],pn=p.map((a,i)=>[a[0]+dt*sn[i]*Math.cos(hn[i]),a[1]+dt*sn[i]*Math.sin(hn[i])]);return[pn,hn,sn];},
+ functional(rho,V,area=1,crowding=1){let environment=area*rho.reduce((a,r,i)=>a+r*V[i],0),interaction=.5*area*crowding*rho.reduce((a,r)=>a+r*r,0);return{environment,interaction,total:environment+interaction};},
+ delay(first,second,maxlag){let center=a=>{let m=a[0].map((_,j)=>a.reduce((s,r)=>s+r[j],0)/a.length);return a.map(r=>r.map((x,j)=>x-m[j]));};let a=center(first),b=center(second),scores=[];for(let l=-maxlag;l<=maxlag;l++){let sum=0,aa=0,bb=0;for(let t=Math.max(0,-l);t<Math.min(a.length,b.length-l);t++)for(let j=0;j<a[0].length;j++){sum+=a[t][j]*b[t+l][j];aa+=a[t][j]**2;bb+=b[t+l][j]**2;}scores.push(aa*bb>0?sum/Math.sqrt(aa*bb):0);}let index=scores.indexOf(Math.max(...scores));return{lag:index-maxlag,score:scores[index],scores};}
+};
+Object.assign(Science,{
+ triplet(responses,coefficient=.5){return responses[0].map((_,j)=>coefficient*responses.reduce((s,r)=>s+r[j],0));},
+ informed(heading,fraction=.1,preference=1,alignment=1,dt=.01){let c=heading.reduce((s,h)=>s+Math.cos(h),0)/heading.length,ss=heading.reduce((s,h)=>s+Math.sin(h),0)/heading.length,n=Math.round(fraction*heading.length);return heading.map((h,i)=>h+dt*(alignment*(ss*Math.cos(h)-c*Math.sin(h))-(i<n?preference*Math.sin(h):0)));},
+ light(x,y,t){let cx=15*Math.sin(t/35),cy=10*Math.cos(t/40);return 1-.9*Math.exp(-((x-cx)**2+(y-cy)**2)/(2*22**2));},
+ sensing(state,t,dt=.02,separation=12,gain=4){let[x,y,h]=state,nx=-Math.sin(h),ny=Math.cos(h),vl=2+gain*this.light(x+separation*nx/2,y+separation*ny/2,t),vr=2+gain*this.light(x-separation*nx/2,y-separation*ny/2,t),v=(vl+vr)/2;return[x+dt*v*Math.cos(h),y+dt*v*Math.sin(h),h+dt*(vr-vl)/separation];},
+ landscape(a=.6,b=1,noise=.04){let m=Array.from({length:401},(_,i)=>-1+i*.005),u=m.map(x=>-.5*a*x*x+b*x**4/4),umin=Math.min(...u),w=u.map(x=>Math.exp(-(x-umin)/noise)),z=w.reduce((s,x)=>s+x,0)*.005;return[m,u,w.map(x=>x/z)];},
+ choice(angle,beta=.7,sharpness=4){return angle.map(a=>-Math.exp(sharpness*Math.cos(a-beta))-Math.exp(sharpness*Math.cos(a+beta)));},
+ kernel(size=24,rate=1,interval=.5){return Array.from({length:size},(_,j)=>{let s=0;for(let k=0;k<size;k++)s+=Math.exp(-rate*4*Math.sin(Math.PI*k/size)**2*interval)*Math.cos(2*Math.PI*k*j/size);return s/size;});},
+ canonical(total=6,V=[0,0,0],g=.4){let states=[],lw=[],fact=[0];for(let i=1;i<=total;i++)fact[i]=fact[i-1]+Math.log(i);for(let a=0;a<=total;a++)for(let b=0;b<=total-a;b++){let n=[a,b,total-a-b];states.push(n);lw.push(-n.reduce((s,x,j)=>s+.5*g*x*(x-1)+x*V[j]+fact[x],0));}let top=Math.max(...lw),w=lw.map(x=>Math.exp(x-top)),z=w.reduce((s,x)=>s+x,0);w=w.map(x=>x/z);let mean=[0,0,0],cov=Array.from({length:3},()=>[0,0,0]);states.forEach((n,i)=>n.forEach((v,j)=>mean[j]+=w[i]*v));states.forEach((n,i)=>{for(let j=0;j<3;j++)for(let k=0;k<3;k++)cov[j][k]+=w[i]*(n[j]-mean[j])*(n[k]-mean[k]);});return[mean,cov];},
+ profile(V,total=96,g=.5){let atMu=mu=>V.map(v=>{let target=mu-v,l=g>0?Math.min(target,Math.log(Math.max(Math.abs(target)+1,1)/Math.max(g,1e-12))):target;for(let j=0;j<60;j++){let r=Math.exp(l);l-=(l+g*r-target)/(1+g*r);}return Math.exp(l);});let lo=-30,hi=50;for(let i=0;i<100;i++){let mid=(lo+hi)/2;if(atMu(mid).reduce((s,x)=>s+x,0)<total)lo=mid;else hi=mid;}let mu=(lo+hi)/2;return[atMu(mu),mu];},
+ dispersion(k,speed=2,damping=.7){let result=[[],[],[],[]];for(let q of k){let d=(speed*q)**2-damping*damping/4,r=Math.sqrt(Math.max(0,d)),im=Math.sqrt(Math.max(0,-d));result[0].push(r);result[1].push(-damping/2+im);result[2].push(-r);result[3].push(-damping/2-im);}return[[result[0],result[1]],[result[2],result[3]]];}
+});
+
+// SCIENCE-END
+
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const fmt=(x,n=2)=>Number.isFinite(x)?x.toFixed(n):'—';
+const finite=a=>a.filter(Number.isFinite);
+const bounds=a=>{let b=finite(a);if(!b.length)return[0,1];let lo=Math.min(...b),hi=Math.max(...b);if(lo===hi){lo-=.5;hi+=.5;}return[lo,hi];};
+function lerpColor(a,b,t){let parse=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));let aa=parse(a),bb=parse(b);return'RGB('+aa.map((x,i)=>Math.round(x+(bb[i]-x)*clamp(t,0,1))).join(',')+')';}
+function diverge(v,max=1){return v<0?lerpColor('#282923',C.blue,-v/max):lerpColor('#282923',C.red,v/max);}
+function mapColor(v,max){return v<0?lerpColor('#ded7ca','#3888b8',-v/max):lerpColor('#ded7ca','#c14d41',v/max);}
+function heat(v,max){return lerpColor('#252b31',C.amber,v/max);}
+function label(ctx,text,x,y,color=C.ink,size=19,align='left'){ctx.fillStyle=color;ctx.font=`${size}px Arial`;ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillText(text,x,y);}
+function line(ctx,points,color=C.amber,width=2,alpha=1){ctx.beginPath();let start=true;for(const p of points){if(!p||!p.every(Number.isFinite)){start=true;continue;}if(start){ctx.moveTo(...p);start=false;}else ctx.lineTo(...p);}ctx.strokeStyle=color;ctx.lineWidth=width;ctx.globalAlpha=alpha;ctx.stroke();ctx.globalAlpha=1;}
+function dot(ctx,x,y,r=3,color=C.amber,alpha=1){ctx.globalAlpha=alpha;ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;}
+function arrow(ctx,x,y,dx,dy,color=C.amber,width=2){line(ctx,[[x,y],[x+dx,y+dy]],color,width);let a=Math.atan2(dy,dx),z=8;ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(x+dx,y+dy);ctx.lineTo(x+dx-z*Math.cos(a-.45),y+dy-z*Math.sin(a-.45));ctx.lineTo(x+dx-z*Math.cos(a+.45),y+dy-z*Math.sin(a+.45));ctx.closePath();ctx.fill();}
+function fishGlyph(ctx,x,y,heading,color=C.amber,size=13){ctx.save();ctx.translate(x,y);ctx.rotate(-heading);ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(size,0);ctx.lineTo(-size*.65,-size*.5);ctx.lineTo(-size*.42,0);ctx.lineTo(-size*.65,size*.5);ctx.closePath();ctx.fill();ctx.restore();}
+function niceTicks(min,max,target=4){let raw=(max-min)/target,base=10**Math.floor(Math.log10(raw)),step=[1,2,2.5,5,10].map(x=>x*base).sort((a,b)=>Math.abs(a-raw)-Math.abs(b-raw))[0],normalized=step/(10**Math.floor(Math.log10(step))),decimals=Math.max(0,-Math.floor(Math.log10(step)))+(Math.abs(normalized-2.5)<1e-8?1:0),values=[];for(let v=Math.ceil((min-1e-10)/step)*step;v<=max+step*1e-8;v+=step)values.push(Math.abs(v)<step*1e-8?0:v);return{values,decimals};}
+function plot(ctx,rect,xlim,ylim,xlabel='',ylabel='',options={}){let[x,y,w,h]=rect;let L=x+65,R=x+w-25,T=y+25,B=y+h-54;if(options.compact){L=x+48;R=x+w-15;B=y+h-46;}if(options.equal){let scale=Math.min((R-L)/(xlim[1]-xlim[0]),(B-T)/(ylim[1]-ylim[0])),ww=scale*(xlim[1]-xlim[0]),hh=scale*(ylim[1]-ylim[0]),cx=(L+R)/2,cy=(T+B)/2;L=cx-ww/2;R=cx+ww/2;T=cy-hh/2;B=cy+hh/2;}let X=v=>L+(v-xlim[0])/(xlim[1]-xlim[0])*(R-L),Y=v=>B-(v-ylim[0])/(ylim[1]-ylim[0])*(B-T);ctx.strokeStyle=C.line;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(L,T);ctx.lineTo(L,B);ctx.lineTo(R,B);ctx.stroke();let xt=niceTicks(...xlim,w<400?3:4),yt=niceTicks(...ylim,h<195?2:4);for(let v of xt.values)label(ctx,fmt(v,xt.decimals),X(v),B+18,C.muted,options.tickSize||14,'center');for(let v of yt.values)label(ctx,fmt(v,yt.decimals),L-9,Y(v),C.muted,options.tickSize||14,'right');label(ctx,xlabel,(L+R)/2,y+h-12,C.muted,options.labelSize||17,'center');ctx.save();ctx.translate(L-50,(T+B)/2);ctx.rotate(-Math.PI/2);label(ctx,ylabel,0,0,C.muted,options.labelSize||17,'center');ctx.restore();return{X,Y,L,R,T,B,xlim,ylim};}
+function chartLines(ctx,rect,series,xlabel,ylabel,options={}){let allx=series.flatMap(s=>s.x),ally=series.flatMap(s=>s.y);let xl=options.xlim||bounds(allx),yl=options.ylim||bounds(ally);if(!options.ylim){let d=(yl[1]-yl[0])*.1;yl=[yl[0]-d,yl[1]+d];}let p=plot(ctx,rect,xl,yl,xlabel,ylabel,options);ctx.save();ctx.beginPath();ctx.rect(p.L,p.T,p.R-p.L,p.B-p.T);ctx.clip();for(const s of series){if(s.fill){ctx.fillStyle=s.color||C.blue;ctx.globalAlpha=.15;ctx.beginPath();s.x.forEach((x,i)=>{if(i===0)ctx.moveTo(p.X(x),p.Y(s.y[i]));else ctx.lineTo(p.X(x),p.Y(s.y[i]));});for(let i=s.x.length-1;i>=0;i--)ctx.lineTo(p.X(s.x[i]),p.Y(s.fill[i]));ctx.closePath();ctx.fill();ctx.globalAlpha=1;}if(s.dash)ctx.setLineDash([7,5]);line(ctx,s.x.map((x,i)=>[p.X(x),p.Y(s.y[i])]),s.color||C.amber,s.width||2,s.alpha||1);ctx.setLineDash([]);if(s.dots)s.x.forEach((x,i)=>{if(Number.isFinite(s.y[i]))dot(ctx,p.X(x),p.Y(s.y[i]),3.5,s.color||C.amber);});}if(options.cursor!==undefined)line(ctx,[[p.X(options.cursor),p.T],[p.X(options.cursor),p.B]],C.ink,1,.5);ctx.restore();let lx=p.L+5;for(const s of series.filter(s=>s.name)){line(ctx,[[lx,p.T+9],[lx+18,p.T+9]],s.color||C.amber,3);label(ctx,s.name,lx+25,p.T+10,C.ink,15);lx+=Math.min(240,45+s.name.length*8);}return p;}
+function drawMap(ctx,rect,values,options={}){let max=options.max||1;let p=plot(ctx,rect,[-150,150],[-150,150],'Left–right position (mm)','Back–front position (mm)',{compact:rect[2]<420,equal:true});let rows=values.length,cols=values[0].length;for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){let v=values[j][i];ctx.fillStyle=v===null||!Number.isFinite(v)?'#222018':options.sequential?heat(v,max):mapColor(v,max);ctx.fillRect(p.X(150-(j+1)*300/rows),p.Y(-150+(i+1)*300/cols),(p.R-p.L)/rows+.5,(p.B-p.T)/cols+.5);}let cy=p.Y(0),cx=p.X(0);fishGlyph(ctx,cx,cy,Math.PI/2,C.ink,11);label(ctx,options.legend||'',(p.L+p.R)/2,p.T-11,C.ink,16,'center');let bx=p.R+20,by=p.T,bh=p.B-p.T;for(let k=0;k<100;k++){let v=(1-k/99)*(options.sequential?max:2*max)-(options.sequential?0:max);ctx.fillStyle=options.sequential?heat(v,max):mapColor(v,max);ctx.fillRect(bx,by+k*bh/100,12,bh/100+1);}label(ctx,fmt(max,max<5?1:0),bx+19,by,C.muted,14);label(ctx,'0',bx+19,options.sequential?by+bh:by+bh/2,C.muted,14);if(!options.sequential)label(ctx,fmt(-max,max<5?1:0),bx+19,by+bh,C.muted,14);return p;}
+function makePanel(host){host.innerHTML='<div class="plot-wrap"><canvas role="img" aria-label="'+slides[current].t.replaceAll('"','')+'"></canvas></div><div class="controls"></div><div class="readout"></div>';let canvas=host.querySelector('canvas'),controls=host.querySelector('.controls'),readout=host.querySelector('.readout'),ctx=canvas.getContext('2d');let p={host,canvas,controls,readout,ctx,w:0,h:0,time:0,playing:true,dirty:true};p.resize=()=>{let w=canvas.parentElement.clientWidth,h=canvas.parentElement.clientHeight,dpr=Math.min(2,devicePixelRatio||1);if(w!==p.w||h!==p.h){p.w=w;p.h=h;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);p.dirty=true;}};p.clear=()=>{ctx.fillStyle=C.bg;ctx.fillRect(0,0,p.w,p.h);};p.setReadout=html=>{if(readout.innerHTML!==html)readout.innerHTML=html;};return p;}
+function button(p,name,fn){let b=document.createElement('button');b.textContent=name;b.addEventListener('click',()=>{fn();p.dirty=true;});p.controls.append(b);return b;}
+function choice(p,label,items,value,fn){let l=document.createElement('label');l.append(label+' ');let s=document.createElement('select');for(let item of items){let o=document.createElement('option');o.value=Array.isArray(item)?item[0]:item;o.textContent=Array.isArray(item)?item[1]:item;s.append(o);}s.value=value;s.setAttribute('aria-label',label);s.addEventListener('change',()=>{fn(s.value);p.dirty=true;});l.append(s);p.controls.append(l);return s;}
+function range(p,label,min,max,step,value,fn,units=''){let l=document.createElement('label');l.append(label+' ');let s=document.createElement('input');s.type='range';s.min=min;s.max=max;s.step=step;s.value=value;s.setAttribute('aria-label',label);let o=document.createElement('output');o.textContent=value+units;s.addEventListener('input',()=>{o.textContent=Number(s.value).toFixed(step<1?2:0)+units;fn(Number(s.value));p.dirty=true;});l.append(s,o);p.controls.append(l);return s;}
+function transport(p,duration,frameDt=0.1){p.duration=duration;let play=button(p,'Pause',()=>{p.playing=!p.playing;play.textContent=p.playing?'Pause':'Play';});button(p,'Step',()=>{p.playing=false;play.textContent='Play';p.time=((Math.floor(p.time/frameDt+1e-8)+1)*frameDt)%(p.duration+frameDt);});button(p,'Reset',()=>{p.time=0;p.reset?.();});let r=document.createElement('input');r.type='range';r.min=0;r.max=duration;r.step=frameDt;r.value=0;r.className='scrub';r.setAttribute('aria-label','Replay time');r.addEventListener('input',()=>{p.time=+r.value;p.playing=false;play.textContent='Play';p.dirty=true;});p.controls.append(r);p.scrub=r;p.tick=dt=>{if(p.playing){p.time+=dt;if(p.time>p.duration)p.time=0;p.dirty=true;}r.value=p.time;};return r;}
+function badge(p,text){let b=document.createElement('span');b.className='badge';b.textContent=text;p.host.prepend(b);}
+function axes2D(ctx,rect,xl,yl,xlabel='x (mm)',ylabel='y (mm)'){return plot(ctx,rect,xl,yl,xlabel,ylabel);}
+function view3D(points,yaw,pitch=.35){return points.map(r=>{let x=r[0]*Math.cos(yaw)-r[1]*Math.sin(yaw),depth=r[0]*Math.sin(yaw)+r[1]*Math.cos(yaw);return[x,r[2]*Math.cos(pitch)+depth*Math.sin(pitch)];});}
+function createController(host,s){let p=makePanel(host);let {ctx}=p;
+if(s.view==='encounter-choice'){
+ let beta=.55,delta=-.8;range(p,'Neighbor bearing',-2,2,.05,beta,v=>beta=v,' rad');range(p,'Neighbor heading',-3.1,3.1,.05,delta,v=>delta=v,' rad');p.playing=false;badge(p,'Two candidate response rules');
+ p.draw=()=>{let q=plot(ctx,[0,0,p.w,p.h],[-80,80],[-35,110],'Left–right position (model length)','Back–front position (model length)',{equal:true}),x=70*Math.cos(beta),y=70*Math.sin(beta),al=Science.rule(x,y,delta,2,0,0)[0],pos=Science.rule(x,y,delta,0,2,0)[0];fishGlyph(ctx,q.X(0),q.Y(0),Math.PI/2,C.amber,17);fishGlyph(ctx,q.X(-y),q.Y(x),delta+Math.PI/2,C.ink,17);line(ctx,[[q.X(0),q.Y(0)],[q.X(-y),q.Y(x)]],C.muted,1,.5);for(let[a,col]of[[al,C.blue],[pos,C.green]]){let points=[];for(let j=0;j<=30;j++){let t=j*.01,xx=Math.abs(a)<1e-5?65*t:65*Math.sin(a*t)/a,yy=Math.abs(a)<1e-5?0:65*(1-Math.cos(a*t))/a;points.push([q.X(-yy),q.Y(xx)]);}line(ctx,points,col,4);}label(ctx,'Heading matching',q.L+8,q.T+15,C.blue,18);label(ctx,'Position following',q.L+8,q.T+43,C.green,18);p.setReadout(`<span>Heading rule <b>${fmt(al)}</b> rad/time</span><span>Position rule <b>${fmt(pos)}</b> rad/time</span>`);};
+}else if(s.view==='leadership'){
+ let fraction=.1,pref=1,J=1,history=[],means=[];const initial=()=>Array.from({length:40},(_,i)=>.8+.35*Math.sin(i*2.4));
+ function calculate(){let h=initial();history=[];means=[];for(let j=0;j<=2000;j++){if(j%5===0){history.push(h.slice());means.push(Math.atan2(h.reduce((a,v)=>a+Math.sin(v),0),h.reduce((a,v)=>a+Math.cos(v),0)));}h=Science.informed(h,fraction,pref,J,.01);}p.time=0;}
+ calculate();range(p,'Informed fraction',0,1,.05,fraction,v=>{fraction=v;calculate();});range(p,'Preference rate',.1,3,.1,pref,v=>{pref=v;calculate();});transport(p,20,.05);badge(p,'Global heading model');
+ p.draw=()=>{let k=clamp(Math.floor(p.time/.05),0,history.length-1),h=history[k],cx=p.w*.5,cy=p.h*.26,r=Math.min(95,p.w*.22);ctx.strokeStyle=C.line;ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();for(let i=0;i<h.length;i++)arrow(ctx,cx,cy,r*Math.cos(h[i]),-r*Math.sin(h[i]),i<Math.round(fraction*40)?C.amber:C.blue,1.3);arrow(ctx,cx,cy,r+25,0,C.ink,3);label(ctx,'Preferred direction',cx+r+10,cy+25,C.ink,15,'right');let tt=means.slice(0,k+1).map((_,i)=>i*.05);chartLines(ctx,[0,p.h*.52,p.w,p.h*.48],[{x:tt,y:means.slice(0,k+1),color:C.amber}],'Model time','Mean heading (rad)',{xlim:[0,20],ylim:[-.05,1]});p.setReadout(`<span>Informed <b>${Math.round(fraction*40)} / 40</b></span><span>Heading error <b>${fmt(Math.abs(means[k]))}</b> rad</span>`);};
+}else if(s.view==='sensing'){
+ let separation=s.mode==='extent'?6:12,gain=4,history=[];function calculate(){let state=[-55,-10,.4];history=[];for(let j=0;j<=1750;j++){if(j%5===0)history.push(state.slice());state=Science.sensing(state,j*.02,.02,separation,gain);}p.time=0;}
+ calculate();range(p,'Speed response',0,6,.25,gain,v=>{gain=v;calculate();});range(p,'Group extent',2,40,1,separation,v=>{separation=v;calculate();});transport(p,35,.1);
+ p.draw=()=>{let k=clamp(Math.floor(p.time/.1),0,history.length-1),[x,y,h]=history[k],t=k*.1,q=plot(ctx,[0,0,p.w,p.h],[-70,110],[-70,85],'x (model length)','y (model length)',{equal:true});for(let i=0;i<36;i++)for(let j=0;j<31;j++){let xx=-70+i*5,yy=-70+j*5,intensity=Science.light(xx+2.5,yy+2.5,t);ctx.fillStyle=lerpColor('#0e1424','#7b7360',intensity);ctx.fillRect(q.X(xx),q.Y(yy+5),(q.R-q.L)/36+1,(q.B-q.T)/31+1);}line(ctx,history.slice(0,k+1).map(a=>[q.X(a[0]),q.Y(a[1])]),C.amber,2);let nx=-Math.sin(h),ny=Math.cos(h),left=[x+separation*nx/2,y+separation*ny/2],right=[x-separation*nx/2,y-separation*ny/2];line(ctx,[[q.X(left[0]),q.Y(left[1])],[q.X(right[0]),q.Y(right[1])]],C.ink,2);for(let a of[left,right]){let v=2+gain*Science.light(a[0],a[1],t);dot(ctx,q.X(a[0]),q.Y(a[1]),6,C.amber);arrow(ctx,q.X(a[0]),q.Y(a[1]),v*9*Math.cos(h),-v*9*Math.sin(h),C.ink,2);}label(ctx,'Dark patch',q.X(15*Math.sin(t/35)),q.Y(10*Math.cos(t/40))-25,C.ink,16,'center');p.setReadout(`<span>Model time <b>${fmt(t,1)}</b></span><span>Local light <b>${fmt(Science.light(x,y,t))}</b></span>`);};
+}else if(s.view==='order-landscape'){
+ let a=.6,noise=.04;range(p,'Order coefficient',-.6,.8,.05,a,v=>a=v);range(p,'Noise strength',.01,.2,.01,noise,v=>noise=v);p.playing=false;badge(p,'Symmetric model · reflecting boundaries at ±1');
+ p.draw=()=>{let[m,u,d]=Science.landscape(a,1,noise);chartLines(ctx,[0,0,p.w,p.h*.48],[{x:m,y:u,color:C.blue}],'Signed order m','Potential U');chartLines(ctx,[0,p.h*.51,p.w,p.h*.49],[{x:m,y:d,color:C.amber}],'Signed order m','Probability density',{ylim:[0,Math.max(...d)*1.15]});let absolute=m.reduce((s,v,i)=>s+Math.abs(v)*d[i]*.005,0);p.setReadout(`<span>Mean signed order <b>0</b></span><span>Mean |m| <b>${fmt(absolute)}</b></span>`);};
+}else if(s.view==='bearing-choice'){
+ let beta=.7,sharp=4;range(p,'Target half-angle',.1,1.4,.05,beta,v=>beta=v,' rad');range(p,'Sharpness',1,8,.5,sharp,v=>sharp=v);p.playing=false;badge(p,'Directional-choice model');
+ p.draw=()=>{let x=Array.from({length:501},(_,i)=>-Math.PI+i*2*Math.PI/500),u=Science.choice(x,beta,sharp),min=Math.min(...u),yy=u.map(v=>v-min),q=chartLines(ctx,[0,p.h*.32,p.w,p.h*.68],[{x,y:yy,color:C.amber}],'Heading (rad)','Potential above minimum',{xlim:[-Math.PI,Math.PI]});for(let a of[-beta,beta])line(ctx,[[q.X(a),q.T],[q.X(a),q.B]],C.muted,1,.5);let cx=p.w/2,cy=p.h*.23,r=p.h*.17;arrow(ctx,cx,cy,r,0,C.muted,2);for(let a of[-beta,beta])arrow(ctx,cx,cy,r*Math.cos(a),-r*Math.sin(a),C.blue,3);let mins=[];for(let i=1;i<u.length-1;i++)if(u[i]<u[i-1]&&u[i]<=u[i+1]){mins.push(x[i]);dot(ctx,q.X(x[i]),q.Y(yy[i]),6,C.ink);arrow(ctx,cx,cy,r*.8*Math.cos(x[i]),-r*.8*Math.sin(x[i]),C.amber,3);}p.setReadout(`<span>Target separation <b>${fmt(2*beta)}</b> rad</span><span>Preferred directions <b>${mins.length}</b></span>`);};
+}else if(s.view==='network'){
+ let mode=1,J=1,interval=.5,N=24;
+ if(s.mode==='sampling'){range(p,'Observation interval',.05,4,.05,interval,v=>interval=v);p.playing=false;}else{range(p,'Mode index',1,8,1,mode,v=>{mode=v;p.time=0;});range(p,'Alignment rate',.2,3,.1,J,v=>{J=v;p.time=0;});transport(p,12,.05);}badge(p,'Fixed symmetric ring · 24 nodes');
+ p.draw=()=>{if(s.mode==='sampling'){let kernel=Science.kernel(N,J,interval),dist=Array.from({length:17},(_,i)=>i-8),xx=dist.map(j=>kernel[(j+N)%N]);chartLines(ctx,[0,0,p.w,p.h],[{x:dist,y:xx,color:C.amber,dots:true}],'Network distance from perturbed node','Mean response after Δt',{xlim:[-8,8],ylim:[0,1.05]});p.setReadout(`<span>Direct links <b>±1</b></span><span>Response at distance 3 <b>${fmt(kernel[3],4)}</b></span>`);return;}let lam=4*Math.sin(Math.PI*mode/N)**2,decay=Math.exp(-J*lam*p.time),cx=p.w/2,cy=p.h*.29,r=p.h*.22;for(let i=0;i<N;i++){let a=i*2*Math.PI/N,x=cx+r*Math.cos(a),y=cy+r*Math.sin(a),b=(i+1)*2*Math.PI/N;line(ctx,[[x,y],[cx+r*Math.cos(b),cy+r*Math.sin(b)]],C.line,1);let angle=.4*Math.cos(a*mode)*decay;dot(ctx,x,y,3,C.muted);arrow(ctx,x,y,24*Math.cos(angle),-24*Math.sin(angle),C.amber,1.5);}let tt=Array.from({length:Math.floor(p.time/.05)+1},(_,i)=>i*.05);chartLines(ctx,[0,p.h*.58,p.w,p.h*.42],[{x:tt,y:tt.map(t=>Math.exp(-J*lam*t)),color:C.amber}],'Model time','Mode amplitude',{xlim:[0,12],ylim:[0,1.05]});p.setReadout(`<span>Eigenvalue <b>${fmt(lam,3)}</b></span><span>Relaxation time <b>${fmt(1/(J*lam))}</b></span>`);};
+}else if(s.view==='turn-reach'){
+ let speed=2,damping=.3,L=8;range(p,'Signal speed',1,4,.1,speed,v=>speed=v);range(p,'Damping rate',0,1,.05,damping,v=>damping=v);range(p,'Flock extent',2,12,.5,L,v=>L=v);p.playing=false;badge(p,'Weak-damping wave envelope · model units');
+ p.draw=()=>{let x=Array.from({length:241},(_,i)=>i*.05),y=Science.turnReach(x,speed,damping),q=chartLines(ctx,[0,0,p.w,p.h],[{x,y,color:C.amber,width:4}],'Distance traveled','Remaining amplitude A / A₀',{xlim:[0,12],ylim:[0,1.08]});let remaining=Science.turnReach([L],speed,damping)[0];line(ctx,[[q.X(L),q.B],[q.X(L),q.T]],C.blue,2);dot(ctx,q.X(L),q.Y(remaining),6,C.blue);label(ctx,'Far side of flock',Math.min(q.X(L),q.R-65),q.T+20,C.blue,16,'center');p.setReadout(`<span>Crossing time <b>${fmt(L/speed,1)}</b></span><span>Decay time <b>${damping===0?'∞':fmt(2/damping,1)}</b></span><span>Amplitude at far side <b>${fmt(100*remaining,0)}%</b></span>`);};
+}else if(s.view==='dispersion'){
+ let damping=.7,speed=2;range(p,'Damping rate',0,5,.1,damping,v=>damping=v);range(p,'Wave speed',.5,3,.1,speed,v=>speed=v);p.playing=false;badge(p,'Damped turning-wave equation');
+ p.draw=()=>{let x=Array.from({length:201},(_,i)=>i*.01),branches=Science.dispersion(x,speed,damping);chartLines(ctx,[0,0,p.w,p.h*.48],[{x,y:branches[0][0],color:C.amber},{x,y:branches[1][0],color:C.blue}],'Wavenumber k','Real frequency');chartLines(ctx,[0,p.h*.51,p.w,p.h*.49],[{x,y:branches[0][1].map(v=>-v),color:C.amber},{x,y:branches[1][1].map(v=>-v),color:C.blue}],'Wavenumber k','Decay rate',{ylim:[0,Math.max(1,damping)*1.15]});p.setReadout(`<span>Propagation threshold |k| <b>${fmt(damping/(2*speed))}</b></span>`);};
+}else if(s.view==='canonical'){
+ let V=.7,g=.4;range(p,'Cost in bin 1',-2,3,.1,V,v=>V=v);range(p,'Crowding',0,2,.1,g,v=>g=v);p.playing=false;badge(p,'Exact enumeration · six animals in three bins');
+ p.draw=()=>{let[mean,cov]=Science.canonical(6,[V,0,0],g),q=plot(ctx,[0,0,p.w,p.h*.49],[.5,3.5],[0,6],'Bin','Mean count');mean.forEach((m,i)=>{ctx.fillStyle=[C.amber,C.blue,C.green][i];ctx.fillRect(q.X(i+.7),q.Y(m),q.X(i+1.3)-q.X(i+.7),q.Y(0)-q.Y(m));});let cell=Math.min(65,p.h*.125),sx=(p.w-3*cell)/2,sy=p.h*.56;label(ctx,'Count covariance',p.w/2,sy-18,C.ink,17,'center');for(let i=0;i<3;i++)for(let j=0;j<3;j++){ctx.fillStyle=mapColor(cov[i][j],2);ctx.fillRect(sx+j*cell,sy+i*cell,cell-2,cell-2);label(ctx,fmt(cov[i][j],2),sx+(j+.5)*cell,sy+(i+.5)*cell,'#fff',18,'center');}p.setReadout(`<span>Total mean <b>${fmt(mean.reduce((a,b)=>a+b,0),0)}</b></span><span>−∂⟨N₁⟩/∂V₁ <b>${fmt(cov[0][0],3)}</b></span>`);};
+}else if(s.view==='stationarity'){
+ let g=.5,bias=3;range(p,'Crowding coefficient',0,3,.1,g,v=>g=v);range(p,'Preference variation',0,5,.1,bias,v=>bias=v);p.playing=false;badge(p,'Continuous-density model · fixed total');
+ p.draw=()=>{let x=Array.from({length:48},(_,i)=>i/47),V=x.map(v=>bias*v),[rho,mu]=Science.profile(V,96,g),[ideal]=Science.profile(V,96,0);chartLines(ctx,[0,0,p.w,p.h],[{x,y:ideal,color:C.blue,name:'No crowding cost',dash:true},{x,y:rho,color:C.amber,name:'With crowding cost'}],'Position (model length)','Density (model units)',{ylim:[0,Math.max(...ideal,...rho)*1.1]});p.setReadout(`<span>Total <b>${fmt(rho.reduce((a,b)=>a+b,0),1)}</b></span><span>μ <b>${fmt(mu)}</b></span>`);};
+}else
+if(s.view==='relaxation'){
+ let changing=s.mode==='changing',tauRelax=.2,tauNetwork=3,history,dt=.01;
+ function calculate(){if(changing)history=Science.tracking(tauRelax,tauNetwork,dt);else{let n=Math.round(4*tauRelax/dt),time=Array.from({length:n+1},(_,i)=>i*dt);history={time,angle:time.map(t=>.5*Math.exp(-t/tauRelax)),target:time.map(()=>0)};}p.time=changing ? .9*tauNetwork : 0;p.duration=history.time.at(-1);if(p.scrub)p.scrub.max=p.duration;p.dirty=true;}
+ calculate();range(p,'Relaxation time',.05,2,.05,tauRelax,v=>{tauRelax=v;calculate();});if(changing)range(p,'Exchange interval',.25,5,.25,tauNetwork,v=>{tauNetwork=v;calculate();});transport(p,p.duration,dt);p.reset=()=>{p.time=changing ? .9*tauNetwork : 0;};if(!changing){let tick=p.tick;p.tick=elapsed=>tick(elapsed*.2);}badge(p,'Local heading model');
+ p.draw=()=>{let k=clamp(Math.floor(p.time/dt+1e-8),0,history.time.length-1),a=history.angle[k],target=history.target[k],cx=p.w*.34,cy=70,length=62;line(ctx,[[cx-75,cy],[cx+75,cy]],C.line,1);arrow(ctx,cx,cy,length*Math.cos(target),-length*Math.sin(target),C.blue,3);arrow(ctx,cx,cy,length*Math.cos(a),-length*Math.sin(a),C.amber,3);dot(ctx,cx,cy,4,C.ink);label(ctx,'Local mean',p.w*.64,45,C.blue,17);label(ctx,'Focal heading',p.w*.64,75,C.amber,17);let x=history.time.slice(0,k+1),angle=history.angle.slice(0,k+1),tx=[],ty=[];for(let i=0;i<=k;i++){if(i>0&&history.target[i]!==history.target[i-1]){tx.push(history.time[i]);ty.push(history.target[i-1]);}tx.push(history.time[i]);ty.push(history.target[i]);}chartLines(ctx,[0,125,p.w,p.h-125],[{x:tx,y:ty,color:C.blue,dash:true},{x,y:angle,color:C.amber,width:3}],'Model time','Heading deviation (rad)',{xlim:[0,p.duration],ylim:changing?[-.42,.42]:[-.025,.55]});p.setReadout(changing?`<span>τ<sub>network</sub> / τ<sub>relax</sub> <b>${fmt(tauNetwork/tauRelax,tauNetwork/tauRelax<1?2:1)}</b></span><span>Mismatch <b>${fmt(Math.abs(a-target),3)}</b> rad</span>`:`<span>Model time <b>${fmt(history.time[k],2)}</b></span><span>Deviation <b>${fmt(a,3)}</b> rad</span>`);};
+}else if(s.view==='speed-weight'){
+ let speed=8;range(p,'Left-moving speed',.1,12,.1,8,v=>speed=v);p.playing=false;badge(p,'Three velocities');p.draw=()=>{let pos=[[-1,0],[1,0],[0,1]],v=[[1,0],[1,0],[-speed,0]],m=Science.order(pos,v),yy=[p.h*.28,p.h*.48,p.h*.68];for(let i=0;i<3;i++){let x=p.w*.57;dot(ctx,x,yy[i],9,i===2?C.red:C.blue);arrow(ctx,x,yy[i],v[i][0]*24,0,i===2?C.red:C.blue,4);label(ctx,'v = '+fmt(v[i][0],1),x-70,yy[i]-30,C.ink,23);}p.setReadout(`<span>Heading Φ <b>${fmt(m.phi)}</b></span><span>Speed-weighted Φᵥ <b>${fmt(m.phi_v)}</b></span>`);};
+}else if(s.view==='midges'){
+ let yaw=.3,midgeBounds=null;if(s.mode==='replay'){transport(p,D.midges.frames.at(-1).time-D.midges.frames[0].time,.2);range(p,'View',-3.14,3.14,.01,yaw,v=>{yaw=v;midgeBounds=null;});p.time=10;p.reset=()=>{p.time=10;};}else p.playing=false;badge(p,s.mode==='null'?'Measured polarization':'Midge trajectories');p.draw=()=>{let k=clamp(Math.floor(p.time/.2+1e-8),0,D.midges.frames.length-1),f=D.midges.frames[k],rows=f.rows;if(s.mode==='null'){let a=D.midges.stats.filter((_,i)=>i%3===0);chartLines(ctx,[0,0,p.w,p.h],[{x:a.map(r=>r[0]),y:a.map(r=>r[4]),fill:a.map(r=>r[6]),color:C.blue,name:'Random headings: 95% range'},{x:a.map(r=>r[0]),y:a.map(r=>r[1]),color:C.amber,name:'Measured Φ'}],'Time (s)','Polarization',{ylim:[0,1]});p.setReadout('<span>Full swarm recording</span><span>Reference matched to observed N</span>');return;}else{if(!midgeBounds){let all=view3D(D.midges.frames.flatMap(f=>f.rows.map(r=>r.slice(1,4))),yaw);let xl=bounds(all.map(r=>r[0])),yl=bounds(all.map(r=>r[1]));let pad=.08*Math.max(xl[1]-xl[0],yl[1]-yl[0]);midgeBounds=[[xl[0]-pad,xl[1]+pad],[yl[0]-pad,yl[1]+pad]];}let pp=view3D(rows.map(r=>r.slice(1,4)),yaw),q=plot(ctx,[0,0,p.w,p.h],...midgeBounds,'Projected position (mm)','Projected position (mm)',{equal:true});rows.forEach((r,i)=>{let trail=[];for(let z=Math.max(0,k-12);z<=k;z++){let old=D.midges.frames[z].rows.find(a=>a[0]===r[0]);if(old)trail.push(view3D([old.slice(1,4)],yaw)[0]);}line(ctx,trail.map(a=>[q.X(a[0]),q.Y(a[1])]),C.blue,1,.5);dot(ctx,q.X(pp[i][0]),q.Y(pp[i][1]),4,C.amber);});}let m=Science.order(rows.map(r=>r.slice(1,4)),rows.map(r=>r.slice(4,7)));p.setReadout(`<span>Source time <b>${fmt(f.time,1)}</b> s</span><span>Observed <b>${m.count}</b></span><span>Φ <b>${fmt(m.phi)}</b></span>`);};
+}else if(s.view==='fish'){
+ let trial=0,focal=0;choice(p,'Trial',D.fish_replays.map((r,i)=>[String(i),r.trial]),'0',v=>{trial=+v;p.time=0;});choice(p,'Reference fish',[['0','Fish 1'],['1','Fish 2']],'0',v=>focal=+v);transport(p,58,.1);badge(p,'Fish trajectories');p.draw=()=>{let r=D.fish_replays[trial],k=clamp(Math.floor(p.time/.1+1e-8),0,r.rows.length-1),row=r.rows[k],pos=[row.slice(1,3),row.slice(3,5)],vel=[row.slice(5,7),row.slice(7,9)],b=Science.body(pos[1-focal].map((x,j)=>x-pos[focal][j]),vel[focal]);if(s.mode==='body'){let q=plot(ctx,[0,0,p.w,p.h],[-180,180],[-200,200],'Left–right position (mm)','Back–front position (mm)',{equal:true});arrow(ctx,q.X(0),q.Y(0),0,-55,C.muted);fishGlyph(ctx,q.X(0),q.Y(0),Math.PI/2,C.amber,17);line(ctx,[[q.X(0),q.Y(0)],[q.X(-b[1]),q.Y(b[0])]],C.line);let h=Science.wrap(Math.atan2(vel[1-focal][1],vel[1-focal][0])-Math.atan2(vel[focal][1],vel[focal][0]));fishGlyph(ctx,q.X(-b[1]),q.Y(b[0]),h+Math.PI/2,C.blue,15);label(ctx,'Fish '+(focal+1)+' (reference)',q.X(0)+12,q.Y(0)+28,C.amber,16);label(ctx,'Fish '+(2-focal),clamp(q.X(-b[1])+12,q.L+10,q.R-70),clamp(q.Y(b[0])-20,q.T+15,q.B-15),C.blue,16);}else{let all=r.rows.flatMap(a=>[[a[1],a[2]],[a[3],a[4]]]),xs=all.map(a=>a[0]),ys=all.map(a=>a[1]),xl=bounds(xs),yl=bounds(ys),q=plot(ctx,[0,0,p.w,p.h],[xl[0]-50,xl[1]+50],[yl[0]-50,yl[1]+50],'x (mm)','y (mm)',{equal:true});for(let i=0;i<2;i++){line(ctx,r.rows.slice(Math.max(0,k-50),k+1).map(a=>[q.X(a[1+i*2]),q.Y(a[2+i*2])]),i===focal?C.amber:C.blue,2,.7);fishGlyph(ctx,q.X(pos[i][0]),q.Y(pos[i][1]),Math.atan2(vel[i][1],vel[i][0]),i===focal?C.amber:C.blue,13);}}p.setReadout(`<span>Recording time <b>${fmt(row[0],1)}</b> s</span><span>Neighbor (x,y) <b>${fmt(b[0],0)}, ${fmt(b[1],0)}</b> mm</span>`);};
+}else if(s.view==='kinematics'){
+ let k=D.fish_kinematics;p.playing=false;badge(p,'One fish trajectory');p.draw=()=>{if(s.mode==='position'){let xl=bounds(k.raw.map(r=>r[0])),yl=bounds(k.raw.map(r=>r[1])),q=plot(ctx,[0,0,p.w,p.h],xl,yl,'x (mm)','y (mm)',{equal:true});line(ctx,k.raw.map(a=>[q.X(a[0]),q.Y(a[1])]),C.muted,1);line(ctx,k.smoothed.map(a=>[q.X(a[0]),q.Y(a[1])]),C.amber,2);label(ctx,'Measured positions',q.L+10,q.T+14,C.muted,17);label(ctx,'21-frame fit',q.L+195,q.T+14,C.amber,17);}else chartLines(ctx,[0,0,p.w,p.h],[{x:k.time,y:k.turn11,color:C.blue,name:'11 frames',alpha:.8},{x:k.time,y:k.turn21,color:C.amber,name:'21 frames'}],'Time in tracked interval (s)','Angular velocity (rad/s)');p.setReadout(s.mode==='position'?'<span>One continuous tracked interval</span>':'<span>Same positions; two smoothing windows</span>');};
+}else if(s.view==='vectors'){
+ let v=50,at=0,an=25;range(p,'v',20,100,1,v,z=>v=z,' mm/s');range(p,'a∥',-40,40,1,at,z=>at=z);range(p,'a⊥',-50,50,1,an,z=>an=z);p.playing=false;badge(p,'Velocity and acceleration');p.draw=()=>{let x=p.w*.46,y=p.h*.55;arrow(ctx,x,y,v*2.6,0,C.amber,5);arrow(ctx,x,y,at*3,0,C.blue,5);arrow(ctx,x,y,0,-an*3,C.red,5);arrow(ctx,x,y,at*3,-an*3,C.ink,2);label(ctx,'velocity',x+85,y+40,C.amber,22);label(ctx,'a∥',x+at*3,y+25,C.blue,21);label(ctx,'a⊥',x-25,y-an*3,C.red,21);ctx.strokeStyle=C.line;ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,100,-Math.PI/2,0);ctx.stroke();p.setReadout(`<span>dv/dt <b>${fmt(at,0)}</b> mm/s²</span><span>dϑ/dt <b>${fmt(an/v)}</b> rad/s</span><span>Radius <b>${an?fmt(v*v/Math.abs(an),0):'∞'}</b> mm</span>`);};
+}else if(s.view==='encounters'){
+ let k=0,n=300;range(p,s.mode==='one'?'Encounter':'Observations',s.mode==='one'?0:10,s.mode==='one'?D.fish_encounters.length-1:5000,s.mode==='one'?1:10,s.mode==='one'?k:n,z=>s.mode==='one'?k=z:n=z);p.playing=false;badge(p,'Fish encounters');p.draw=()=>{let q=plot(ctx,[0,0,p.w,p.h],[-180,180],[-180,180],'Forward x (mm)','Left y (mm)',{equal:true});fishGlyph(ctx,q.X(0),q.Y(0),0,C.ink,16);if(s.mode==='one'){let r=D.fish_encounters[k];fishGlyph(ctx,q.X(r[3]),q.Y(r[4]),r[6],C.blue,17);let x=q.X(0),y=q.Y(0);ctx.strokeStyle=r[9]>0?C.red:C.blue;ctx.lineWidth=4;ctx.beginPath();ctx.arc(x,y,55,0,-r[9]*.2,r[9]>0);ctx.stroke();p.setReadout(`<span>Trial <b>${r[0]}</b> · focal ${r[2]+1}</span><span>Δϑ <b>${fmt(r[6])}</b> rad</span><span>Response <b>${fmt(r[9])}</b> rad/s</span>`);}else{for(let r of D.fish_encounters.slice(0,n))dot(ctx,q.X(r[3]),q.Y(r[4]),2,r[9]>=0?C.red:C.blue,.4);p.setReadout(`<span><b>${n.toLocaleString()}</b> displayed observations</span><span>Final map uses <b>${D.summary.fish_encounters.toLocaleString()}</b></span>`);}};
+}else if(s.view==='fish-map'){
+ let mode=s.mode,view=mode==='both'?'turn':mode==='heading'?'Similar headings':mode==='uncertainty'?'Trial support':mode;
+ if(mode==='both')choice(p,'Response',[['turn','Turning'],['speeding','Speed change']],'turn',v=>view=v);
+ if(mode==='heading')choice(p,'Condition',['Similar headings','Opposing headings','Trial 1: Fish 1','Trial 1: Fish 2'],view,v=>view=v);
+ if(mode==='uncertainty')choice(p,'Show',['Trial support','Across-trial SEM'],view,v=>view=v);
+ p.playing=false;badge(p,'Fish response map');p.draw=()=>{let m=D.fish_maps,val,opts={};if(mode==='counts'){val=m.counts.map(r=>r.map(v=>Math.log10(Math.max(1,v))));opts={max:4,sequential:true,legend:'log₁₀ observation count · 0 to 4'};}else if(mode==='uncertainty'){let sem=view==='Across-trial SEM';val=sem?m.trial_sem:m.trial_support;opts={max:sem?2:40,sequential:true,legend:sem?'Across-trial SEM (rad/s) · 0 to 2':'Supporting trials · 0 to 40'};}else if(mode==='heading'){if(view.startsWith('Trial')){val=m.roles[view.endsWith('1')?'1':'2'];opts={max:3,legend:view+' · mean turn ±3 rad/s'};}else{val=m.heading_conditions[view].turn;opts={max:3,legend:view+' · mean turn ±3 rad/s'};}}else if(mode==='residual'){val=m.residual;opts={max:2,legend:'Observed − predicted · ±2 rad/s'};}else{let speeding=view==='speeding';val=speeding?m.speeding:m.turn;opts={max:speeding?150:3,legend:speeding?'Mean speed change · ±150 mm/s²':'Mean turn · ±3 rad/s'};}if(!opts.sequential&&view!=='speeding'){val=val.map(row=>row.map(v=>v===null?null:-v));opts.legend+=' · right +';}drawMap(ctx,[0,0,p.w,p.h],val,opts);p.setReadout(`<span>Forward ↑ · right →</span><span>Blank bins: too few observations</span>`);};
+}else if(s.view==='rule-map'){
+ let a=1.5,b=1.5,r=2;range(p,'Alignment',0,3,.1,a,z=>a=z);range(p,'Position',0,3,.1,b,z=>b=z);range(p,'Avoidance',0,4,.1,r,z=>r=z);p.playing=false;badge(p,'Simulated responses');p.draw=()=>{let sums=Array.from({length:25},()=>Array(25).fill(0)),counts=sums.map(row=>row.slice());for(let e of D.synthetic_encounters){let i=Math.floor((e[0]+150)/12),j=Math.floor((e[1]+150)/12);if(i>=0&&i<25&&j>=0&&j<25){sums[j][i]+=Science.rule(e[0],e[1],e[2],a,b,r)[0]+e[3];counts[j][i]++;}}let values=sums.map((row,j)=>row.map((v,i)=>counts[j][i]>=2?v/counts[j][i]:null));drawMap(ctx,[0,0,p.w,p.h],values,{max:4,legend:'Mean turning response · ±4 rad/s'});p.setReadout(`<span>Same geometry and noise</span><span>kₐ ${fmt(a,1)} · kₚ ${fmt(b,1)} · kᵣ ${fmt(r,1)}</span>`);};
+}else if(s.view==='pair-model'){
+ transport(p,39.9,.1);badge(p,'Two follower models');p.draw=()=>{let z=clamp(Math.floor(p.time/.1+1e-8),0,399),modes=['alignment','position'];for(let j=0;j<2;j++){let d=D.pair_models[modes[j]],row=d.rows[z],cx=(row[1]+row[3])/2,cy=(row[2]+row[4])/2,rect=[j*p.w/2+16,0,p.w/2-16,p.h*.62],q=plot(ctx,rect,[cx-170,cx+170],[cy-140,cy+140],'x (mm)','y (mm)',{compact:true,equal:true});for(let i=0;i<2;i++){line(ctx,d.rows.slice(Math.max(0,z-20),z+1).map(r=>[q.X(r[1+2*i]),q.Y(r[2+2*i])]),i?C.amber:C.blue,2,.65);fishGlyph(ctx,q.X(row[1+2*i]),q.Y(row[2+2*i]),row[5+i],i?C.amber:C.blue,10);}label(ctx,modes[j]==='alignment'?'Heading copying':'Position following',rect[0]+rect[2]/2,27,C.ink,17,'center');let h=p.h*.62;chartLines(ctx,[rect[0],h,rect[2],p.h-h],[{x:d.rows.map(r=>r[0]),y:d.phi,color:j?C.green:C.amber}],'Model time (s)','Φ',{ylim:[.85,1.01],compact:true,cursor:p.time});}p.setReadout(`<span>Mean Φ · alignment <b>${fmt(D.pair_models.alignment.mean_phi,3)}</b></span><span>position <b>${fmt(D.pair_models.position.mean_phi,3)}</b></span>`);};
+}else if(s.view==='prediction'){
+ let example=0;if(s.mode==='examples'){choice(p,'Window',D.fish_prediction.examples.map((e,i)=>[String(i),e.label]),'0',v=>{example=+v;p.time=0;});transport(p,1.9,.1);}else p.playing=false;badge(p,'Test trials 31–40');p.draw=()=>{if(s.mode==='errors'){let names=Object.keys(D.response_models);chartLines(ctx,[0,0,p.w,p.h],names.map((n,i)=>({x:Array.from({length:10},(_,j)=>j+31),y:D.response_models[n].rmse_by_trial,color:i?C.amber:C.blue,name:i?'+ heading':'Position + speed',dots:true})),'Held-out trial','Turn-response RMSE (rad/s)');}else{let e=D.fish_prediction.examples[example],tt=e.time_s.map(t=>t-e.time_s[0]);chartLines(ctx,[0,0,p.w,p.h*.7],[{x:tt,y:e.observed,color:C.ink,name:'Measured'},{x:tt,y:e.predicted,color:C.amber,name:'Prediction',dash:true}],'Time in window (s)','Turn response (rad/s)',{cursor:p.time});let index=clamp(Math.floor(p.time/.1+1e-8),0,e.body.length-1),body=e.body[index],cx=p.w*.4,cy=p.h*.88,scale=Math.min(p.w/500,1);fishGlyph(ctx,cx,cy,0,C.amber,13);line(ctx,e.body.map(r=>[cx+r[0]*scale,cy-r[1]*scale]),C.blue,1,.4);dot(ctx,cx+body[0]*scale,cy-body[1]*scale,6,C.blue);label(ctx,'Neighbor: x = '+fmt(body[0],0)+', y = '+fmt(body[1],0)+' mm',p.w/2,p.h-14,C.muted,17,'center');p.setReadout(`<span>Trial <b>${e.trial}</b> · fish ${e.focal}</span><span>Window RMSE <b>${fmt(e.rmse)}</b> rad/s</span>`);}};
+}else if(s.view==='inference'){
+ p.playing=false;p.draw=()=>{let stages=[['Measured trajectories','positions at 40 frames/s'],['Relative geometry','neighbor in the focal frame'],['Turning response','heading change over 0.2 s'],['New pair trials','observed and predicted turns']];stages.forEach((a,i)=>{let y=50+i*110;ctx.strokeStyle=C.line;ctx.strokeRect(45,y,p.w-90,75);label(ctx,a[0],70,y+27,C.amber,25);label(ctx,a[1],70,y+54,C.muted,20);if(i<3)arrow(ctx,p.w/2,y+80,0,20,C.muted,2);});};
+}
+else if(s.view==='fly-experiment'){
+ p.canvas.parentElement.innerHTML='<img class="paper-figure" src="../media/flies-dfft-experiment.jpg" alt="Published fly chamber, occupancy histograms, pseudo-free-energy curves, and spatial preference">';p.controls.remove();p.readout.remove();p.resize=()=>{};p.playing=false;p.draw=()=>{};
+}else if(s.view==='density-field'){
+ p.playing=false;badge(p,'Measured mean density · rectangle chamber');p.draw=()=>{let rho=D.flies.rectangle_means.map(x=>x/D.flies.areas_cm2.rectangle),max=25;drawBinMask(p,ctx,[20,35,p.w-40,p.h*.46],D.flies.rectangle_mask,rho,max,-1,'');let bx=p.w*.22,bw=p.w*.56,by=p.h*.65;for(let i=0;i<bw;i++){ctx.fillStyle=heat(i/bw*max,max);ctx.fillRect(bx+i,by,1.5,18);}label(ctx,'0',bx,by+45,C.ink,22,'center');label(ctx,'25',bx+bw,by+45,C.ink,22,'center');label(ctx,'Mean density (flies / cm²)',p.w/2,by+85,C.ink,23,'center');p.setReadout('<span>Bin area <b>'+fmt(D.flies.areas_cm2.rectangle,3)+'</b> cm²</span>');};
+}else if(s.view==='fly-counts'){
+ let bin=D.flies.chosen_bins[2];choice(p,'Bin',Array.from({length:48},(_,i)=>[String(i),String(i+1)]),String(bin),v=>bin=+v);if(s.mode==='replay')transport(p,D.flies.rectangle_counts.length-1,1);else p.playing=false;badge(p,'Measured fly counts');p.draw=()=>{let z=clamp(Math.floor(p.time),0,D.flies.rectangle_counts.length-1),values=s.mode==='replay'?D.flies.rectangle_counts[z]:D.flies.rectangle_means;drawBinMask(p,ctx,[20,15,p.w-40,p.h*.23],D.flies.rectangle_mask,values,8,bin,'Flies per bin · 0 to 8');let n=D.flies.observed_probability[bin].map((_,i)=>i),observed=D.flies.observed_probability[bin],model=D.flies.probability[bin],poisson=Science.probabilities(Array(30).fill(0),[-Math.log(D.flies.rectangle_means[bin])])[0].slice(0,n.length);let q=chartLines(ctx,[0,p.h*.31,p.w,p.h*.69],[{x:n,y:observed,color:C.amber,name:'Measured',dots:true,width:3},...(s.mode==='fit'?[{x:n,y:model,color:C.green,name:'Fitted count law',width:3}]:s.mode==='baseline'?[{x:n,y:poisson,color:C.blue,name:'Independent · same mean',dash:true,width:3}]:[])],'Occupancy n','Probability',{ylim:[0,Math.max(.5,...observed)*1.12],tickSize:17,labelSize:20});if(s.mode==='replay'){let nnow=values[bin];line(ctx,[[q.X(nnow),q.T],[q.X(nnow),q.B]],C.ink,1,.5);}p.setReadout(`<span>Bin <b>${bin+1}</b> · mean <b>${fmt(D.flies.rectangle_means[bin])}</b></span><span>${s.mode==='replay'?'Source observation '+(z*25+1):(s.mode==='fit'?'Shared crowding fit':s.mode==='baseline'?'Measured variance / mean '+fmt(observed.reduce((a,v,i)=>a+v*(i-D.flies.rectangle_means[bin])**2,0)/D.flies.rectangle_means[bin]):'Measured count distribution')}</span>`);};p.canvas.addEventListener('pointerdown',event=>{let hit=binAtPointer(p,event);if(hit>0&&hit<=48){bin=hit-1;p.controls.querySelector('select').value=String(bin);p.dirty=true;}});
+}else if(s.view==='independent'){
+ let N=65,q=.04;range(p,'N',10,120,1,N,z=>N=z);range(p,'q',.005,.15,.005,q,z=>q=z);p.playing=false;badge(p,s.mode==='variance'?'Fly count variance':'Independent flies');p.draw=()=>{if(s.mode==='variance'){let means=D.flies.rectangle_means,vars=D.independent_counts.rectangle_variance,xx=Array.from({length:100},(_,i)=>i*.04);let a=plot(ctx,[0,0,p.w,p.h],[0,4],[0,4],'Measured mean flies/bin','Measured variance');line(ctx,xx.map(x=>[a.X(x),a.Y(x)]),C.blue,2);line(ctx,xx.map(x=>[a.X(x),a.Y(x*(1-x/65))]),C.green,2);for(let i=0;i<48;i++)dot(ctx,a.X(means[i]),a.Y(vars[i]),4,C.amber,.9);label(ctx,'Poisson',a.X(2.8),a.Y(3.25),C.blue,18);label(ctx,'Fixed N = 65',a.X(2.3),a.Y(2.1),C.green,18);p.setReadout('<span>Each point is one spatial bin</span><span>Most high-density bins fluctuate less</span>');}else{let n=Array.from({length:Math.min(N+1,26)},(_,i)=>i),b=[Math.pow(1-q,N)];for(let k=1;k<n.length;k++)b.push(b[k-1]*(N-k+1)/k*q/(1-q));let pois=Science.probabilities(Array(100).fill(0),[-Math.log(N*q)])[0].slice(0,n.length);chartLines(ctx,[0,0,p.w,p.h],[{x:n,y:b,color:C.amber,name:'Binomial',dots:true},{x:n,y:pois,color:C.blue,name:'Poisson',dash:true}],'Occupancy n','Probability',{ylim:[0,Math.max(...b,...pois)*1.2]});p.setReadout(`<span>Mean <b>${fmt(N*q)}</b></span><span>Binomial variance/mean <b>${fmt(1-q,3)}</b></span>`);}};
+}else if(s.view==='functional'){
+ let mix=.8,g=.3,area=1;range(p,'Profile',0,1,.01,mix,z=>mix=z);range(p,'Crowding g',0,2,.05,g,z=>g=z);if(s.mode==='area')range(p,'Bin area',.5,2,.1,area,z=>area=z);p.playing=false;badge(p,'Model density profiles');p.draw=()=>{let f=D.functional,counts=f.flat.map((x,i)=>(1-mix)*x+mix*f.biased[i]),rho=counts.map(x=>x/area),cost=Science.functional(rho,f.V,area,g);chartLines(ctx,[0,0,p.w,p.h],[{x:f.x,y:rho,color:C.amber,name:'Density ρ'},{x:f.x,y:f.V,color:C.blue,name:'Location cost V'}],'Position (model length)','Dimensionless value',{ylim:[0,Math.max(6,...rho)*1.1]});p.setReadout(`<span>∑ Aρ <b>96</b></span><span>Environment <b>${fmt(cost.environment,1)}</b></span><span>Interaction <b>${fmt(cost.interaction,1)}</b></span><span>Total <b>${fmt(cost.total,1)}</b></span>`);};
+}else if(s.view==='count-law'){
+ let V=-.5,strength=s.mode==='preference'?0:1,mu=0,nRatio=2;range(p,'Location V',-1.3,2,.05,V,z=>V=z);if(s.mode!=='ratio')range(p,'Crowding',0,2,.05,strength,z=>strength=z);else range(p,'n',0,7,1,nRatio,z=>nRatio=z);p.playing=false;badge(p,'Bin occupancy model');p.draw=()=>{let f=D.flies.f.map(x=>x*strength),prob=Science.probabilities(f,[V],mu)[0],n=f.map((_,i)=>i),mean=prob.reduce((a,x,i)=>a+x*i,0),variance=prob.reduce((a,x,i)=>a+x*(i-mean)**2,0);if(s.mode==='parts'){let q=plot(ctx,[0,0,p.w,p.h],[0,8],[-4,22],'Occupancy n','Dimensionless cost');let lf=0;let fac=n.map(i=>{if(i>1)lf+=Math.log(i);return lf;});for(let z of[{y:f,c:C.amber,l:'Crowding fₙ'},{y:n.map(i=>V*i),c:C.blue,l:'Location Vn'},{y:fac,c:C.green,l:'ln(n!)'}])line(ctx,n.map((v,i)=>[q.X(v),q.Y(z.y[i])]),z.c,3);label(ctx,'fₙ',q.X(5),q.Y(f[5])-18,C.amber,21);label(ctx,'Vn',q.X(6),q.Y(V*6)-20,C.blue,21);label(ctx,'ln(n!)',q.X(6),q.Y(fac[6])+20,C.green,21);}else{let base=Science.probabilities(Array(f.length).fill(0),[V],mu)[0];chartLines(ctx,[0,0,p.w,p.h],[{x:n,y:base,color:C.blue,name:'No crowding cost',dash:true},{x:n,y:prob,color:C.amber,name:'Crowding cost included',dots:true}],'Occupancy n','Probability',{ylim:[0,Math.max(...base,...prob)*1.16]});}if(s.mode==='ratio'){let ratio=prob[nRatio+1]/prob[nRatio];p.setReadout(`<span>p(${nRatio+1}) / p(${nRatio}) <b>${fmt(ratio,3)}</b></span><span>Δf <b>${fmt(f[nRatio+1]-f[nRatio],3)}</b></span>`);}else p.setReadout(`<span>Mean <b>${fmt(mean)}</b></span><span>Variance <b>${fmt(variance)}</b></span><span>Displayed support <b>0–8</b></span>`);};
+}else if(s.view==='collapse'){
+ let amount=1;choice(p,'Display',[['collapsed','Remove location preference'],['raw','Original curves']],'collapsed',z=>amount=z==='collapsed'?1:0);p.playing=false;badge(p,'Three measured count distributions');p.draw=()=>{let n=D.flies.f.map((_,i)=>i),ss=D.flies.chosen_bins.map((b,i)=>({x:n,y:D.flies.pseudo[b].map((x,j)=>x===null?NaN:(1-amount)*x+amount*D.flies.collapsed[b][j]),color:[C.blue,C.amber,C.green][i],name:'Bin '+(b+1),dots:true}));let nmax=Math.max(...ss.flatMap(s=>s.x.filter((x,i)=>Number.isFinite(s.y[i]))));ss.push({x:n.slice(0,nmax+1),y:D.flies.f.slice(0,nmax+1),color:C.ink,name:'Shared fₙ',width:3});chartLines(ctx,[0,0,p.w,p.h],ss,'Occupancy n','Dimensionless cost',{xlim:[0,nmax],tickSize:17,labelSize:20});p.setReadout(`<span>${amount?'Location-dependent lines removed':'Location-dependent slopes and offsets retained'}</span>`);};
+}else if(s.view==='transfer'){
+ let total=189,withCost=true,selected=-1,geometry='C shape';let mode=s.mode;if(mode==='scatter')choice(p,'Geometry',['C shape','Square'],geometry,z=>geometry=z);let showObserved=mode!=='sparse'&&mode!=='area';if(mode==='interactive'){range(p,'Total flies',20,250,1,total,z=>total=z);choice(p,'Model',[['crowding','Transferred crowding'],['independent','Preference only']],'crowding',v=>withCost=v==='crowding');}else if(mode==='naive'||mode==='prediction')choice(p,'Measurement',[['show','Show crowded data'],['hide','Hide crowded data']],'show',v=>showObserved=v==='show');p.playing=false;badge(p,'Crowd density prediction');p.draw=()=>{let f=D.flies,obs=f.c_observed,pred=withCost?Science.total(f.c_f,f.c_V,total).means:f.c_sparse_mean.map(x=>x*total/2),naive=f.c_naive,mapMax=Math.max(20,5*Math.ceil(Math.max(...pred,...obs,...(mode==='naive'?naive:[]))/5));if(mode==='comparison'){let all=[{v:naive,l:'Preference only',c:C.blue},{v:f.c_predicted,l:'With crowding',c:C.green},{v:obs,l:'Measured',c:C.ink}],max=5*Math.ceil(Math.max(...naive,...f.c_predicted,...obs)/5);for(let i=0;i<3;i++){let w=p.w/3;label(ctx,all[i].l,w*(i+.5),28,all[i].c,25,'center');drawBinMask(p,ctx,[i*w+16,48,w-32,p.h-100],f.c_mask,all[i].v,max,-1,'');}let bx=p.w*.36,bw=p.w*.28,by=p.h-27;for(let i=0;i<bw;i++){ctx.fillStyle=heat(i/bw*max,max);ctx.fillRect(bx+i,by,1.5,12);}label(ctx,'0',bx-12,by+12,C.ink,17,'right');label(ctx,String(max),bx+bw+12,by+12,C.ink,17);p.setReadout('<span>Mean flies per bin · common color scale</span><span>Total <b>189</b></span>');}else if(mode==='scatter'){let square=geometry==='Square',a=square?f.square:{observed:obs,naive,predicted:f.c_predicted,sem:f.c_sem,rmse_naive:f.rmse_naive,rmse_dfft:f.rmse_dfft},obsPlot=a.observed,naivePlot=a.naive,predPlot=a.predicted,semPlot=a.sem,limit=square?12:22;let prose=p.host.closest('.slide');if(prose.querySelector('[data-transfer-name]'))prose.querySelector('[data-transfer-name]').textContent=square?'Square chamber (~125 flies)':'C-shaped chamber (189 flies)';if(prose.querySelector('[data-transfer-naive]'))prose.querySelector('[data-transfer-naive]').textContent=fmt(a.rmse_naive);if(prose.querySelector('[data-transfer-dfft]'))prose.querySelector('[data-transfer-dfft]').textContent=fmt(a.rmse_dfft);let q=plot(ctx,[0,44,p.w,p.h-44],[0,limit],[0,limit],'Observed mean (flies/bin)','Predicted mean (flies/bin)',{equal:true,tickSize:17,labelSize:20});line(ctx,[[q.X(0),q.Y(0)],[q.X(limit),q.Y(limit)]],C.muted,1);for(let i=0;i<obsPlot.length;i++){let x=q.X(obsPlot[i]),lo=q.X(obsPlot[i]-semPlot[i]),hi=q.X(obsPlot[i]+semPlot[i]);line(ctx,[[lo,q.Y(naivePlot[i])],[hi,q.Y(naivePlot[i])]],C.blue,1);line(ctx,[[lo,q.Y(predPlot[i])],[hi,q.Y(predPlot[i])]],C.green,1);dot(ctx,x,q.Y(naivePlot[i]),4,C.blue);dot(ctx,x,q.Y(predPlot[i]),4,C.green);}label(ctx,'Preference only',p.w*.28,24,C.blue,20,'center');label(ctx,'With crowding',p.w*.72,24,C.green,20,'center');p.setReadout('');}else if(mode==='area'){let n=f.f.map((_,i)=>i),nc=f.c_f.map((_,i)=>i);chartLines(ctx,[0,0,p.w,p.h],[{x:n,y:f.f,color:C.blue,name:'Rectangle bin',dots:true},{x:nc,y:f.c_f,color:C.amber,name:'C-shaped bin',dots:true}],'Occupancy n','Dimensionless crowding cost');p.setReadout('<span>Area ratio <b>'+fmt(f.areas_cm2.c_shape/f.areas_cm2.rectangle,3)+'</b></span><span>Same local density cost</span>');}else if(mode==='sparse'){drawBinMask(p,ctx,[45,10,p.w-90,p.h-35],f.c_mask,f.c_sparse_mean,.2,selected,'Measured mean flies/bin · 0 to 0.2');p.setReadout('<span>37 bins · total <b>2</b> flies</span><span>Location preference from sparse occupancy</span>');}else{let series=mode==='naive'?[{v:naive,l:'Preference × 189/2',c:C.blue},{v:showObserved?obs:null,l:showObserved?'Measured 189 flies':'Measurement hidden',c:C.ink}]:[{v:pred,l:withCost?'Transferred crowding':'Preference only',c:C.green},{v:showObserved&&total===189?obs:null,l:showObserved&&total===189?'Measured 189 flies':'No matching measured condition',c:C.ink}];for(let i=0;i<2;i++){let w=p.w/2;label(ctx,series[i].l,w*(i+.5),24,series[i].c,18,'center');if(series[i].v)drawBinMask(p,ctx,[i*w+10,50,w-20,p.h-100],f.c_mask,series[i].v,mapMax,selected,'');else label(ctx,'Prediction only',w*(i+.5),p.h/2,C.muted,20,'center');}let z=mode==='naive'?naive:pred;p.setReadout(`<span>Predicted total <b>${fmt(z.reduce((a,b)=>a+b,0),1)}</b></span><span>Common scale <b>0–${mapMax}</b> flies/bin</span>`);}};
+}else if(s.view==='wave'){
+ let damping=.3,c=2,mode=s.mode;if(mode!=='diffusion')range(p,'Damping γ',0,4,.1,damping,z=>{damping=z;calculate();});if(mode==='wave'||mode==='spacetime'||mode==='amplitude')range(p,'Wave speed c',1,3,.1,c,z=>{c=z;calculate();});let histories={},angle,rate;function calculate(){for(let model of ['diffusion','wave']){angle=D.propagation.initial.slice();rate=angle.map(()=>0);let frames=[];for(let k=0;k<=1500;k++){if(k%10===0)frames.push(angle.slice());[angle,rate]=Science.propagation(angle,rate,.004,.125,model,1,c,damping);}histories[model]=frames;}p.time=0;p.dirty=true;}calculate();if(mode==='spacetime'||mode==='amplitude')p.playing=false;else transport(p,6,.04);badge(p,'Heading deviation (rad) · dark = 0, bright = +0.5');p.draw=()=>{let k=clamp(Math.floor(p.time/.04+1e-8),0,150),x=D.propagation.x;if(mode==='spacetime'){for(let j=0;j<2;j++){let model=['diffusion','wave'][j],rect=[j*p.w/2+20,0,p.w/2-20,p.h],q=plot(ctx,rect,[-10,10],[0,3],'Position relative to initial turn','Model time',{compact:true});let a=histories[model];for(let t=0;t<75;t++)for(let i=0;i<a[t].length;i++){ctx.fillStyle=diverge(a[t][i],.5);ctx.fillRect(q.X(i*.125-10),q.Y((t+1)*.04),(q.R-q.L)/160+1,(q.B-q.T)/75+1);}label(ctx,model==='wave'?'Damped wave':'Diffusion',(q.L+q.R)/2,q.T-10,C.ink,17,'center');}}else if(mode==='amplitude'){let tt=histories.wave.map((_,i)=>i*.04),ss=['diffusion','wave'].map((m,i)=>({x:tt,y:histories[m].map(a=>Math.max(...a.map(Math.abs))),color:i?C.amber:C.blue,name:i?'Damped wave':'Diffusion'}));chartLines(ctx,[0,0,p.w,p.h],ss,'Model time','Maximum |heading perturbation| (rad)',{ylim:[0,.55]});}else{let mm=mode==='diffusion'?'diffusion':'wave';chartLines(ctx,[0,0,p.w,p.h],[{x,y:D.propagation.initial,color:C.muted,name:'Initial field',dash:true,alpha:.4},{x,y:histories[mm][k],color:mm==='wave'?C.amber:C.blue,name:mm==='wave'?'Damped wave':'Diffusion'}],'Position (model length)','Heading perturbation (rad)',{ylim:[-.15,.6]});}p.setReadout((mode==='spacetime'||mode==='amplitude'?'':'<span>Model time <b>'+fmt(k*.04)+'</b></span>')+(mode==='diffusion'?'<span>D <b>1</b></span>':'<span>γ <b>'+fmt(damping,1)+'</b></span><span>c <b>'+fmt(c,1)+'</b></span>'));};
+}else{p.playing=false;p.draw=()=>{};}
+return p;}
+function drawBinMask(panel,ctx,rect,mask,values,max,selected=-1,legend=''){
+ let [x,y,w,h]=rect,rows=mask.length,cols=mask[0].length,scale=Math.min(w/cols,h/rows),ox=x+(w-cols*scale)/2,oy=y+(h-rows*scale)/2;panel.maskRegions??=[];panel.maskRegions=panel.maskRegions.filter(r=>r.x!==x);panel.maskRegions.push({x,ox,oy,scale,rows,cols,mask});for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){let id=mask[j][i];if(id>0&&id<=values.length){ctx.fillStyle=heat(values[id-1],max);ctx.fillRect(ox+i*scale,oy+j*scale,scale+.3,scale+.3);if(id===selected+1){let edge=(i===0||j===0||i===cols-1||j===rows-1||mask[j][i-1]!==id||mask[j][i+1]!==id||mask[j-1]?.[i]!==id||mask[j+1]?.[i]!==id);if(edge){ctx.fillStyle=C.ink;ctx.fillRect(ox+i*scale,oy+j*scale,scale+.3,scale+.3);}}}}if(legend)label(ctx,legend,x+w/2,y+h+16,C.muted,16,'center');}
+function binAtPointer(p,event){let r=p.canvas.getBoundingClientRect(),x=(event.clientX-r.left)*p.w/r.width,y=(event.clientY-r.top)*p.h/r.height;for(let a of p.maskRegions||[]){let i=Math.floor((x-a.ox)/a.scale),j=Math.floor((y-a.oy)/a.scale);if(i>=0&&i<a.cols&&j>=0&&j<a.rows)return a.mask[j][i];}return 0;}
+</script>
+<script>
+let current=0,activeController=null,controllers=new Map(),lastFrame=0,pythonSources={};
+const board=document.getElementById('board');
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function build(){
+ if(!D)throw new Error('Lecture data missing. Keep the lectures/, data/ and media/ folders together.');
+ if(slides.length!==73)throw new Error('Lecture requires 73 slides.');
+ pythonSources=JSON.parse(document.getElementById('python-source').textContent);
+ for(let i=0;i<slides.length;i++){let s=slides[i],section=document.createElement('section');section.className='slide';section.id='slide-'+String(i+1).padStart(2,'0');section.setAttribute('aria-label',`Slide ${i+1}: ${s.t}`);let visual=s.embed?'<div class="viz"><iframe src="'+s.embed+'" title="Locust virtual-reality experiment" style="width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>':s.fig?'<div class="viz"><a class="paper-panel '+(s.photo?'organism-photo':'')+'" href="'+s.fig+'" target="_blank" rel="noopener" aria-label="Open figure: '+escapeHTML(s.t)+'"><img src="'+s.fig+'" alt="'+escapeHTML(s.t)+'" loading="eager"></a></div>':s.video?'<div class="viz"><div class="video-wrap"><video controls preload="metadata" playsinline aria-label="'+escapeHTML(s.t)+'"><source src="'+s.video+'" type="video/mp4"></video></div><p class="video-meta">'+s.meta+'</p></div>':s.view==='movie'?'<div class="viz"><div class="video-wrap"><video controls preload="metadata" poster="../media/flocking/golden-shiner-poster.jpg" playsinline aria-label="Golden-shiner school changing collective states"><source src="'+(s.opening?'../media/flocking/golden-shiner-opening.mp4':'../media/flocking/golden-shiner-state-switching-from-4s.mp4')+'" type="video/mp4"></video></div><p class="video-meta">150 golden shiners · 16× physical speed</p></div>':s.view?'<div class="viz" data-view="'+s.view+'"></div>':'';
+ section.innerHTML=`<div class="eyebrow">${i===0?'BPY567 · October 29, 2026':chapters[s.g]}</div><h2>${s.t}</h2>${s.subtitle ? `<p style="margin:0 0 18px;flex-shrink:0">${escapeHTML(s.subtitle)}</p>` : ''}`+(s.wide?`<div class="wide"><div class="prose">${s.text}</div>${visual}</div>`:`<div class="split"><div class="prose">${s.text}</div>${visual}</div>`)+`<div class="slide-footer"><span class="slide-citations">${(s.citations||[]).map(c=>`<a href="${escapeHTML(c.url)}" target="_blank" rel="noopener">${escapeHTML(c.label)}</a>`).join('<br>')}</span><span>${String(i+1).padStart(2,'0')} / ${slides.length}</span></div>`;board.append(section);}
+ let toc=document.getElementById('toc');chapters.forEach((name,g)=>{let d=document.createElement('details'),summary=document.createElement('summary');summary.textContent=String(g+1).padStart(2,'0')+' · '+name;d.append(summary);slides.forEach((s,i)=>{if(s.g===g){let b=document.createElement('button');b.textContent=String(i+1).padStart(2,'0')+'  '+s.t;b.dataset.slide=i;b.addEventListener('click',()=>{show(i);document.body.classList.remove('mobile-toc');});d.append(b);}});toc.append(d);});
+ current=clamp((Number(location.hash.match(/\d+/)?.[0])||1)-1,0,slides.length-1);show(current,false);resize();
+}
+function updatePython(){let s=slides[current],el=document.getElementById('python-content');el.innerHTML=s.code.length?s.code.map(tag=>`<h4>${escapeHTML(tag)}</h4><pre><code>${escapeHTML(pythonSources[tag]||'Source unavailable — rebuild the lecture from its companion.')}</code></pre>`).join(''):'<p>Open the companion for the calculations and source links.</p>';}
+
+function typeset(section){if(window.MathJax?.typesetPromise)window.MathJax.startup.promise.then(()=>window.MathJax.typesetPromise([section])).catch(error=>{document.getElementById('boot-error').textContent='Equation rendering: '+error.message;});}
+function show(i,writeHash=true){i=clamp(i,0,slides.length-1);for(let v of document.querySelectorAll('video'))v.pause();if(window.MathJax?.typesetClear&&current!==i)window.MathJax.typesetClear([board.children[current]]);for(let section of board.children)section.classList.remove('active');current=i;let section=board.children[i];section.classList.add('active');if(slides[i].opening||slides[i].autoplay){let video=section.querySelector('video');if(video){video.muted=true;video.loop=!!slides[i].opening;video.play().catch(()=>{});}}document.getElementById('progress').textContent=`${String(i+1).padStart(2,'0')} / ${slides.length}`;document.getElementById('previous').disabled=i===0;document.getElementById('next').disabled=i===slides.length-1;document.title=`15.${i+1} · ${slides[i].t} · BPY567`;for(let b of document.querySelectorAll('#toc button'))b.setAttribute('aria-current',Number(b.dataset.slide)===i?'true':'false');document.querySelectorAll('#toc details').forEach((d,j)=>d.open=j===slides[i].g);let host=section.querySelector('[data-view]');activeController=null;if(host){if(!controllers.has(i))controllers.set(i,createController(host,slides[i]));activeController=controllers.get(i);activeController.resize();activeController.dirty=true;}updatePython();typeset(section);if(writeHash){try{history.replaceState(null,'','#slide-'+String(i+1).padStart(2,'0'));}catch{location.hash='slide-'+String(i+1).padStart(2,'0');}}document.getElementById('announcement').textContent=`Slide ${i+1} of ${slides.length}. ${slides[i].t}`;}
+function resize(){let vp=document.getElementById('viewport'),scale=Math.min(vp.clientWidth/1280,vp.clientHeight/720);board.style.transform=`scale(${scale})`;activeController?.resize();}
+function closeDrawers(){document.getElementById('python-drawer').classList.remove('open');}
+document.getElementById('previous').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);
+document.getElementById('contents').onclick=()=>{if(innerWidth<=850)document.body.classList.toggle('mobile-toc');else document.body.classList.toggle('rail-hidden');resize();};
+document.getElementById('python-toggle').onclick=()=>document.getElementById('python-drawer').classList.toggle('open');document.getElementById('python-close').onclick=closeDrawers;
+function setPresentation(on){document.body.classList.toggle('presentation',on);document.getElementById('fullscreen').setAttribute('aria-label',on?'Exit fullscreen':'Toggle fullscreen');resize();}
+function exitPresentation(){setPresentation(false);if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});}
+document.getElementById('fullscreen').onclick=()=>{if(document.body.classList.contains('presentation'))exitPresentation();else{setPresentation(true);if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(()=>{});}};
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)setPresentation(false);});
+addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea')||e.ctrlKey||e.metaKey||e.altKey)return;if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();show(current+1);}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1);}if(e.key==='Home'){e.preventDefault();show(0);}if(e.key==='End'){e.preventDefault();show(slides.length-1);}if(e.key==='Escape'){closeDrawers();exitPresentation();}if(e.key.toLowerCase()==='p')document.getElementById('python-toggle').click();if(e.key.toLowerCase()==='f')document.getElementById('fullscreen').click();if(e.key===' '&&activeController&&!e.target.matches('button')){e.preventDefault();activeController.controls.querySelector('button')?.click();}});
+addEventListener('resize',resize);addEventListener('hashchange',()=>{let i=(Number(location.hash.match(/\d+/)?.[0])||1)-1;if(i!==current)show(i,false);});document.addEventListener('visibilitychange',()=>{lastFrame=0;if(document.hidden)for(let v of document.querySelectorAll('video'))v.pause();});
+function frame(t){let dt=lastFrame?Math.min((t-lastFrame)/1000,.05):0;lastFrame=t;if(!document.hidden&&activeController){let p=activeController;p.resize();p.tick?.(dt);if(p.dirty){p.clear();p.draw();p.dirty=false;}}requestAnimationFrame(frame);}
+addEventListener('load',()=>{typeset(board.children[current]);resize();});
+addEventListener('error',e=>{document.getElementById('boot-error').textContent=e.message||'An asset could not be loaded.';});
+try{build();requestAnimationFrame(frame);}catch(error){document.getElementById('boot-error').textContent=error.message;console.error(error);}
+</script>
+</body>
+</html>

@@ -20,3 +20,7 @@ The classroom analysis uses the midpoint at 13.4 s and full 3D distances and vel
 The velocity comparison uses the same pairs and 500 velocity permutations. Permutation preserves positions, g(r), mean velocity, and overall heading alignment. Subtracting the snapshot mean creates the expected off-diagonal baseline `-1/(N-1)`. One frame demonstrates local coordination; it is not a size-scaling or causal-interaction test. Published starling scaling in the lecture comes from a different study. The 4 m contact graph is explicitly hypothetical; the cutoff is roughly twice this frame’s median nearest-neighbor distance (2.26 m).
 
 The companion movie is generated directly by this notebook from the measured positions, displayed in the x-y plane relative to the instantaneous flock center. See `media/README.md` for playback details. Source data retain their source-specific terms and are excluded from the repository's original-content licenses.
+
+## Lecture 15: mosquitofish pairs
+
+`fish-pairs-2021.npz` contains 40 measured paired-fish recordings from Schaerf, Herbert-Read & Ward (2021), https://doi.org/10.1098/rsif.2020.0925. Original deposit: https://doi.org/10.6084/m9.figshare.14265787.v1. Arrays `group_01` through `group_40` have shape (frames, 2 fish, 2 coordinates), positions in millimeters and acquisition rate 40 Hz. Source NaNs and all 741,750 frames are preserved. The companion performs its own filtering and uses separate trials for prediction tests. Input hashes are in `../collective-motion/lecture-15-data-manifest.json`.

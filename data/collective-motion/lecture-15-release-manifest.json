@@ -1,0 +1,352 @@
+{
+  "lecture": 15,
+  "slides": 73,
+  "url": "https://shaevitz.github.io/567-Crowd-Control/lectures/lecture-15-animal-interaction-rules.html",
+  "files": [
+    {
+      "path": "data/collective-motion/lecture-15-browser-data.js",
+      "bytes": 2481133,
+      "sha256": "51c81b3830bbaeb642c7ca2eaf0635b58838355fa31bbf385c5bfa82b59e7788"
+    },
+    {
+      "path": "data/collective-motion/lecture-15-data-manifest.json",
+      "bytes": 4553,
+      "sha256": "e9b458d8eb879a183bc758e7c929782456ced2dd542663f6f719550ed9cc7cf2"
+    },
+    {
+      "path": "data/collective-motion/lecture-15-media-manifest.json",
+      "bytes": 24551,
+      "sha256": "fdc3b437d71a3fb93ec5b7c12ddb9bd6411c1e92d68dd4c5a530e5263b511c2d"
+    },
+    {
+      "path": "data/collective-motion/lecture-15-validation.json",
+      "bytes": 42450,
+      "sha256": "bdf084e3fb87f7de25c936b5cb36660f0d3550e00acff596b4d96fe05b3d1ce7"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-02-bins.mat",
+      "bytes": 1628,
+      "sha256": "ecd77b8b389b1b2126a5f4b38f6f779d072b364c8af65496380a86ad6de4532e"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-02-occupancies.mat",
+      "bytes": 6602,
+      "sha256": "cc1c0e715ead8c3e9db19eb05e581855cde27d521ff7004cd0d3b1fd4f2a5e24"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-c-shape-bins.mat",
+      "bytes": 21362,
+      "sha256": "2458d5f3ab7e71ffc616d17ba811e7905816a3ae6657ca0470c2be1660170ab4"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-c-shape-high-occupancies.mat",
+      "bytes": 61518,
+      "sha256": "1c5dd5287a2cdcc9fe7dbcb7b7c9a4f3de63fb8f216233f6a47a9a7fa5fd7444"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-c-shape-low-occupancies.mat",
+      "bytes": 7642,
+      "sha256": "ed98e90c2d581fe9b7d3e33ee20d45d90b1c6ca5b644188088876031b0a68aba"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-rectangle-bins.mat",
+      "bytes": 1628,
+      "sha256": "ecd77b8b389b1b2126a5f4b38f6f779d072b364c8af65496380a86ad6de4532e"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-rectangle-high-occupancies.mat",
+      "bytes": 34535,
+      "sha256": "2ba09f8d1c8ca762e2635bd983ab56f0e5a6e64933dee2cc9a2b6a145afba8b5"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-square-bins.mat",
+      "bytes": 8682,
+      "sha256": "e78ec069a08ebc353c1d7c6b7729c5d29716d2674d745344d14e15af3d4445cb"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-square-high-occupancies.mat",
+      "bytes": 4632,
+      "sha256": "dc37825e42748df97de645082d99f02d13ed24fad5e08fe8b3de08ae4459cdad"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-square-low-occupancies.mat",
+      "bytes": 10315,
+      "sha256": "ff09045a1a8639f05ffbe687ca78e05760156d906f36d321bf573f3adc701eec"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-stairs-bins.mat",
+      "bytes": 912972,
+      "sha256": "cdb1dc02faca870d129db33022b21e49f3fbe9f1c6b1432a6616c80ce219c5ac"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-stairs-high-occupancies.mat",
+      "bytes": 2711,
+      "sha256": "e0d0fe6da271ef2c8f055874c239e28f8ae9f0757371b91b2d880b7554c3b70d"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-stairs-low-occupancies.mat",
+      "bytes": 7645,
+      "sha256": "c070a10a9028151e664b0f1b1fe4dda707395556e1e40d85833462111a97b27c"
+    },
+    {
+      "path": "data/flies/dfft-2018/physical-bin-areas.json",
+      "bytes": 439,
+      "sha256": "7f255848083e58b7f8f3c0e9334684cb2257e6be76f247465243b81467ca59d9"
+    },
+    {
+      "path": "data/flies/dfft-2018/source-coarse-frustration.m",
+      "bytes": 5197,
+      "sha256": "91f0af5f4fca2b71821af9770eed334ebc0475f87c6a8f322108b2358c662fb7"
+    },
+    {
+      "path": "data/flies/dfft-2018/source-prediction-script.m",
+      "bytes": 4236,
+      "sha256": "a0cb2d27370fa327e4460c595010e1456ab4667db7f37abb48969fe11c494d1a"
+    },
+    {
+      "path": "data/flies/dfft-2018/source-readme.txt",
+      "bytes": 2046,
+      "sha256": "1066b7971d6a74ddc4f56d0b38482d201c18c082f084bbb9ad0c2c86dae26098"
+    },
+    {
+      "path": "data/flocking/fish-pairs-2021.npz",
+      "bytes": 15980977,
+      "sha256": "fd439fd203419c9cc72892623d3b45b871e6a7bbf198206fffcf06ea052ac56d"
+    },
+    {
+      "path": "data/insect-swarms/midge-ob11.txt",
+      "bytes": 21810236,
+      "sha256": "785cd60954e35613388f09560d05083c0d8c94c0ddc63274ae9f6b02854826db"
+    },
+    {
+      "path": "lectures/lecture-15-animal-interaction-rules.html",
+      "bytes": 190963,
+      "sha256": "665be36e1fef9b9ed37887a4d47d047362a1f886577e1ca58349649e1f3108bf"
+    },
+    {
+      "path": "lectures/lecture-15-animal-interaction-rules.ipynb",
+      "bytes": 1770897,
+      "sha256": "a8236f5f6bea3de7fd7f4f4f9b5d1448f023aad9eba7ea73c4d187c899ff2d17"
+    },
+    {
+      "path": "lectures/vendor/mathjax/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "lectures/vendor/mathjax/README.md",
+      "bytes": 571,
+      "sha256": "8c24f233c64504ff8e22aa15d9f969994f7eb3834033425c2a6329ad1dad0137"
+    },
+    {
+      "path": "lectures/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+      "bytes": 4056,
+      "sha256": "d6771fee0772db2657796c8d0e20e1878bb3237f6d3ed1e828e1834a4ff743ca"
+    },
+    {
+      "path": "lectures/vendor/mathjax/tex-svg.js",
+      "bytes": 2108580,
+      "sha256": "d4295dc33744836935c1399feece5159577b34c5c8ffb9f1c6324cd82e03a882"
+    },
+    {
+      "path": "media/collective-motion/attanasi-propagation.png",
+      "bytes": 596180,
+      "sha256": "ae4cd81c004f0c0c137203972571bed11bc4dcc6fe780fd63fbac3548ac6fc7a"
+    },
+    {
+      "path": "media/collective-motion/attanasi-turn-amplitude.png",
+      "bytes": 493245,
+      "sha256": "ff1aae9f8475ab71917c9c422ae210884406806967f834b0b6f50f46768f26be"
+    },
+    {
+      "path": "media/collective-motion/attanasi-turn-distance.png",
+      "bytes": 470593,
+      "sha256": "b63af53acc0a24d768bb532437c0540deb13c8fd10add56062e4eb71a9201eee"
+    },
+    {
+      "path": "media/collective-motion/bazazi-contact-direction.png",
+      "bytes": 122502,
+      "sha256": "be12de278e1911f517c21b60dbc34586fd59be28b2de196cbb4b2e1ea3a74758"
+    },
+    {
+      "path": "media/collective-motion/bazazi-nerve-control.png",
+      "bytes": 125396,
+      "sha256": "0f00f9caea9d842f6a89963d7ef57106b5652b535506672007822563bd24b735"
+    },
+    {
+      "path": "media/collective-motion/berdahl-environment-performance.png",
+      "bytes": 253663,
+      "sha256": "f82ddc93c93bf058e3794d1feb5072e856aee8c2bb3bdacbac70853d74e9958f"
+    },
+    {
+      "path": "media/collective-motion/berdahl-social-versus-gradient.png",
+      "bytes": 66047,
+      "sha256": "28b154b1c5f09adbb406c53726d305384734fa2eac8f007f4c761bdcec47939f"
+    },
+    {
+      "path": "media/collective-motion/berdahl-speed.png",
+      "bytes": 27160,
+      "sha256": "7c68b504999a612e096b094156288a076d37103f32acc76f220a1598bad4eb3a"
+    },
+    {
+      "path": "media/collective-motion/couzin-model-fish-comparison.png",
+      "bytes": 425249,
+      "sha256": "5388441786464b56c8fab1c16033ac0b4c780a816aa76b0cfd6fb14430db2759"
+    },
+    {
+      "path": "media/collective-motion/couzin-uninformed-model.png",
+      "bytes": 77225,
+      "sha256": "6eed7fd0392bc6ca5842fb50d6b3b50164a7f88d570e242b24aa051f11e27f8a"
+    },
+    {
+      "path": "media/collective-motion/katz-pair-geometry.png",
+      "bytes": 137499,
+      "sha256": "93e88ed388c967fe3970d23f1d6cab7c08f6519d341e01b209eff8744e7c33d1"
+    },
+    {
+      "path": "media/collective-motion/katz-pair-responses.png",
+      "bytes": 170816,
+      "sha256": "a607d92b08e6e814ae8aa96561a887448a6e8d9c70f18078b65bf99d2598a4a3"
+    },
+    {
+      "path": "media/collective-motion/katz-triplet-speed.png",
+      "bytes": 254851,
+      "sha256": "85121dc81feab3678f67aa32272feee6a7634e7795a2f7bfba07326fd2b55582"
+    },
+    {
+      "path": "media/collective-motion/katz-triplet-turn.png",
+      "bytes": 210383,
+      "sha256": "9af543fe67950eb26627378a1f87f1e5e2fa0dba5a4b9593c1ead41deaa88364"
+    },
+    {
+      "path": "media/collective-motion/katz-turning-relative-heading.png",
+      "bytes": 131833,
+      "sha256": "05f39f0e7d25b7275dc6dd5541f37b62145db8599da44ee5dbcedfd7f0877391"
+    },
+    {
+      "path": "media/collective-motion/locust-density-and-bistability.png",
+      "bytes": 805780,
+      "sha256": "07327022566e281c25b386d5077960380c778e764fc1abfe919fd70738fa2468"
+    },
+    {
+      "path": "media/collective-motion/locust-phases.jpg",
+      "bytes": 24635,
+      "sha256": "c43e3bef7590f58482c13a89b11a6be43684f6aabe94b816e30573e07e0ab817"
+    },
+    {
+      "path": "media/collective-motion/locust-ring-experiment.mp4",
+      "bytes": 1215290,
+      "sha256": "1c58027b6657ebb08d3286a864422e886cd333d9baae66e5fba764f8bf8d23bf"
+    },
+    {
+      "path": "media/collective-motion/mora-natural-flock-sampling.png",
+      "bytes": 37110,
+      "sha256": "696243bedaeab9ac369edd504606a881350b8ae0ce3ca5080e4cd84322b22542"
+    },
+    {
+      "path": "media/collective-motion/sayin-choice.png",
+      "bytes": 76137,
+      "sha256": "96f31330f3c78282e18dbc062c5365228e2cbe3e48cdde9e39e6841c26d92e49"
+    },
+    {
+      "path": "media/collective-motion/sayin-field-directions.png",
+      "bytes": 153951,
+      "sha256": "3eba6201041cb353314faa973c9d4a3a025a5762d695d4745534b88b1dbf5f6d"
+    },
+    {
+      "path": "media/collective-motion/sayin-optomotor-stacked.png",
+      "bytes": 126830,
+      "sha256": "9b693047c1d980805345796a6765759d4373c88ee1d339ffa97bd729335cda54"
+    },
+    {
+      "path": "media/collective-motion/sayin-order-density.png",
+      "bytes": 100792,
+      "sha256": "6b535edaeae67d7849a95c008f123cfb5c83696bd28e26a952e127c2fc974d1e"
+    },
+    {
+      "path": "media/collective-motion/sayin-pull.png",
+      "bytes": 112589,
+      "sha256": "6285524d200f427e627bf6914ee570caff479cc4938683b2eb468b20c4b0cbd2"
+    },
+    {
+      "path": "media/collective-motion/sayin-vr.png",
+      "bytes": 265115,
+      "sha256": "8842f632c29c9a17f97ba48e0a3171ef81d9490b80151d7c5a46d10a615eb550"
+    },
+    {
+      "path": "media/collective-motion/visual-network-candidates.png",
+      "bytes": 211418,
+      "sha256": "f2420dc499fda694634efe602422e2b6d9e0e19acbc17bde37ea9d44fb08cd7a"
+    },
+    {
+      "path": "media/collective-motion/visual-network-model-comparison.png",
+      "bytes": 58477,
+      "sha256": "c5b48b97f535fcd0c59667b8815ac8bd8a45fce1bbb63295545aae8c2d99db7d"
+    },
+    {
+      "path": "media/collective-motion/visual-network-response.png",
+      "bytes": 139811,
+      "sha256": "584b8605e64a4802526c5dd5c774c47652fe4b9c9eaf7c8a1adf7765d422852b"
+    },
+    {
+      "path": "media/density-current.svg",
+      "bytes": 1500,
+      "sha256": "5c3a8b3687077d8730b43773516aaf5a6ed23b3b9973f54475ace862e19e763a"
+    },
+    {
+      "path": "media/drosophila-melanogaster-closeup.jpg",
+      "bytes": 157798,
+      "sha256": "1d96c6c5f669fc0f1a3932e0b669f4979f16a8652e343ba24ced8d64ee5bbb23"
+    },
+    {
+      "path": "media/flies-dfft-chamber.png",
+      "bytes": 174794,
+      "sha256": "f5fe5c0d0d47c8e8f59d5f0d41f6d8cd24881edc6e14da4920967336d51aaeb4"
+    },
+    {
+      "path": "media/flies-dfft-experiment.jpg",
+      "bytes": 89697,
+      "sha256": "76d5e8b6e8715094ae83176974d064b9d2198612175b64bfc5696555bb688f6c"
+    },
+    {
+      "path": "media/flocking/golden-shiner-opening.mp4",
+      "bytes": 2630473,
+      "sha256": "d4d5ce345ed1db88c81b53d10e2f960d8eabbb53d64d0ca723dd4e05b897902f"
+    },
+    {
+      "path": "media/flocking/golden-shiner-photo.jpg",
+      "bytes": 236512,
+      "sha256": "c9bfa5fba95e5ef4009a70178225615dfd0b09516f9ee163b0de2958bf1d2f0a"
+    },
+    {
+      "path": "media/flocking/golden-shiner-poster.jpg",
+      "bytes": 11973,
+      "sha256": "93500e670ddf07b5c16ca9ee6dbf2c7fa754fdb71331433e3e5f341c4860bf0d"
+    },
+    {
+      "path": "media/flocking/golden-shiner-state-switching-from-4s.mp4",
+      "bytes": 6602135,
+      "sha256": "3670ed11e4e7b834aadce616798c30e02bb199036ff20aa924fb8ebc9556dda8"
+    },
+    {
+      "path": "media/flocking/mora-2016-inference.png",
+      "bytes": 48646,
+      "sha256": "f559c19040b1cad22c299b23af6e19635e6be3e66242f08d44bbdaa601739af9"
+    },
+    {
+      "path": "media/flocking/mora-2016-timescales.png",
+      "bytes": 43446,
+      "sha256": "77c611432354d12a6a616c1fbf993c973f2c1a25a742dc3b5b4011dcbed34f19"
+    },
+    {
+      "path": "media/flocking/mosquitofish-photo.jpg",
+      "bytes": 148181,
+      "sha256": "12676b3ffd168e14c287e78b521ea80bd9e76cc23d74c156a985f7fa7afc32e6"
+    },
+    {
+      "path": "media/flocking/starling-photo.jpg",
+      "bytes": 203332,
+      "sha256": "411c34708c94094dc5e4a2fec61b0bbeaac213a990701c5e76b8cb77e7ca0b65"
+    }
+  ]
+}

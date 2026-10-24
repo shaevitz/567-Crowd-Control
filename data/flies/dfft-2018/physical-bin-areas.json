@@ -1,0 +1,11 @@
+{
+  "source_script": "https://osf.io/download/hdjyx/",
+  "source_coarse_function": "https://osf.io/download/t9drc/",
+  "bin_area_cm2": {
+    "rectangle": 0.1493,
+    "square": 0.1389,
+    "stairs": 0.6065,
+    "c_shape": 0.3514
+  },
+  "interpretation": "Source Figure 3 prediction script provides the area conversion; do not identify image-pixel areas with physical bin areas. Original MATLAB is retained as reference and not executed."
+}

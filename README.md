@@ -19,6 +19,8 @@ Course materials for **BNG/BPY/CBE/MAE 567 Crowd Control: Understanding and Mani
 - [Lecture 8 — From the telephone game to the Ising model](lectures/lecture-08-telephone-game-ising-model.ipynb)
 - [Lecture 9 — Pattern formation with local interactions](lectures/lecture-09-spatial-order-response-percolation.ipynb)
 
+- [Lecture 15 — Measuring interactions in animal groups](https://shaevitz.github.io/567-Crowd-Control/lectures/lecture-15-animal-interaction-rules.html) · [Python companion](lectures/lecture-15-animal-interaction-rules.ipynb)
+
 ## Local environment
 
 Create and register the shared course kernel:

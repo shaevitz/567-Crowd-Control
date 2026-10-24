@@ -1,0 +1,115 @@
+{
+  "companion": "lectures/lecture-15-animal-interaction-rules.ipynb",
+  "code_cells_sha256": "187c35f69db4c06b733a827888d97970faffc2881c2addcc4278314cd4079554",
+  "inputs": [
+    {
+      "path": "data/flocking/fish-pairs-2021.npz",
+      "bytes": 15980977,
+      "sha256": "fd439fd203419c9cc72892623d3b45b871e6a7bbf198206fffcf06ea052ac56d"
+    },
+    {
+      "path": "data/insect-swarms/midge-ob11.txt",
+      "bytes": 21810236,
+      "sha256": "785cd60954e35613388f09560d05083c0d8c94c0ddc63274ae9f6b02854826db"
+    },
+    {
+      "path": "data/flies/dfft-2018/physical-bin-areas.json",
+      "bytes": 439,
+      "sha256": "7f255848083e58b7f8f3c0e9334684cb2257e6be76f247465243b81467ca59d9"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-02-bins.mat",
+      "bytes": 1628,
+      "sha256": "ecd77b8b389b1b2126a5f4b38f6f779d072b364c8af65496380a86ad6de4532e"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-02-occupancies.mat",
+      "bytes": 6602,
+      "sha256": "cc1c0e715ead8c3e9db19eb05e581855cde27d521ff7004cd0d3b1fd4f2a5e24"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-c-shape-bins.mat",
+      "bytes": 21362,
+      "sha256": "2458d5f3ab7e71ffc616d17ba811e7905816a3ae6657ca0470c2be1660170ab4"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-c-shape-high-occupancies.mat",
+      "bytes": 61518,
+      "sha256": "1c5dd5287a2cdcc9fe7dbcb7b7c9a4f3de63fb8f216233f6a47a9a7fa5fd7444"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-c-shape-low-occupancies.mat",
+      "bytes": 7642,
+      "sha256": "ed98e90c2d581fe9b7d3e33ee20d45d90b1c6ca5b644188088876031b0a68aba"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-rectangle-bins.mat",
+      "bytes": 1628,
+      "sha256": "ecd77b8b389b1b2126a5f4b38f6f779d072b364c8af65496380a86ad6de4532e"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-rectangle-high-occupancies.mat",
+      "bytes": 34535,
+      "sha256": "2ba09f8d1c8ca762e2635bd983ab56f0e5a6e64933dee2cc9a2b6a145afba8b5"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-square-bins.mat",
+      "bytes": 8682,
+      "sha256": "e78ec069a08ebc353c1d7c6b7729c5d29716d2674d745344d14e15af3d4445cb"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-square-high-occupancies.mat",
+      "bytes": 4632,
+      "sha256": "dc37825e42748df97de645082d99f02d13ed24fad5e08fe8b3de08ae4459cdad"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-square-low-occupancies.mat",
+      "bytes": 10315,
+      "sha256": "ff09045a1a8639f05ffbe687ca78e05760156d906f36d321bf573f3adc701eec"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-stairs-bins.mat",
+      "bytes": 912972,
+      "sha256": "cdb1dc02faca870d129db33022b21e49f3fbe9f1c6b1432a6616c80ce219c5ac"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-stairs-high-occupancies.mat",
+      "bytes": 2711,
+      "sha256": "e0d0fe6da271ef2c8f055874c239e28f8ae9f0757371b91b2d880b7554c3b70d"
+    },
+    {
+      "path": "data/flies/dfft-2018/figure-03-stairs-low-occupancies.mat",
+      "bytes": 7645,
+      "sha256": "c070a10a9028151e664b0f1b1fe4dda707395556e1e40d85833462111a97b27c"
+    }
+  ],
+  "browser_payload": {
+    "path": "data/collective-motion/lecture-15-browser-data.js",
+    "bytes": 2481133,
+    "sha256": "51c81b3830bbaeb642c7ca2eaf0635b58838355fa31bbf385c5bfa82b59e7788",
+    "precision_decimal_places": 6
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "pandas": "3.0.5",
+    "matplotlib": "3.10.9",
+    "nbformat": "5.11.1"
+  },
+  "summary": {
+    "fish_encounters": 162308,
+    "fish_test_trials": 10,
+    "dfft_heldout_gain": 0.056484,
+    "c_rmse_naive": 3.656753,
+    "c_rmse_dfft": 1.199681,
+    "square_rmse_naive": 1.978904,
+    "square_rmse_dfft": 0.775495
+  },
+  "interpretation": {
+    "fish": "Trial-held-out conditional prediction; source identities are local to each sheet. Focal identity comparison uses trial 1 only.",
+    "fly_transfer": "Shared nonparametric cost from rectangle first 80%; C-sparse bin means determine V; physical area rescaling follows author script; C-crowded data only evaluate prediction.",
+    "fly_uncertainty": "SEM of eight contiguous observation blocks; no claim of biological replication or independent time samples.",
+    "movie": "Golden-shiner experimental footage has no verified matching trajectory file; quantitative fish responses use the separate pair dataset.",
+    "local_alignment": "Mora published starling results motivate deterministic local-mode illustrations; no new Mora parameter fit is claimed."
+  }
+}
