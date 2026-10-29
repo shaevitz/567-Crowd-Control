@@ -1,6 +1,13 @@
 {
   "assets": [
     {
+      "path": "media/flocking/golden-shiner-state-switching.m4v",
+      "source": "https://journals.plos.org/ploscompbiol/article/file?type=supplementary&id=10.1371/journal.pcbi.1002915.s015",
+      "note": "Original experimental movie; encoded playback is 16 times physical speed.",
+      "bytes": 10646140,
+      "sha256": "e63c33209c349ebd661cfcf9b69309e9f59a881a900649ed0dafc04bdbb650b2"
+    },
+    {
       "path": "media/flocking/golden-shiner-poster.jpg",
       "source": null,
       "note": "Frame extracted at encoded time 5 s from the unchanged experimental movie.",
@@ -70,6 +77,23 @@
       "sha256": "a607d92b08e6e814ae8aa96561a887448a6e8d9c70f18078b65bf99d2598a4a3"
     },
     {
+      "path": "media/collective-motion/katz-speed-heading.png",
+      "page": 3,
+      "rectangle_points": [
+        293,
+        40,
+        553,
+        323
+      ],
+      "figure": "Figure 2",
+      "source": "https://people.esam.northwestern.edu/~cristian/publications/2011PNAS_1107583108.full.pdf",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/katz-2011-fish-interactions.pdf",
+      "source_sha256": "cc0ea7653c7efabe0d9e00d714103d5d14912c4dcab5ee37205100b767e9948d",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 366344,
+      "sha256": "8f956722b74cee6dc18c8c121dafb4a5438e2d7a11379456dfe6984a36cd1f41"
+    },
+    {
       "path": "media/collective-motion/katz-triplet-speed.png",
       "page": 4,
       "rectangle_points": [
@@ -133,6 +157,23 @@
       "sha256": "6eed7fd0392bc6ca5842fb50d6b3b50164a7f88d570e242b24aa051f11e27f8a"
     },
     {
+      "path": "media/collective-motion/couzin-uninformed-experiment.png",
+      "page": 3,
+      "rectangle_points": [
+        301,
+        280,
+        562,
+        468
+      ],
+      "figure": "Figure 3",
+      "source": "https://cdanfort.w3.uvm.edu/csc-reading-group/couzin-science-2011.pdf",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/couzin-2011-uninformed-fish.pdf",
+      "source_sha256": "416e0cc28857a22ba84aaf73a4006b9b7cf0889414c0e5d88dd21aab03ecc7bd",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 213892,
+      "sha256": "2bd9b7473f36519bf336f1e9cbd76bf60704c53e72a582e0e45119258a995e02"
+    },
+    {
       "path": "media/collective-motion/visual-network-candidates.png",
       "page": 2,
       "rectangle_points": [
@@ -165,6 +206,23 @@
       "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
       "bytes": 139811,
       "sha256": "584b8605e64a4802526c5dd5c774c47652fe4b9c9eaf7c8a1adf7765d422852b"
+    },
+    {
+      "path": "media/collective-motion/visual-network-fit.png",
+      "page": 2,
+      "rectangle_points": [
+        53,
+        175,
+        378,
+        303
+      ],
+      "figure": "Figure 1C\u2013E",
+      "source": "https://www.thekaolab.com/papers/StrandburgPeshkin_CurrBiol_2013.pdf",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/strandburg-peshkin-2013-visual-networks.pdf",
+      "source_sha256": "261125ff77f4a3998d0c5a45d3ffcc9ca7b93577897d44bc126bea7011b60451",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 101731,
+      "sha256": "09235762435e6d758961d45f86e614d12cab9468873777b6389a9216babc7851"
     },
     {
       "path": "media/collective-motion/berdahl-environment-performance.png",
@@ -201,6 +259,23 @@
       "sha256": "7c68b504999a612e096b094156288a076d37103f32acc76f220a1598bad4eb3a"
     },
     {
+      "path": "media/collective-motion/berdahl-social-response.png",
+      "page": 2,
+      "rectangle_points": [
+        205,
+        267,
+        379,
+        516
+      ],
+      "figure": "Figure 2B\u2013C",
+      "source": "https://d-nb.info/1130587568/34",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/berdahl-2013-collective-sensing.pdf",
+      "source_sha256": "8b05cbfcf81f1bc18b74d931af9b1f475348f9ec6252616abfde63b8859b8871",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 76718,
+      "sha256": "ae754a6e190b67587d2ebeb3e87b8e7bfc8ba5eb1e54e2277da723fe8fcddd13"
+    },
+    {
       "path": "media/collective-motion/bazazi-nerve-control.png",
       "page": 3,
       "rectangle_points": [
@@ -235,6 +310,40 @@
       "sha256": "be12de278e1911f517c21b60dbc34586fd59be28b2de196cbb4b2e1ea3a74758"
     },
     {
+      "path": "media/collective-motion/locust-field-photo.png",
+      "page": 2,
+      "rectangle_points": [
+        39,
+        64,
+        200,
+        138
+      ],
+      "figure": "Figure 1A",
+      "source": "https://pub-085d059a8619439494873b401c0986ce.r2.dev/Sayin2025behavioralmechanismsgoverning/paper.pdf",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/sayin-2025-locust-mechanisms.pdf",
+      "source_sha256": "9cb9688089fb42cd084508f63a90ed59897da70a7813556be501073597273836",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 283575,
+      "sha256": "467e2fe85eeca22b4e29a373a6c494a380731081ae9d41ffe73bc865a8e99487"
+    },
+    {
+      "path": "media/collective-motion/sayin-field-senses.png",
+      "page": 2,
+      "rectangle_points": [
+        207,
+        47,
+        557,
+        281
+      ],
+      "figure": "Figure 1C\u2013E",
+      "source": "https://pub-085d059a8619439494873b401c0986ce.r2.dev/Sayin2025behavioralmechanismsgoverning/paper.pdf",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/sayin-2025-locust-mechanisms.pdf",
+      "source_sha256": "9cb9688089fb42cd084508f63a90ed59897da70a7813556be501073597273836",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 151486,
+      "sha256": "56e852fa6423ace5bc252990d89da29c217dcb9f85a129e9a133b49be0d607ce"
+    },
+    {
       "path": "media/collective-motion/sayin-vr.png",
       "page": 3,
       "rectangle_points": [
@@ -252,6 +361,23 @@
       "sha256": "8842f632c29c9a17f97ba48e0a3171ef81d9490b80151d7c5a46d10a615eb550"
     },
     {
+      "path": "media/collective-motion/sayin-independent-controls.png",
+      "page": 3,
+      "rectangle_points": [
+        249,
+        47,
+        558,
+        285
+      ],
+      "figure": "Figure 2C\u2013D",
+      "source": "https://pub-085d059a8619439494873b401c0986ce.r2.dev/Sayin2025behavioralmechanismsgoverning/paper.pdf",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/sayin-2025-locust-mechanisms.pdf",
+      "source_sha256": "9cb9688089fb42cd084508f63a90ed59897da70a7813556be501073597273836",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 91683,
+      "sha256": "4b7465c9fab4837a8e28e4df2258c8cf7d5831226802ee77b4c9bd9ebe432a00"
+    },
+    {
       "path": "media/collective-motion/sayin-order-density.png",
       "page": 3,
       "rectangle_points": [
@@ -267,6 +393,23 @@
       "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
       "bytes": 100792,
       "sha256": "6b535edaeae67d7849a95c008f123cfb5c83696bd28e26a952e127c2fc974d1e"
+    },
+    {
+      "path": "media/collective-motion/sayin-optomotor.png",
+      "page": 4,
+      "rectangle_points": [
+        35,
+        46,
+        558,
+        198
+      ],
+      "figure": "Figure 3",
+      "source": "https://pub-085d059a8619439494873b401c0986ce.r2.dev/Sayin2025behavioralmechanismsgoverning/paper.pdf",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/sayin-2025-locust-mechanisms.pdf",
+      "source_sha256": "9cb9688089fb42cd084508f63a90ed59897da70a7813556be501073597273836",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 126830,
+      "sha256": "9b693047c1d980805345796a6765759d4373c88ee1d339ffa97bd729335cda54"
     },
     {
       "path": "media/collective-motion/sayin-pull.png",
@@ -301,6 +444,23 @@
       "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
       "bytes": 76137,
       "sha256": "96f31330f3c78282e18dbc062c5365228e2cbe3e48cdde9e39e6841c26d92e49"
+    },
+    {
+      "path": "media/collective-motion/mora-sampling.png",
+      "page": 2,
+      "rectangle_points": [
+        53,
+        49,
+        558,
+        183
+      ],
+      "figure": "Figure 1",
+      "source": "https://arxiv.org/pdf/1511.01958v2",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/mora-2016-local-equilibrium.pdf",
+      "source_sha256": "34056ecdfd45aa4ba92770f981d77fd87090b412f90bd01afedf776985445ffe",
+      "note": "Original published figure crop. Page numbers are one-based PDF pages; crop coordinates are PDF points, rendered at 3\u00d7. No data were digitized or refitted.",
+      "bytes": 54091,
+      "sha256": "ea34a646614fd05ca3b8918f3edd97273695be5eaffc4afbecce54e6e73270de"
     },
     {
       "path": "media/collective-motion/attanasi-propagation.png",
@@ -355,6 +515,27 @@
       "sha256": "c43e3bef7590f58482c13a89b11a6be43684f6aabe94b816e30573e07e0ab817"
     },
     {
+      "path": "media/collective-motion/locust-tracking.mp4",
+      "source": "https://streaming-eu.mpg.de/de/institute/ab/Collective%20behavior%20department/quantitative%20approaches/LocustTracking-iPhone.mp4",
+      "note": "Laboratory tracking demonstration from the Couzin group source page above. Playback timing is not calibrated; not presented as Sayin field footage.",
+      "bytes": 14599879,
+      "sha256": "22f35195902a59ed8e3de565bd5e9c447568a8ec85ccb7052a4aaaddd9195dd4"
+    },
+    {
+      "path": "media/collective-motion/yates-locusts-presentation.pdf",
+      "source": "https://thewaterchannel.tv/wp-content/uploads/2020/08/yates.pdf",
+      "note": "Public presentation reproducing Buhl et al. order traces, not the original journal article or a new dataset.",
+      "bytes": 1112867,
+      "sha256": "c8ab8ee3861893c0a8c34c05a0b839bef982d3b6ce120025b98855794a32d1d1"
+    },
+    {
+      "path": "media/collective-motion/buhl-order.png",
+      "source": "https://thewaterchannel.tv/wp-content/uploads/2020/08/yates.pdf",
+      "note": "Page 5, crop [72,295,724,567] PDF points, 2.5\u00d7 rendering. Reproduction of 30- and 60-locust traces. Original study: Buhl et al. 2006, DOI 10.1126/science.1125142; source figure uses its own alignment normalization.",
+      "bytes": 727110,
+      "sha256": "9c8fb288b854b449e35c0493ab41f471b524c935b65f7464a4cca46c75a5249c"
+    },
+    {
       "path": "lectures/vendor/mathjax/input/tex/extensions/boldsymbol.js",
       "source": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/input/tex/extensions/boldsymbol.js",
       "note": "Unmodified MathJax 3.2.2 boldsymbol extension. Required for vector-valued Greek symbols; upstream license is in the vendor directory.",
@@ -374,6 +555,20 @@
       "note": "Slide 4 version: first 4 seconds removed; remainder at original resolution, frame rate and playback speed. H.264 CRF 18, silent, faststart. Original retained.",
       "bytes": 6602135,
       "sha256": "3670ed11e4e7b834aadce616798c30e02bb199036ff20aa924fb8ebc9556dda8"
+    },
+    {
+      "path": "media/flocking/encounter-averaging.svg",
+      "source": "Original course teaching schematic",
+      "note": "Illustrative encounter geometry and conditional averaging; not empirical data.",
+      "bytes": 2576,
+      "sha256": "4d4b1c139e7b565e7321a729fce15f5b6157e0d6cf46062003780eac733f79a1"
+    },
+    {
+      "path": "media/flocking/encounter-state.svg",
+      "source": "Original course teaching schematic",
+      "note": "Illustrative encounter geometry and conditional averaging; not empirical data.",
+      "bytes": 1809,
+      "sha256": "4282126b5272b4cae40b441a1b92df274d77bfe26da5bffc46cc1dcce848b61c"
     },
     {
       "path": "media/collective-motion/katz-turning-relative-heading.png",
@@ -503,6 +698,94 @@
       "note": "Original conservation diagram: net outward number current decreases the number in a fixed region. Schematic, not experimental data.",
       "bytes": 1500,
       "sha256": "5c3a8b3687077d8730b43773516aaf5a6ed23b3b9973f54475ace862e19e763a"
+    },
+    {
+      "path": "media/collective-motion/tunstrom-school-and-mill.png",
+      "source": "https://journals.plos.org/ploscompbiol/article/figure/image?download&size=large&id=10.1371/journal.pcbi.1002915.g001",
+      "note": "Figure 1A: polarized and milling experimental configurations. Crop [296,0,987,310] of 991\u00d7792 published PNG.",
+      "bytes": 81113,
+      "sha256": "c605dc19053a5e631488d61821db834cf9c9dcc3c989d24bf4d2a152c4411403"
+    },
+    {
+      "path": "media/collective-motion/tunstrom-school-to-mill.png",
+      "source": "https://journals.plos.org/ploscompbiol/article/figure/image?download&size=large&id=10.1371/journal.pcbi.1002915.g006",
+      "note": "Figure 6B. Crop [0,238,986,486]; shown above A to follow school-to-mill then mill-to-school.",
+      "bytes": 91953,
+      "sha256": "e78cc01c33e006f0657cfc34b6c98fee0b216f33642dbce122d1ecc722901769"
+    },
+    {
+      "path": "media/collective-motion/tunstrom-mill-to-school.png",
+      "source": "https://journals.plos.org/ploscompbiol/article/figure/image?download&size=large&id=10.1371/journal.pcbi.1002915.g006",
+      "note": "Figure 6A. Crop [0,0,986,234]. Gray line is tank wall.",
+      "bytes": 100908,
+      "sha256": "86d938830b9c2308389b011d1a7e06f0615c043353b9f8663ff0c283f023f238"
+    },
+    {
+      "path": "media/collective-motion/lafoux-fixed-condition-switching.png",
+      "source": "https://arxiv.org/pdf/2401.01850",
+      "note": "Figure 1a\u2013c, PDF page 3, rectangle [130,52,498,301] points, rendered 5\u00d7. Fixed N=50, S=1 m\u00b2; original state measures and time scale retained.",
+      "bytes": 860434,
+      "sha256": "d97704b006a72b7cc03ec809f77b96ba5e59b735cedc7c8c12682960375bfe1c"
+    },
+    {
+      "path": "media/collective-motion/lafoux-confinement-milling.png",
+      "source": "https://arxiv.org/pdf/2401.01850",
+      "note": "Figure 2A, PDF page 4, rendered 5\u00d7. Lower panel omitted; original common x-axis moved below A; original color bar moved beside A. Tank-area legend moved into HTML. Removed original legend rectangle over empty plot space and restored covered axis baseline. No data points changed, digitized or refitted.",
+      "bytes": 81211,
+      "sha256": "7ba80e176fa2c73916e719b886be78b155760a5cbe62e358e9cd3db35b22447d"
+    },
+    {
+      "path": "media/collective-motion/rummy-nose-tetra.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hemigrammus_rhodostomus.jpg",
+      "note": "Gavinevans, 2013, CC BY-SA 3.0. Original 2021\u00d71560 photograph cropped [650,0,1730,540] and resized to 1000\u00d7500. Natural-history illustration, not experimental footage. Species/ecology checked against FishBase.",
+      "bytes": 145026,
+      "sha256": "1b036b1aaff27893f94e805436afc370a8e451ed359153d260902e1528891ef8"
+    },
+    {
+      "path": "media/collective-motion/attanasi-two-bird-delay.png",
+      "page": 2,
+      "rectangle_points": [
+        383,
+        50,
+        524,
+        151
+      ],
+      "figure": "Figure 1d, main panel",
+      "source": "https://arxiv.org/pdf/1303.7097",
+      "vault_source": "Wiki/Teaching/BPY567 Swarming/Research Notes/moving-collectives-sources/attanasi-2014-information-transfer.pdf",
+      "source_sha256": "0b8dfbf34b7d162759e1377a676cd7470214b9fe42c6bf7935f5eb9b5df6d9d2",
+      "note": "Rendered at 360 dpi. Correlation-method inset and its labels removed; the two acceleration traces, time-shift arrows, axis labels and main axes retained. White-mask pixel rectangles within the 705\u00d7505 crop: [396,26,686,235], [430,235,686,270], [350,65,396,155], [0,0,3,80], [682,205,704,231]. Last mask required restoring the right axis at x=692 and minor tick at y=211. No measured trace pixels changed.",
+      "bytes": 138608,
+      "sha256": "58939474155a7d6c4689f53c084c678946b10de5102670f41f0cb6d0465557bf"
+    },
+    {
+      "path": "media/collective-motion/attanasi-collective-turn.mp4",
+      "source": "https://www.nature.com/articles/nphys3035",
+      "source_movies": [
+        {
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnphys3035/MediaObjects/41567_2014_BFnphys3035_MOESM6_ESM.mov",
+          "sha256": "6ea2105a712c8c9d2058ec383cb111dbff231394234b9e6162c2a0cbf0767335",
+          "crop_xywh": [
+            450,
+            300,
+            640,
+            420
+          ]
+        },
+        {
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnphys3035/MediaObjects/41567_2014_BFnphys3035_MOESM7_ESM.mov",
+          "sha256": "5147ca0888405907be9028d7378fcee00f5501aef24451a16938c0291df96960",
+          "crop_xywh": [
+            90,
+            30,
+            1040,
+            670
+          ]
+        }
+      ],
+      "note": "Official Supplementary Movies 1 and 2, concatenated in that order. Crop unused margins, scale proportionately and pad to 960\u00d7640. Preserve both full encoded timelines (5.56 s and 31.2 s); no temporal rescaling, no audio. H.264 yuv420p at 25 fps, CRF 20, faststart. Second segment animates experimentally reconstructed trajectories; it is not a model simulation.",
+      "bytes": 6770834,
+      "sha256": "f6d3036440bf97e5e36b1a049aec3d41c4f312c8c84d328bbce58dcdcfa4a480"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "companion": "lectures/lecture-15-animal-interaction-rules.ipynb",
-  "code_cells_sha256": "a54939a956109e9f2e3f2bb8a2cb3f1925aebe86d31df9fb008d6fac9049fd90",
+  "code_cells_sha256": "41f35b6f47bfcfd9a966e93735a6a5ba266a9b94aebe93642b067dd26c6606c9",
   "inputs": [
     {
       "path": "data/flocking/fish-pairs-2021.npz",
@@ -80,8 +80,8 @@
   ],
   "browser_payload": {
     "path": "data/collective-motion/lecture-15-browser-data.js",
-    "bytes": 885895,
-    "sha256": "1b403743ca3fa589e40b497c6be6d9a80421e4688b5fec8bed9e72e436a06ff7",
+    "bytes": 885919,
+    "sha256": "4df33b68c550e54dadf279fd48d00355dc0889d9dfbdda0938cee15a90de6e87",
     "precision_decimal_places": 6
   },
   "versions": {

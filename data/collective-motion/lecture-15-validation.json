@@ -211,9 +211,10 @@
     "area": 0.5,
     "crowding": 0.3,
     "expected": {
+      "entropy": -0.65893438643789,
       "environment": 4.0,
       "interaction": 1.05,
-      "total": 5.05
+      "total": 4.39106561356211
     }
   },
   "extended": {
