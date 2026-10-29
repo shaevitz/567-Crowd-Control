@@ -1,27 +1,27 @@
 {
   "lecture": 15,
-  "slides": 73,
+  "slides": 85,
   "url": "https://shaevitz.github.io/567-Crowd-Control/lectures/lecture-15-animal-interaction-rules.html",
   "files": [
     {
       "path": "data/collective-motion/lecture-15-browser-data.js",
-      "bytes": 885895,
-      "sha256": "1b403743ca3fa589e40b497c6be6d9a80421e4688b5fec8bed9e72e436a06ff7"
+      "bytes": 885919,
+      "sha256": "4df33b68c550e54dadf279fd48d00355dc0889d9dfbdda0938cee15a90de6e87"
     },
     {
       "path": "data/collective-motion/lecture-15-data-manifest.json",
       "bytes": 4322,
-      "sha256": "fd882c750a2a3fc691632f6615cba211dcb4eb427328617c4206fb6f91b42792"
+      "sha256": "0a67e009408f8963910e8224b6d93f6fbca153bc3494c493b95522c61fce75eb"
     },
     {
       "path": "data/collective-motion/lecture-15-media-manifest.json",
-      "bytes": 24551,
-      "sha256": "fdc3b437d71a3fb93ec5b7c12ddb9bd6411c1e92d68dd4c5a530e5263b511c2d"
+      "bytes": 39561,
+      "sha256": "b8781103d82a5312401a2b6afb3c26fdec02b886f397bdcdc1db7802d2667c80"
     },
     {
       "path": "data/collective-motion/lecture-15-validation.json",
-      "bytes": 7017,
-      "sha256": "bcfea49d3009cd4c0e64ddd9cb5bdca27f743dac1897c1425d22c4af0a002822"
+      "bytes": 7065,
+      "sha256": "c80dd7bf6f5c4b261d223a7433512a307937fa362f8b95f57af43ab3b0219dbf"
     },
     {
       "path": "data/flies/dfft-2018/figure-02-bins.mat",
@@ -120,13 +120,13 @@
     },
     {
       "path": "lectures/lecture-15-animal-interaction-rules.html",
-      "bytes": 175541,
-      "sha256": "05f6dd90b28aa8af3aec97e9dac0645f410a8a27d111b1223f721faba863204c"
+      "bytes": 194045,
+      "sha256": "28fda0d903823633d8d5deb067fe66fff50296694c9fad54287592ce35eb82b6"
     },
     {
       "path": "lectures/lecture-15-animal-interaction-rules.ipynb",
-      "bytes": 975818,
-      "sha256": "8ed5d861cd6c9a3f0bc8926d0264d11cb67d5c92a1c3d51d81b1eddd76bcc338"
+      "bytes": 989203,
+      "sha256": "6dff4bc0511844d3c5910eee84f408d9a4f2dfc8e3acf16864560ff724bd1e04"
     },
     {
       "path": "lectures/vendor/mathjax/LICENSE",
@@ -149,6 +149,11 @@
       "sha256": "d4295dc33744836935c1399feece5159577b34c5c8ffb9f1c6324cd82e03a882"
     },
     {
+      "path": "media/collective-motion/attanasi-collective-turn.mp4",
+      "bytes": 6770834,
+      "sha256": "f6d3036440bf97e5e36b1a049aec3d41c4f312c8c84d328bbce58dcdcfa4a480"
+    },
+    {
       "path": "media/collective-motion/attanasi-propagation.png",
       "bytes": 596180,
       "sha256": "ae4cd81c004f0c0c137203972571bed11bc4dcc6fe780fd63fbac3548ac6fc7a"
@@ -162,6 +167,11 @@
       "path": "media/collective-motion/attanasi-turn-distance.png",
       "bytes": 470593,
       "sha256": "b63af53acc0a24d768bb532437c0540deb13c8fd10add56062e4eb71a9201eee"
+    },
+    {
+      "path": "media/collective-motion/attanasi-two-bird-delay.png",
+      "bytes": 138608,
+      "sha256": "58939474155a7d6c4689f53c084c678946b10de5102670f41f0cb6d0465557bf"
     },
     {
       "path": "media/collective-motion/bazazi-contact-direction.png",
@@ -179,6 +189,11 @@
       "sha256": "f82ddc93c93bf058e3794d1feb5072e856aee8c2bb3bdacbac70853d74e9958f"
     },
     {
+      "path": "media/collective-motion/berdahl-social-response.png",
+      "bytes": 76718,
+      "sha256": "ae754a6e190b67587d2ebeb3e87b8e7bfc8ba5eb1e54e2277da723fe8fcddd13"
+    },
+    {
       "path": "media/collective-motion/berdahl-social-versus-gradient.png",
       "bytes": 66047,
       "sha256": "28b154b1c5f09adbb406c53726d305384734fa2eac8f007f4c761bdcec47939f"
@@ -189,9 +204,19 @@
       "sha256": "7c68b504999a612e096b094156288a076d37103f32acc76f220a1598bad4eb3a"
     },
     {
+      "path": "media/collective-motion/buhl-order.png",
+      "bytes": 727110,
+      "sha256": "9c8fb288b854b449e35c0493ab41f471b524c935b65f7464a4cca46c75a5249c"
+    },
+    {
       "path": "media/collective-motion/couzin-model-fish-comparison.png",
       "bytes": 425249,
       "sha256": "5388441786464b56c8fab1c16033ac0b4c780a816aa76b0cfd6fb14430db2759"
+    },
+    {
+      "path": "media/collective-motion/couzin-uninformed-experiment.png",
+      "bytes": 213892,
+      "sha256": "2bd9b7473f36519bf336f1e9cbd76bf60704c53e72a582e0e45119258a995e02"
     },
     {
       "path": "media/collective-motion/couzin-uninformed-model.png",
@@ -209,6 +234,11 @@
       "sha256": "a607d92b08e6e814ae8aa96561a887448a6e8d9c70f18078b65bf99d2598a4a3"
     },
     {
+      "path": "media/collective-motion/katz-speed-heading.png",
+      "bytes": 366344,
+      "sha256": "8f956722b74cee6dc18c8c121dafb4a5438e2d7a11379456dfe6984a36cd1f41"
+    },
+    {
       "path": "media/collective-motion/katz-triplet-speed.png",
       "bytes": 254851,
       "sha256": "85121dc81feab3678f67aa32272feee6a7634e7795a2f7bfba07326fd2b55582"
@@ -224,9 +254,24 @@
       "sha256": "05f39f0e7d25b7275dc6dd5541f37b62145db8599da44ee5dbcedfd7f0877391"
     },
     {
+      "path": "media/collective-motion/lafoux-confinement-milling.png",
+      "bytes": 81211,
+      "sha256": "7ba80e176fa2c73916e719b886be78b155760a5cbe62e358e9cd3db35b22447d"
+    },
+    {
+      "path": "media/collective-motion/lafoux-fixed-condition-switching.png",
+      "bytes": 860434,
+      "sha256": "d97704b006a72b7cc03ec809f77b96ba5e59b735cedc7c8c12682960375bfe1c"
+    },
+    {
       "path": "media/collective-motion/locust-density-and-bistability.png",
       "bytes": 805780,
       "sha256": "07327022566e281c25b386d5077960380c778e764fc1abfe919fd70738fa2468"
+    },
+    {
+      "path": "media/collective-motion/locust-field-photo.png",
+      "bytes": 283575,
+      "sha256": "467e2fe85eeca22b4e29a373a6c494a380731081ae9d41ffe73bc865a8e99487"
     },
     {
       "path": "media/collective-motion/locust-phases.jpg",
@@ -239,9 +284,24 @@
       "sha256": "1c58027b6657ebb08d3286a864422e886cd333d9baae66e5fba764f8bf8d23bf"
     },
     {
+      "path": "media/collective-motion/locust-tracking.mp4",
+      "bytes": 14599879,
+      "sha256": "22f35195902a59ed8e3de565bd5e9c447568a8ec85ccb7052a4aaaddd9195dd4"
+    },
+    {
       "path": "media/collective-motion/mora-natural-flock-sampling.png",
       "bytes": 37110,
       "sha256": "696243bedaeab9ac369edd504606a881350b8ae0ce3ca5080e4cd84322b22542"
+    },
+    {
+      "path": "media/collective-motion/mora-sampling.png",
+      "bytes": 54091,
+      "sha256": "ea34a646614fd05ca3b8918f3edd97273695be5eaffc4afbecce54e6e73270de"
+    },
+    {
+      "path": "media/collective-motion/rummy-nose-tetra.jpg",
+      "bytes": 145026,
+      "sha256": "1b036b1aaff27893f94e805436afc370a8e451ed359153d260902e1528891ef8"
     },
     {
       "path": "media/collective-motion/sayin-choice.png",
@@ -254,7 +314,22 @@
       "sha256": "3eba6201041cb353314faa973c9d4a3a025a5762d695d4745534b88b1dbf5f6d"
     },
     {
+      "path": "media/collective-motion/sayin-field-senses.png",
+      "bytes": 151486,
+      "sha256": "56e852fa6423ace5bc252990d89da29c217dcb9f85a129e9a133b49be0d607ce"
+    },
+    {
+      "path": "media/collective-motion/sayin-independent-controls.png",
+      "bytes": 91683,
+      "sha256": "4b7465c9fab4837a8e28e4df2258c8cf7d5831226802ee77b4c9bd9ebe432a00"
+    },
+    {
       "path": "media/collective-motion/sayin-optomotor-stacked.png",
+      "bytes": 126830,
+      "sha256": "9b693047c1d980805345796a6765759d4373c88ee1d339ffa97bd729335cda54"
+    },
+    {
+      "path": "media/collective-motion/sayin-optomotor.png",
       "bytes": 126830,
       "sha256": "9b693047c1d980805345796a6765759d4373c88ee1d339ffa97bd729335cda54"
     },
@@ -274,9 +349,29 @@
       "sha256": "8842f632c29c9a17f97ba48e0a3171ef81d9490b80151d7c5a46d10a615eb550"
     },
     {
+      "path": "media/collective-motion/tunstrom-mill-to-school.png",
+      "bytes": 100908,
+      "sha256": "86d938830b9c2308389b011d1a7e06f0615c043353b9f8663ff0c283f023f238"
+    },
+    {
+      "path": "media/collective-motion/tunstrom-school-and-mill.png",
+      "bytes": 81113,
+      "sha256": "c605dc19053a5e631488d61821db834cf9c9dcc3c989d24bf4d2a152c4411403"
+    },
+    {
+      "path": "media/collective-motion/tunstrom-school-to-mill.png",
+      "bytes": 91953,
+      "sha256": "e78cc01c33e006f0657cfc34b6c98fee0b216f33642dbce122d1ecc722901769"
+    },
+    {
       "path": "media/collective-motion/visual-network-candidates.png",
       "bytes": 211418,
       "sha256": "f2420dc499fda694634efe602422e2b6d9e0e19acbc17bde37ea9d44fb08cd7a"
+    },
+    {
+      "path": "media/collective-motion/visual-network-fit.png",
+      "bytes": 101731,
+      "sha256": "09235762435e6d758961d45f86e614d12cab9468873777b6389a9216babc7851"
     },
     {
       "path": "media/collective-motion/visual-network-model-comparison.png",
@@ -287,6 +382,11 @@
       "path": "media/collective-motion/visual-network-response.png",
       "bytes": 139811,
       "sha256": "584b8605e64a4802526c5dd5c774c47652fe4b9c9eaf7c8a1adf7765d422852b"
+    },
+    {
+      "path": "media/collective-motion/yates-locusts-presentation.pdf",
+      "bytes": 1112867,
+      "sha256": "c8ab8ee3861893c0a8c34c05a0b839bef982d3b6ce120025b98855794a32d1d1"
     },
     {
       "path": "media/density-current.svg",
@@ -309,6 +409,16 @@
       "sha256": "76d5e8b6e8715094ae83176974d064b9d2198612175b64bfc5696555bb688f6c"
     },
     {
+      "path": "media/flocking/encounter-averaging.svg",
+      "bytes": 2576,
+      "sha256": "4d4b1c139e7b565e7321a729fce15f5b6157e0d6cf46062003780eac733f79a1"
+    },
+    {
+      "path": "media/flocking/encounter-state.svg",
+      "bytes": 1809,
+      "sha256": "4282126b5272b4cae40b441a1b92df274d77bfe26da5bffc46cc1dcce848b61c"
+    },
+    {
       "path": "media/flocking/golden-shiner-opening.mp4",
       "bytes": 2630473,
       "sha256": "d4d5ce345ed1db88c81b53d10e2f960d8eabbb53d64d0ca723dd4e05b897902f"
@@ -327,6 +437,11 @@
       "path": "media/flocking/golden-shiner-state-switching-from-4s.mp4",
       "bytes": 6602135,
       "sha256": "3670ed11e4e7b834aadce616798c30e02bb199036ff20aa924fb8ebc9556dda8"
+    },
+    {
+      "path": "media/flocking/golden-shiner-state-switching.m4v",
+      "bytes": 10646140,
+      "sha256": "e63c33209c349ebd661cfcf9b69309e9f59a881a900649ed0dafc04bdbb650b2"
     },
     {
       "path": "media/flocking/mora-2016-inference.png",
